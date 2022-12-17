@@ -1,10 +1,11 @@
-package entity;
+package entitys;
 
 import javax.persistence.*;
+import enums.DificuldadeMonstro;
 
 @Entity
 @Table(name = "monstro")
-public class Monstro {
+public class Monstro{
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)

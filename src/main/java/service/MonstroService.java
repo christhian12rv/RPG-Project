@@ -1,7 +1,6 @@
 package service;
 
-import entity.Monstro;
-import util.JPAUtil;
+import entitys.Monstro;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;

@@ -1,5 +1,5 @@
-import entity.DificuldadeMonstro;
-import entity.Monstro;
+import entitys.Monstro;
+import enums.DificuldadeMonstro;
 import service.MonstroService;
 import util.JPAUtil;
 
@@ -12,7 +12,7 @@ public class Main {
         MonstroService monstroService = new MonstroService(entityManager);
 
         Monstro monstro = new Monstro();
-        monstro.setDificuldade(DificuldadeMonstro.FACIL);
+        monstro.setDificuldade(DificuldadeMonstro.INICIANTE);
 
         monstroService.save(monstro);
 
