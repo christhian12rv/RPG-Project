@@ -1,0 +1,41 @@
+PASSOS
+
+
+Perguntar quantidade de jogadores  
+Para cada jogador, criar o personagem
+Criar 1 personagem para cada jogador
+
+
+Criar nova partida
+	- Perguntar qual Historia quer jogar (Listar do banco de dados e fazer o jogador escolher)
+	- Para cada MiniHistoria da Historia
+		- Criar uma batalha da MiniHistoria
+			- Criar uma "iniciativa de personagens" aleatória
+			- Criar batalha
+		- Criar MiniHistoria
+	- Criar nova partida
+
+
+	COMEÇO DO JOGO
+		- Apresentar história do jogo, contextualizar e talz
+		- Iterar cada Batalha:
+			- Apresentar Mini História
+			- Iterar Iniciativa de personagens:
+				- Se o Personagem for um Jogador:
+					- Apresenta opções:
+						1 - Atacar usando arma
+						2 - Usar habilidade
+						3 - Usar item do inventário
+						- Se a opção for 1:
+							- Para calcular o dano do ataque:
+								- (x "qtdDados" do tipo "tipoDado" da arma) + (qtdPontos do atributo do tipoAtributo do Personagem) + (adicional)
+							- Para saber se o inimigo irá desviar:
+								- O ataque do Personagem tem que ser maior que a defesa do outro Personagem para acertar o ataque
+							- Atacar
+						- Se a opção for 2:
+							- Verifica se a habilidade é uma habilidade de ataque (NÃO é do tipo "CURA")
+							- Se a habilidade é uma habilidade de ataque:
+								- Para calcular o dano da habilidade:
+									- O dano fixo da habilidade + atributo do tipoAtributo
+									- Atacar em X personagens de acordo com a "area"
+				- Se o Personagem for um Monstro:

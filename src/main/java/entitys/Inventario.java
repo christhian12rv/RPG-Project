@@ -1,14 +1,16 @@
 package entitys;
 
+import java.util.List;
+
 public class Inventario {
  
     private List<Item> itens;
 
-    public Item getItem(int id) {
-        return itens[id];
+    public List<Item> getItem(int id) {
+        return itens;
     }
 
-    public void setItem(int item) {
-        itens.add(item);
+    public void setItem(List<Item> item) {
+        this.itens = itens;
     }
 }

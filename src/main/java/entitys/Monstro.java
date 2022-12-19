@@ -5,7 +5,7 @@ import enums.DificuldadeMonstro;
 
 @Entity
 @Table(name = "monstro")
-public class Monstro{
+public class Monstro extends Personagem {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)

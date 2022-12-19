@@ -3,12 +3,12 @@ package entitys;
 import enums.TipoAtributo;
 
 import javax.persistence.*;
-
+import java.util.HashMap;
 
 @Entity
 @Table(name = "habilidade")
 public class Habilidade {
-		@Id
+	@Id
     @Column(name = "id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
@@ -34,7 +34,7 @@ public class Habilidade {
     @Column(name = "dropavel")
     private boolean dropavel;
 
-    private List<PreRequisitos> preRequisitos;
+    private HashMap<TipoAtributo, Integer> preRequisitos;
 
     public Integer getId() {
         return id;
@@ -96,7 +96,15 @@ public class Habilidade {
         return dropavel;
     }
 
-    public void setArea(boolean dropavel) {
+    public void setDropavel(boolean dropavel) {
         this.dropavel = dropavel;
+    }
+
+    public HashMap<TipoAtributo, Integer> getPreRequisitos() {
+        return preRequisitos;
+    }
+
+    public void setPreRequisitos(HashMap<TipoAtributo, Integer> preRequisitos) {
+        this.preRequisitos = preRequisitos;
     }
 }
