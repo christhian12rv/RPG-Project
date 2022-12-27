@@ -124,7 +124,7 @@ public class PersonagemUtil {
 
         habilidades = habilidades.sublist(escolha - 1, escolha);
 
-        Personagem personagem = new Personagem(nome, descricao, classe, vida, vidaMaxima, constituicao, forca, destreza, sabedoria, defesa, habilidades);
+        Personagem personagem = new Personagem(nome, descricao, classe, vida, vidaMaxima, constituicao + 2, forca + 2, destreza + 2, sabedoria + 2, defesa + 2, habilidades);
         personagemService.save(personagem);
         return personagem;
     }
