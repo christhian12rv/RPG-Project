@@ -45,56 +45,54 @@ public class PersonagemUtil {
             classe = scanner.nextLine();
         }
 
-        while (pontosDistribuicao > 0) {
-            pontosDistribuicao = this.PONTOS_DISTRIBUICAO;
-            System.out.println("***************** Pontos de distribuição *****************");
-            System.out.println("Cada atributo terá no mínimo 2 pontos e você poderá distribuir +7 para os atributos seguintes.");
-            System.out.println("Você poderá distribuir no máximo +4 pontos para cada atributo.");
- 
-            System.out.print("Constituição: ");
+        pontosDistribuicao = this.PONTOS_DISTRIBUICAO;
+        System.out.println("***************** Pontos de distribuição *****************");
+        System.out.println("Cada atributo terá no mínimo 2 pontos e você poderá distribuir +7 para os atributos seguintes.");
+        System.out.println("Você poderá distribuir no máximo +4 pontos para cada atributo.");
+
+        System.out.print("Constituição: ");
+        constituicao = scanner.nextInt();
+        while (constituicao < 0 || constituicao > 4) {
+            System.out.println("O atributo não pode conter + que 4 pontos de atributo. Digite novamente:");
             constituicao = scanner.nextInt();
-            while (constituicao > 4) {
-                System.out.println("O atributo não pode conter + que 4 pontos de atributo. Digite novamente:");
-                constituicao = scanner.nextInt();
-            }
-            pontosDistribuicao -= constituicao;
-
-            System.out.print("Força: ");
-            forca = scanner.nextInt();
-            while (forca > 4 || forca > pontosDistribuicao) {
-                System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
-                    "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
-                forca = scanner.nextInt();
-            }
-            pontosDistribuicao -= forca;
-
-            System.out.print("Destreza: ");
-            destreza = scanner.nextInt();
-            while (destreza > 4 || destreza > pontosDistribuicao) {
-                System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
-                    "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
-                destreza = scanner.nextInt();
-            }
-            pontosDistribuicao -= destreza;
-
-            System.out.print("Sabedoria: ");
-            sabedoria = scanner.nextInt();
-            while (sabedoria > 4 || sabedoria > pontosDistribuicao) {
-                System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
-                    "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
-                sabedoria = scanner.nextInt();
-            }
-            pontosDistribuicao -= sabedoria;
-
-            System.out.print("Defesa: ");
-            defesa = scanner.nextInt();
-            while (defesa > 4 || defesa > pontosDistribuicao) {
-                System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
-                    "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
-                defesa = scanner.nextInt();
-            }
-            pontosDistribuicao -= defesa;
         }
+        pontosDistribuicao -= constituicao;
+
+        System.out.print("Força: ");
+        forca = scanner.nextInt();
+        while (forca < 0 || forca > 4 || forca > pontosDistribuicao) {
+            System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
+                "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
+            forca = scanner.nextInt();
+        }
+        pontosDistribuicao -= forca;
+
+        System.out.print("Destreza: ");
+        destreza = scanner.nextInt();
+        while (destreza < 0 || destreza > 4 || destreza > pontosDistribuicao) {
+            System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
+                "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
+            destreza = scanner.nextInt();
+        }
+        pontosDistribuicao -= destreza;
+
+        System.out.print("Sabedoria: ");
+        sabedoria = scanner.nextInt();
+        while (sabedoria < 0 || sabedoria > 4 || sabedoria > pontosDistribuicao) {
+            System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
+                "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
+            sabedoria = scanner.nextInt();
+        }
+        pontosDistribuicao -= sabedoria;
+
+        System.out.print("Defesa: ");
+        defesa = scanner.nextInt();
+        while (defesa < 0 || defesa > 4 || defesa > pontosDistribuicao) {
+            System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
+                "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
+            defesa = scanner.nextInt();
+        }
+        pontosDistribuicao -= defesa;
 
         if (destreza > forca)
             tipoAtributo = TipoAtributo.DESTREZA;
