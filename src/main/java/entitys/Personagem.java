@@ -43,6 +43,20 @@ public class Personagem {
 
 	private List<Habilidade> habilidades;
 
+	public Personagem(String nome, String descricao, String classe, int vida, int vidaMaxima, int constituicao, int forca, int destreza, int sabedoria, int defesa, List<Habilidades> habilidades) {
+		this.nome = nome;
+		this.descricao = descricao;
+		this.classe = classe;
+		this.vida = vida;
+		this.vidaMaxima = vidaMaxima;
+		this.constituicao = constituicao;
+		this.forca = forca;
+		this.destreza = destreza;
+		this.sabedoria = sabedoria;
+		this.defesa = defesa;
+		this.habilidades = habilidades;
+	}
+
 	public Integer getId() {
 		return id;
 	}

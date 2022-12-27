@@ -107,4 +107,16 @@ public class Habilidade {
     public void setPreRequisitos(HashMap<TipoAtributo, Integer> preRequisitos) {
         this.preRequisitos = preRequisitos;
     }
+
+    @Override
+    public String toString() {
+        String valor = "Nome: " + nome +
+        "\nDescrição: " + descricao +
+        "\nTipo: " + tipo +
+        "\nDano: " + dano +
+        "\nCusto: " + custo +
+        "\nArea: " + area;
+
+        return valor;
+    }
 }

@@ -33,9 +33,36 @@ Criar nova partida
 								- O ataque do Personagem tem que ser maior que a defesa do outro Personagem para acertar o ataque
 							- Atacar
 						- Se a opção for 2:
-							- Verifica se a habilidade é uma habilidade de ataque (NÃO é do tipo "CURA")
-							- Se a habilidade é uma habilidade de ataque:
+							- Verifica se a Habilidade é uma habilidade de ataque (NÃO é do tipo "CURA")
+							- Se a Habilidade é uma habilidade de ataque:
+							    - Lançar a habilidade apenas se a MANA do Jogador for >= CUSTO da Habilidade
 								- Para calcular o dano da habilidade:
 									- O dano fixo da habilidade + atributo do tipoAtributo
-									- Atacar em X personagens de acordo com a "area"
+									- Atacar em X personagens de acordo com a "area" (Escolher)
+									- Para saber se o inimigo irá desviar:
+									    - Rola um Dx e soma com o tipo atributo do atacante e tem que ser maior que o tipo atributo do inimigo para acertar
+							- Se a Habilidade é uma habilidade de cura:
+							    - Para Jogador: Lançar a habilidade apenas se a MANA do Jogador for >= CUSTO da Habilidade
+                                - Para calcular a cura da habilidade:
+                                    - O "dano" fixo + atributo do tipoAtributo
+                                - Curar X personagens de acordo com a "area" (Escolher)
+                        - Se a opção for 3:
+                            - Escolher o item (poção) do inventário e usar:
+                                - Poção de Mana: "Cura" X mana
+                                - Poção de Cura: Cura X vida
+                                - Poção Híbrida: "Cura" X mana e X vida
 				- Se o Personagem for um Monstro:
+				    - O Monstro só tem a "opção" de lançar Habilidades
+				    - Cada Habilidade tem 1/X (onde X é quantidade de Habilidades) chance de ser lançada
+				    - Habilidades de monstros não custam MANA para serem usados.
+				    - Para usar Habilidade:
+				        - Se a Habilidade é uma habilidade de ataque:
+				            - O custo é 0
+				            - Atacar em X Jogadores de acordo com a "area" (Aleatório)
+				            - Para saber se o Jogador irá desviar:
+				                - Rola um Dx e soma com o tipo atributo do Monstro e tem que ser maior que a DEFESA do Jogador para acertar
+				            - O dano é fixo
+				        - Se a Habilidade é uma habilidade de cura:
+				            - O custo é 0
+				            - Curar X Monstros de acordo com a "area" (Aleatório)
+				            - O "dano" é fixo

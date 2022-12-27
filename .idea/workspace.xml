@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="942ae02e-3e40-4074-bd19-b81d0815339a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Habilidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Habilidade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Inventario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Inventario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Jogador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Jogador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Monstro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Monstro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/DificuldadeMonstro.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/Monstro.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/MonstroService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/MonstroService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/JPAUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/JPAUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/regras_de_negocio.txt" beforeDir="false" afterPath="$PROJECT_DIR$/regras_de_negocio.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Arma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Arma.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,33 +30,32 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/entitys/Monstro.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/.m2/settings.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/entitys/Batalha.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/entitys/Item.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/regras_de_negocio.txt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
-    </option>
   </component>
   <component name="ProjectId" id="2IW0jGQ1t7EaoOhCZJ8MybDaq54" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/christhian/Documentos/UFU/3 Sem./POO/RPG-Project",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="New-RPG-Project" />
+      <module name="RPG-Project" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -82,5 +76,56 @@
       <updated>1670282167285</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
+          <line>293</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
+          <line>295</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
+          <line>297</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
+          <line>299</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
+          <line>291</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
+          <line>442</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
+          <line>444</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
+          <line>443</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
+          <line>445</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

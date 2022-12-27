@@ -74,14 +74,6 @@ public class Arma {
 		this.qtdDados = qtdDados;
 	}
 
-	public int getMana() {
-		return mana;
-	}
-
-	public void setMana(int mana) {
-		this.mana = mana;
-	}
-
 	public int getAdicional() {
 		return adicional;
 	}
@@ -90,12 +82,12 @@ public class Arma {
 		this.adicional = adicional;
 	}
 
-	public TipoAtributo getTipo() {
-		return tipo;
+	public TipoAtributo getTipoAtributo() {
+		return tipoAtributo;
 	}
 
-	public void setTipo(TipoAtributo tipo) {
-		this.tipo = tipo;
+	public void setTipoAtributo(TipoAtributo tipoAtributo) {
+		this.tipoAtributo = tipoAtributo;
 	}
 
 }

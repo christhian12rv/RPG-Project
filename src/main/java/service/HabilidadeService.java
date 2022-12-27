@@ -26,6 +26,20 @@ public class HabilidadeService {
         return habilidades;
     }
 
+    public List<Habilidade> findAllRandomByPreRequisitosAndTipo(int forca, int destreza, int sabedoria, int defesa, TipoAtributo tipoAtributo) {
+        Query query = entityManager.createQuery("SELECT h FROM Habilidade h " +
+            "WHERE h.dropavel = true " +
+            "AND h.preRequisitos[0] <= " + forca + " " +
+            "AND h.preRequisitos[1] <= " + destreza + " " +
+            "AND h.preRequisitos[2] <= " + sabedoria + " " +
+            "AND h.preRequisitos[3] <= " + defesa + " " +
+            "AND tipo = " + tipoAtributo + " " +
+            "ORDER BY RANDOM()");
+        List<Habilidade> habilidades = query.getResultList();
+
+        return habilidades;
+    }
+
     public Habilidade findById(Integer id) {
         Habilidade habilidade = entityManager.find(Habilidade.class, id);
 
