@@ -17,6 +17,10 @@ public class Historia {
 	@Column(name = "descricao")
 	private String descricao;
 
+	@ElementCollection
 	private List<MiniHistoria> miniHistorias;
+
+	@OneToOne(mappedBy = "historia")
+	private Partida partida;
 
 }

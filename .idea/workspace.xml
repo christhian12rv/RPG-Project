@@ -5,14 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="942ae02e-3e40-4074-bd19-b81d0815339a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/HabilidadeUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/regras_de_negocio.txt" beforeDir="false" afterPath="$PROJECT_DIR$/regras_de_negocio.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Arma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Arma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Batalha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Batalha.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Habilidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Habilidade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Historia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Historia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Inventario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Inventario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Jogador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Jogador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/MiniHistoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/MiniHistoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Monstro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Monstro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Partida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Partida.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Personagem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Personagem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/ArmaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/ArmaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/HabilidadeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/HabilidadeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/JogadorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/JogadorUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/PersonagemUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/PersonagemUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +55,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2IW0jGQ1t7EaoOhCZJ8MybDaq54" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -52,7 +68,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.HabilidadeUtil">
+    <configuration name="HabilidadeUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="util.HabilidadeUtil" />
+      <module name="RPG-Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="RPG-Project" />
@@ -62,6 +91,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.HabilidadeUtil" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -82,31 +112,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
-          <line>293</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
-          <line>295</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
-          <line>297</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
-          <line>299</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
-          <line>291</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
           <line>442</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
@@ -124,6 +129,11 @@
           <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
           <line>445</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/util/HabilidadeUtil.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

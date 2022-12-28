@@ -11,12 +11,19 @@ public class Batalha {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "miniHistoria")
+	@OneToOne
+	@JoinColumn(name = "minihistoria_id", referencedColumnName = "id")
 	private MiniHistoria miniHistoria;
 
+	@ElementCollection
 	private List<Monstro> monstros;
 
+	@ElementCollection
 	private List<Personagem> iniciativa;
+
+	@ManyToOne
+	@JoinColumn(name="partida_id", referencedColumnName = "id")
+	private Partida partida;
 
 	public Integer getId() {
 		return id;

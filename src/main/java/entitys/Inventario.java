@@ -1,16 +1,39 @@
 package entitys;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "inventario")
 public class Inventario {
- 
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Integer id;
+
+    @OneToMany(mappedBy="inventario")
     private List<Item> itens;
 
-    public List<Item> getItem(int id) {
+    @OneToOne(mappedBy = "inventario")
+    private Jogador jogador;
+
+    @OneToOne(mappedBy = "inventario")
+    private Item item;
+
+    public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+    public List<Item> getItens() {
         return itens;
     }
 
-    public void setItem(List<Item> item) {
+    public void setItens(List<Item> itens) {
         this.itens = itens;
     }
 }

@@ -34,6 +34,9 @@ public class Arma {
 	@Column(name = "tipoAtributo")
 	private TipoAtributo tipoAtributo;
 
+	@OneToOne(mappedBy = "arma")
+	private Jogador jogador;
+
 	public Integer getId() {
 		return id;
 	}

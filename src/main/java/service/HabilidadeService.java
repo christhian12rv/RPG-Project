@@ -1,10 +1,12 @@
 package service;
 
 import entitys.Habilidade;
+import enums.TipoAtributo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class HabilidadeService {
     private EntityManager entityManager;
@@ -29,13 +31,22 @@ public class HabilidadeService {
     public List<Habilidade> findAllRandomByPreRequisitosAndTipo(int forca, int destreza, int sabedoria, int defesa, TipoAtributo tipoAtributo) {
         Query query = entityManager.createQuery("SELECT h FROM Habilidade h " +
             "WHERE h.dropavel = true " +
-            "AND h.preRequisitos[0] <= " + forca + " " +
-            "AND h.preRequisitos[1] <= " + destreza + " " +
-            "AND h.preRequisitos[2] <= " + sabedoria + " " +
-            "AND h.preRequisitos[3] <= " + defesa + " " +
-            "AND tipo = " + tipoAtributo + " " +
+            "AND h.tipo = '" + tipoAtributo + "' " +
             "ORDER BY RANDOM()");
         List<Habilidade> habilidades = query.getResultList();
+
+        habilidades = habilidades.stream().filter(h -> {
+            if (forca < h.getPreRequisitos().get(0))
+                return false;
+            if (destreza < h.getPreRequisitos().get(1))
+                return false;
+            if (sabedoria < h.getPreRequisitos().get(2))
+                return false;
+            if (defesa < h.getPreRequisitos().get(3))
+                return false;
+
+            return true;
+        }).collect(Collectors.toList());
 
         return habilidades;
     }

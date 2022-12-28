@@ -41,9 +41,10 @@ public class Personagem {
 	@Column(name = "defesa")
 	private int defesa;
 
+	@ElementCollection
 	private List<Habilidade> habilidades;
 
-	public Personagem(String nome, String descricao, String classe, int vida, int vidaMaxima, int constituicao, int forca, int destreza, int sabedoria, int defesa, List<Habilidades> habilidades) {
+	public Personagem(String nome, String descricao, String classe, int vida, int vidaMaxima, int constituicao, int forca, int destreza, int sabedoria, int defesa, List<Habilidade> habilidades) {
 		this.nome = nome;
 		this.descricao = descricao;
 		this.classe = classe;

@@ -1,6 +1,7 @@
 package service;
 
 import entitys.Arma;
+import enums.TipoAtributo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -28,6 +29,15 @@ public class ArmaService {
 
     public Arma findById(Integer id) {
         Arma arma = entityManager.find(Arma.class, id);
+
+        return arma;
+    }
+
+    public Arma findByRaridadeAndByTipoAtributo(TipoAtributo tipoAtributo) {
+        Query query = entityManager.createQuery("SELECT m FROM Arma m " +
+            "WHERE raridade = 1 " +
+            "AND tipoAtributo = " + tipoAtributo);
+        Arma arma = (Arma) query.getSingleResult();
 
         return arma;
     }

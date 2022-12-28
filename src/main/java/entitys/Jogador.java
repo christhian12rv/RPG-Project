@@ -1,9 +1,11 @@
 package entitys;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "jogador")
+@PrimaryKeyJoinColumn( name = "idPersonagem" )
 public class Jogador extends Personagem {
     @Id
     @Column(name = "id")
@@ -16,11 +18,27 @@ public class Jogador extends Personagem {
     @Column(name = "manaMaxima")
     private int manaMaxima;
 
-    @Column(name = "arma")
+    @OneToOne
+    @JoinColumn(name = "arma_id", referencedColumnName = "id")
     private Arma arma;
 
-    @Column(name = "inventario")
+    @OneToOne
+    @JoinColumn(name = "inventario_id", referencedColumnName = "id")
     private Inventario inventario;
+
+    @ManyToOne
+    @JoinColumn(name="partida_id", referencedColumnName = "id")
+    private Partida partida;
+
+    public Jogador(Personagem personagem, int mana, int manaMaxima, Arma arma, Inventario inventario) {
+        super(personagem.getNome(), personagem.getDescricao(), personagem.getClasse(), personagem.getVida(),
+                personagem.getVidaMaxima(), personagem.getConstituicao(), personagem.getForca(), personagem.getDestreza(),
+                personagem.getSabedoria(), personagem.getDefesa(), personagem.getHabilidades());
+        this.mana = mana;
+        this.manaMaxima = manaMaxima;
+        this.arma = arma;
+        this.inventario = inventario;
+    }
 
     public int getMana() {
         return mana;

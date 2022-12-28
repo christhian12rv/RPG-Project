@@ -1,11 +1,19 @@
 package util;
 
+import entitys.Habilidade;
 import entitys.Personagem;
+import enums.TipoAtributo;
+import service.HabilidadeService;
+
+import java.util.List;
+import java.util.Scanner;
 
 public class PersonagemUtil {
     private final int PONTOS_DISTRIBUICAO = 7;
 
-    private Personagem criarPersonagem() {
+    HabilidadeService habilidadeService;
+
+    public Personagem criarPersonagem() {
         Scanner scanner = new Scanner(System.in);
         String nome = "";
         String descricao = "";
@@ -45,54 +53,60 @@ public class PersonagemUtil {
             classe = scanner.nextLine();
         }
 
-        pontosDistribuicao = this.PONTOS_DISTRIBUICAO;
-        System.out.println("***************** Pontos de distribuição *****************");
-        System.out.println("Cada atributo terá no mínimo 2 pontos e você poderá distribuir +7 para os atributos seguintes.");
-        System.out.println("Você poderá distribuir no máximo +4 pontos para cada atributo.");
+        while (pontosDistribuicao > 0) {
+            pontosDistribuicao = this.PONTOS_DISTRIBUICAO;
+            System.out.println("***************** Pontos de distribuição *****************");
+            System.out.println("Cada atributo terá no mínimo 2 pontos e você poderá distribuir +7 para os atributos seguintes.");
+            System.out.println("Você poderá distribuir no máximo +4 pontos para cada atributo.");
 
-        System.out.print("Constituição: ");
-        constituicao = scanner.nextInt();
-        while (constituicao < 0 || constituicao > 4) {
-            System.out.println("O atributo não pode conter + que 4 pontos de atributo. Digite novamente:");
+            System.out.print("Constituição: ");
             constituicao = scanner.nextInt();
-        }
-        pontosDistribuicao -= constituicao;
+            while (constituicao < 0 || constituicao > 4) {
+                System.out.println("O atributo não pode conter + que 4 pontos de atributo. Digite novamente:");
+                constituicao = scanner.nextInt();
+            }
+            pontosDistribuicao -= constituicao;
 
-        System.out.print("Força: ");
-        forca = scanner.nextInt();
-        while (forca < 0 || forca > 4 || forca > pontosDistribuicao) {
-            System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
-                "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
+            System.out.print("Força: ");
             forca = scanner.nextInt();
-        }
-        pontosDistribuicao -= forca;
+            while (forca < 0 || forca > 4 || forca > pontosDistribuicao) {
+                System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
+                    "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
+                forca = scanner.nextInt();
+            }
+            pontosDistribuicao -= forca;
 
-        System.out.print("Destreza: ");
-        destreza = scanner.nextInt();
-        while (destreza < 0 || destreza > 4 || destreza > pontosDistribuicao) {
-            System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
-                "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
+            System.out.print("Destreza: ");
             destreza = scanner.nextInt();
-        }
-        pontosDistribuicao -= destreza;
+            while (destreza < 0 || destreza > 4 || destreza > pontosDistribuicao) {
+                System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
+                    "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
+                destreza = scanner.nextInt();
+            }
+            pontosDistribuicao -= destreza;
 
-        System.out.print("Sabedoria: ");
-        sabedoria = scanner.nextInt();
-        while (sabedoria < 0 || sabedoria > 4 || sabedoria > pontosDistribuicao) {
-            System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
-                "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
+            System.out.print("Sabedoria: ");
             sabedoria = scanner.nextInt();
-        }
-        pontosDistribuicao -= sabedoria;
+            while (sabedoria < 0 || sabedoria > 4 || sabedoria > pontosDistribuicao) {
+                System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
+                    "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
+                sabedoria = scanner.nextInt();
+            }
+            pontosDistribuicao -= sabedoria;
 
-        System.out.print("Defesa: ");
-        defesa = scanner.nextInt();
-        while (defesa < 0 || defesa > 4 || defesa > pontosDistribuicao) {
-            System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
-                "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
+            System.out.print("Defesa: ");
             defesa = scanner.nextInt();
+            while (defesa < 0 || defesa > 4 || defesa > pontosDistribuicao) {
+                System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
+                    "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
+                defesa = scanner.nextInt();
+            }
+            pontosDistribuicao -= defesa;
+
+            if (pontosDistribuicao > 0)
+                System.out.println("Você não distribuiu os pontos corretamente. Faltam " + pontosDistribuicao +
+                    "para distribuir. Distribua os pontos novamente.");
         }
-        pontosDistribuicao -= defesa;
 
         if (destreza > forca)
             tipoAtributo = TipoAtributo.DESTREZA;
@@ -103,12 +117,12 @@ public class PersonagemUtil {
         if (defesa > sabedoria)
             tipoAtributo = TipoAtributo.DEFESA;
 
-        List<Habilidade> habilidades = habilidadeService.findAllRandomByPreRequisitosAndTipo(forca, destreza, sabedoria, defesa, tipoAtributo).sublist(0, 3);
+        List<Habilidade> habilidades = habilidadeService.findAllRandomByPreRequisitosAndTipo(forca, destreza, sabedoria, defesa, tipoAtributo).subList(0, 3);
 
         System.out.println("Escolha uma dentre as " + habilidades.size() + " habilidades abaixo:");
         i = 1;
-        for (Habilidade habilidade: habilidades) {
-            System.out.println("[" + i + "]\n" + habilidade + "\n");
+        for (Habilidade h: habilidades) {
+            System.out.println("[" + i + "]\n" + h + "\n");
             i++;
         }
 
@@ -120,11 +134,21 @@ public class PersonagemUtil {
             escolha = scanner.nextInt();
         }
 
-        habilidades = habilidades.sublist(escolha - 1, escolha);
+        habilidades = habilidades.subList(escolha - 1, escolha);
 
-        Personagem personagem = new Personagem(nome, descricao, classe, vida, vidaMaxima, constituicao + 2, forca + 2, destreza + 2, sabedoria + 2, defesa + 2, habilidades);
-        personagemService.save(personagem);
+        vida += constituicao * 3;
+        vidaMaxima = vida;
+
+        personagem = new Personagem(nome, descricao, classe, vida, vidaMaxima, constituicao + 2, forca + 2, destreza + 2, sabedoria + 2, defesa + 2, habilidades);
+        //personagemService.save(personagem);
         return personagem;
     }
-    
+
+    public HabilidadeService getHabilidadeService() {
+        return habilidadeService;
+    }
+
+    public void setHabilidadeService(HabilidadeService habilidadeService) {
+        this.habilidadeService = habilidadeService;
+    }
 }

@@ -3,7 +3,8 @@ package entitys;
 import enums.TipoAtributo;
 
 import javax.persistence.*;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "habilidade")
@@ -19,6 +20,7 @@ public class Habilidade {
     @Column(name = "descricao")
     private String descricao;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "tipo")
     private TipoAtributo tipo;
 
@@ -34,7 +36,24 @@ public class Habilidade {
     @Column(name = "dropavel")
     private boolean dropavel;
 
-    private HashMap<TipoAtributo, Integer> preRequisitos;
+    @ElementCollection
+    @Column(name = "preRequisitos")
+    private List<Integer> preRequisitos = new ArrayList<>();
+
+    public Habilidade() {
+
+    }
+
+    public Habilidade(String nome, String descricao, TipoAtributo tipo, int dano, int custo, int area, boolean dropavel, List<Integer> preRequisitos) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.tipo = tipo;
+        this.dano = dano;
+        this.custo = custo;
+        this.area = area;
+        this.dropavel = dropavel;
+        this.preRequisitos = preRequisitos;
+    }
 
     public Integer getId() {
         return id;
@@ -100,11 +119,11 @@ public class Habilidade {
         this.dropavel = dropavel;
     }
 
-    public HashMap<TipoAtributo, Integer> getPreRequisitos() {
+    public List<Integer> getPreRequisitos() {
         return preRequisitos;
     }
 
-    public void setPreRequisitos(HashMap<TipoAtributo, Integer> preRequisitos) {
+    public void setPreRequisitos(List<Integer> preRequisitos) {
         this.preRequisitos = preRequisitos;
     }
 

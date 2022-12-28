@@ -13,13 +13,16 @@ public class MiniHistoria {
 	private Integer id;
 
 	@Column(name = "historia")
-	private Historia historia;
+	private Integer historia;
 
 	@Column(name = "dificuldade")
 	private DificuldadeMonstro dificuldade;
 
 	@Column(name = "ordem")
 	private Integer ordem;
+
+	@OneToOne(mappedBy = "miniHistoria")
+	private Batalha batalha;
 
 	public Integer getId() {
 		return id;
@@ -29,11 +32,11 @@ public class MiniHistoria {
 		this.id = id;
 	}
 
-	public Historia getHistoria() {
+	public Integer getHistoria() {
 		return historia;
 	}
 
-	public void setHistoria(Historia historia) {
+	public void setHistoria(Integer historia) {
 		this.historia = historia;
 	}
 

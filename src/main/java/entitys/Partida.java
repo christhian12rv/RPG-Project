@@ -11,10 +11,13 @@ public class Partida {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "historia")
+	@OneToOne
+	@JoinColumn(name = "historia_id", referencedColumnName = "id")
 	private Historia historia;
 
+	@OneToMany(mappedBy="partida")
 	private List<Batalha> batalhas;
 
+	@OneToMany(mappedBy="partida")
 	private List<Jogador> jogadores;
 }
