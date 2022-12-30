@@ -35,8 +35,9 @@ public class ArmaService {
 
     public Arma findByRaridadeAndByTipoAtributo(TipoAtributo tipoAtributo) {
         Query query = entityManager.createQuery("SELECT m FROM Arma m " +
-            "WHERE raridade = 1 " +
-            "AND tipoAtributo = " + tipoAtributo);
+            "WHERE raridade = 'COMUM' " +
+            "AND tipoAtributo = '" + tipoAtributo + "' " +
+            "ORDER BY RANDOM()");
         Arma arma = (Arma) query.getSingleResult();
 
         return arma;

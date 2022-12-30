@@ -41,8 +41,12 @@ public class Personagem {
 	@Column(name = "defesa")
 	private int defesa;
 
-	@ElementCollection
+	@ManyToMany
 	private List<Habilidade> habilidades;
+
+	public Personagem() {
+
+	}
 
 	public Personagem(String nome, String descricao, String classe, int vida, int vidaMaxima, int constituicao, int forca, int destreza, int sabedoria, int defesa, List<Habilidade> habilidades) {
 		this.nome = nome;

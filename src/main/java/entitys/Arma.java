@@ -19,6 +19,7 @@ public class Arma {
 	@Column(name = "descricao")
 	private String descricao;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "raridade")
 	private RaridadeArma raridade;
 
@@ -31,11 +32,23 @@ public class Arma {
 	@Column(name = "adicional")
 	private int adicional;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "tipoAtributo")
 	private TipoAtributo tipoAtributo;
 
-	@OneToOne(mappedBy = "arma")
-	private Jogador jogador;
+	public Arma() {
+
+	}
+
+	public Arma(String nome, String descricao, RaridadeArma raridade, int qtdDados, int tipoDado, int adicional, TipoAtributo tipoAtributo) {
+		this.nome = nome;
+		this.descricao = descricao;
+		this.raridade = raridade;
+		this.qtdDados = qtdDados;
+		this.tipoDado = tipoDado;
+		this.adicional = adicional;
+		this.tipoAtributo = tipoAtributo;
+	}
 
 	public Integer getId() {
 		return id;

@@ -27,17 +27,16 @@ public class Item {
 	@Column(name = "mana")
 	private int mana;
 
-	@ManyToOne
-	@JoinColumn(name="inventario_id", referencedColumnName = "id")
-	private Inventario inventario;
+	public Item() {
 
-	public Item(String nome, String descricao, TipoItem tipo, int vida, int mana, Inventario inventario) {
+	}
+
+	public Item(String nome, String descricao, TipoItem tipo, int vida, int mana) {
 		this.nome = nome;
 		this.descricao = descricao;
 		this.tipo = tipo;
 		this.vida = vida;
 		this.mana = mana;
-		this.inventario = inventario;
 	}
 
 	public Integer getId() {
@@ -88,12 +87,12 @@ public class Item {
 		this.mana = mana;
 	}
 
-	public Inventario getInventario() {
+	/*public Inventario getInventario() {
 		return inventario;
 	}
 
 	public void setInventario(Inventario inventario) {
 		this.inventario = inventario;
-	}
+	}*/
 
 }

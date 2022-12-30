@@ -28,10 +28,17 @@ public class HabilidadeService {
         return habilidades;
     }
 
-    public List<Habilidade> findAllRandomByPreRequisitosAndTipo(int forca, int destreza, int sabedoria, int defesa, TipoAtributo tipoAtributo) {
+    public List<Habilidade> findAllRandomByPreRequisitosAndTipo(int forca, int destreza, int sabedoria, int defesa, List<TipoAtributo> tipoAtributos) {
+        String whereTipoAtributos = "AND h.tipo = '" + tipoAtributos.get(0) + "' ";
+        tipoAtributos.remove(0);
+
+        for (TipoAtributo tipoAtributo: tipoAtributos) {
+            whereTipoAtributos += "OR h.tipo = '" + tipoAtributo + "' ";
+        }
+
         Query query = entityManager.createQuery("SELECT h FROM Habilidade h " +
             "WHERE h.dropavel = true " +
-            "AND h.tipo = '" + tipoAtributo + "' " +
+            whereTipoAtributos +
             "ORDER BY RANDOM()");
         List<Habilidade> habilidades = query.getResultList();
 

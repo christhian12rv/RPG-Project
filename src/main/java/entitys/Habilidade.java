@@ -1,6 +1,7 @@
 package entitys;
 
 import enums.TipoAtributo;
+import enums.TipoDanoHabilidade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -26,6 +27,10 @@ public class Habilidade {
 
     @Column(name = "dano")
     private int dano;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipoDanoHabilidade")
+    private TipoDanoHabilidade tipoDanoHabilidade;
 
     @Column(name = "custo")
     private int custo;

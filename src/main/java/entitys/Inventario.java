@@ -12,14 +12,11 @@ public class Inventario {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany(mappedBy="inventario")
+    @ElementCollection
     private List<Item> itens;
 
-    @OneToOne(mappedBy = "inventario")
-    private Jogador jogador;
-
-    @OneToOne(mappedBy = "inventario")
-    private Item item;
+    /*@OneToOne(mappedBy = "inventario")
+    private Item item;*/
 
     public Integer getId() {
 		return id;

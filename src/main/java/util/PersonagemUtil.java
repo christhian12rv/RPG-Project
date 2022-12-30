@@ -5,6 +5,7 @@ import entitys.Personagem;
 import enums.TipoAtributo;
 import service.HabilidadeService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -28,7 +29,9 @@ public class PersonagemUtil {
         int sabedoria = 0;
         int defesa = 0;
         int pontosDistribuicao = this.PONTOS_DISTRIBUICAO;
-        TipoAtributo tipoAtributo = TipoAtributo.FORCA;
+        int atributoMaiorValor = forca;
+        TipoAtributo tipoAtributoMaiorValor = TipoAtributo.FORCA;
+        List<TipoAtributo> tipoAtributos = new ArrayList<>();
         Habilidade habilidade = null;
         Personagem personagem = null;
         
@@ -108,16 +111,38 @@ public class PersonagemUtil {
                     "para distribuir. Distribua os pontos novamente.");
         }
 
-        if (destreza > forca)
-            tipoAtributo = TipoAtributo.DESTREZA;
+        atributoMaiorValor = forca;
+        if (destreza > atributoMaiorValor) {
+            tipoAtributoMaiorValor = TipoAtributo.DESTREZA;
+            atributoMaiorValor = destreza;
+        }
         
-        if (sabedoria > destreza)
-            tipoAtributo = TipoAtributo.SABEDORIA;
+        if (sabedoria > atributoMaiorValor) {
+            tipoAtributoMaiorValor = TipoAtributo.SABEDORIA;
+            atributoMaiorValor = sabedoria;
+        }
         
-        if (defesa > sabedoria)
-            tipoAtributo = TipoAtributo.DEFESA;
+        if (defesa > atributoMaiorValor) {
+            tipoAtributoMaiorValor = TipoAtributo.DEFESA;
+            atributoMaiorValor = defesa;
+        }
 
-        List<Habilidade> habilidades = habilidadeService.findAllRandomByPreRequisitosAndTipo(forca, destreza, sabedoria, defesa, tipoAtributo).subList(0, 3);
+        tipoAtributos.add(tipoAtributoMaiorValor);
+        if (forca == atributoMaiorValor && tipoAtributoMaiorValor != TipoAtributo.FORCA) {
+            tipoAtributos.add(TipoAtributo.FORCA);
+        }
+        if (destreza == atributoMaiorValor && tipoAtributoMaiorValor != TipoAtributo.DESTREZA) {
+            tipoAtributos.add(TipoAtributo.DESTREZA);
+        }
+                
+        if (sabedoria == atributoMaiorValor && tipoAtributoMaiorValor != TipoAtributo.SABEDORIA) {
+            tipoAtributos.add(TipoAtributo.SABEDORIA);
+        }
+        if (defesa == atributoMaiorValor && tipoAtributoMaiorValor != TipoAtributo.DEFESA) {
+            tipoAtributos.add(TipoAtributo.DEFESA);
+        }
+
+        List<Habilidade> habilidades = habilidadeService.findAllRandomByPreRequisitosAndTipo(forca, destreza, sabedoria, defesa, tipoAtributos).subList(0, 3);
 
         System.out.println("Escolha uma dentre as " + habilidades.size() + " habilidades abaixo:");
         i = 1;

@@ -17,11 +17,11 @@ public class HabilidadeUtil {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         habilidadeService = new HabilidadeService(entityManager);
 
-        //Habilidade habilidade = criarHabilidade();
-        //habilidadeService.save(habilidade);
+        Habilidade habilidade = criarHabilidade();
+        habilidadeService.save(habilidade);
 
         //List<Habilidade> habilidade = habilidadeService.findAll();
-        List<Habilidade> habilidades = habilidadeService.findAllRandomByPreRequisitosAndTipo(3,4, 9, 2, TipoAtributo.SABEDORIA);
+        //List<Habilidade> habilidades = habilidadeService.findAllRandomByPreRequisitosAndTipo(3,4, 9, 2, TipoAtributo.SABEDORIA);
         entityManager.close();
         JPAUtil.shutdown();
     }
@@ -71,8 +71,6 @@ public class HabilidadeUtil {
         System.out.print("Sabedoria: ");
         preRequisitos.add(scanner.nextInt());
         System.out.print("Defesa: ");
-        preRequisitos.add(scanner.nextInt());
-        System.out.print("Cura: ");
         preRequisitos.add(scanner.nextInt());
 
         Habilidade habilidade = new Habilidade(nome, descricao, tipoAtributo, dano, custo, area, dropavel, preRequisitos);

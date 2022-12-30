@@ -13,16 +13,16 @@ public class InventarioUtil {
 
     public Inventario criarInventarioInicial() {
         Inventario inventario = new Inventario();
-        inventarioService.save(inventario);
 
-        Item itemVida = itemUtil.criarItemVida(10, inventario);
-        Item itemMana = itemUtil.criarItemMana(10, inventario);
+        Item itemVida = itemUtil.criarItemVida(10);
+        Item itemMana = itemUtil.criarItemMana(10);
 
         List<Item> itens = new ArrayList<>();
         itens.add(itemVida);
         itens.add(itemMana);
-
         inventario.setItens(itens);
+
+        inventarioService.save(inventario);
 
         return inventario;
     }

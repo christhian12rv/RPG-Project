@@ -30,6 +30,10 @@ public class Jogador extends Personagem {
     @JoinColumn(name="partida_id", referencedColumnName = "id")
     private Partida partida;
 
+    public Jogador() {
+
+    }
+
     public Jogador(Personagem personagem, int mana, int manaMaxima, Arma arma, Inventario inventario) {
         super(personagem.getNome(), personagem.getDescricao(), personagem.getClasse(), personagem.getVida(),
                 personagem.getVidaMaxima(), personagem.getConstituicao(), personagem.getForca(), personagem.getDestreza(),
