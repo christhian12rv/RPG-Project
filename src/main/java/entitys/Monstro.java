@@ -2,7 +2,11 @@ package entitys;
 
 import javax.persistence.*;
 import enums.DificuldadeMonstro;
+import enums.TipoMonstro;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -11,30 +15,38 @@ import java.util.List;
 public class Monstro extends Personagem {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "dificuldade")
     private DificuldadeMonstro dificuldade;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo")
+    private TipoMonstro tipo;
 
     @Column(name = "ascii")
     private String ascii;
 
-    public Monstro(Personagem personagem, DificuldadeMonstro dificuldade, String ascii) {
+    public Monstro() {
+
+    }
+
+    public Monstro(Personagem personagem, String ascii, DificuldadeMonstro dificuldade, TipoMonstro tipo) {
         super(personagem.getNome(), personagem.getDescricao(), personagem.getClasse(), personagem.getVida(),
                 personagem.getVidaMaxima(), personagem.getConstituicao(), personagem.getForca(), personagem.getDestreza(),
                 personagem.getSabedoria(), personagem.getDefesa(), personagem.getHabilidades());
 
-        this.dificuldade = dificuldade;
         this.ascii = ascii;
-    }
-
-    public DificuldadeMonstro getDificuldade() {
-        return dificuldade;
-    }
-
-    public void setDificuldade(DificuldadeMonstro dificuldade) {
         this.dificuldade = dificuldade;
+        this.tipo = tipo;
     }
 
     public Integer getId() {
@@ -43,6 +55,30 @@ public class Monstro extends Personagem {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public DificuldadeMonstro getDificuldade() {
+        return dificuldade;
+    }
+
+    public void setDificuldade(DificuldadeMonstro dificuldade) {
+        this.dificuldade = dificuldade;
     }
 
     public String getAscii() {

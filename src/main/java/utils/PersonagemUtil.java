@@ -1,17 +1,14 @@
-package util;
+package utils;
 
+import config.AtributosIniciais;
 import entitys.Habilidade;
 import entitys.Personagem;
-import enums.TipoAtributo;
-import service.HabilidadeService;
+import services.HabilidadeService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class PersonagemUtil {
-    private final int PONTOS_DISTRIBUICAO = 7;
-
     HabilidadeService habilidadeService;
 
     public Personagem criarPersonagem() {
@@ -21,18 +18,15 @@ public class PersonagemUtil {
         String classe = "";
         int i = 0;
         int escolha = 0;
-        int vida = 10;
-        int vidaMaxima = vida;
+        int vida = 0;
+        int vidaMaxima = 0;
         int constituicao = 0;
         int forca = 0;
         int destreza = 0;
         int sabedoria = 0;
         int defesa = 0;
-        int pontosDistribuicao = this.PONTOS_DISTRIBUICAO;
-        int atributoMaiorValor = forca;
-        TipoAtributo tipoAtributoMaiorValor = TipoAtributo.FORCA;
-        List<TipoAtributo> tipoAtributos = new ArrayList<>();
-        Habilidade habilidade = null;
+        int pontosDistribuicao = AtributosIniciais.DISTRIBUICAO_PONTOS_TOTAL_INICIAIS;
+
         Personagem personagem = null;
         
         System.out.print("Nome: ");
@@ -57,23 +51,23 @@ public class PersonagemUtil {
         }
 
         while (pontosDistribuicao > 0) {
-            pontosDistribuicao = this.PONTOS_DISTRIBUICAO;
+            pontosDistribuicao = AtributosIniciais.DISTRIBUICAO_PONTOS_TOTAL_INICIAIS;
             System.out.println("***************** Pontos de distribuição *****************");
-            System.out.println("Cada atributo terá no mínimo 2 pontos e você poderá distribuir +7 para os atributos seguintes.");
-            System.out.println("Você poderá distribuir no máximo +4 pontos para cada atributo.");
+            System.out.println("Cada atributo terá no mínimo " + AtributosIniciais.PONTOS_INICIAIS + " pontos e você poderá distribuir "+ AtributosIniciais.DISTRIBUICAO_PONTOS_TOTAL_INICIAIS +" para os atributos seguintes.");
+            System.out.println("Você poderá distribuir no máximo "+ AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS +" pontos para cada atributo.");
 
             System.out.print("Constituição: ");
             constituicao = scanner.nextInt();
-            while (constituicao < 0 || constituicao > 4) {
-                System.out.println("O atributo não pode conter + que 4 pontos de atributo. Digite novamente:");
+            while (constituicao < 0 || constituicao > AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS) {
+                System.out.println("O atributo não pode conter + que "+ AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS +" pontos de atributo. Digite novamente:");
                 constituicao = scanner.nextInt();
             }
             pontosDistribuicao -= constituicao;
 
             System.out.print("Força: ");
             forca = scanner.nextInt();
-            while (forca < 0 || forca > 4 || forca > pontosDistribuicao) {
-                System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
+            while (forca < 0 || forca > AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS || forca > pontosDistribuicao) {
+                System.out.println("O atributo não pode conter + que "+ AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS +" pontos de atributo e não deve superar os pontos de " +
                     "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
                 forca = scanner.nextInt();
             }
@@ -81,8 +75,8 @@ public class PersonagemUtil {
 
             System.out.print("Destreza: ");
             destreza = scanner.nextInt();
-            while (destreza < 0 || destreza > 4 || destreza > pontosDistribuicao) {
-                System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
+            while (destreza < 0 || destreza > AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS || destreza > pontosDistribuicao) {
+                System.out.println("O atributo não pode conter + que "+ AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS +" pontos de atributo e não deve superar os pontos de " +
                     "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
                 destreza = scanner.nextInt();
             }
@@ -90,8 +84,8 @@ public class PersonagemUtil {
 
             System.out.print("Sabedoria: ");
             sabedoria = scanner.nextInt();
-            while (sabedoria < 0 || sabedoria > 4 || sabedoria > pontosDistribuicao) {
-                System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
+            while (sabedoria < 0 || sabedoria > AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS || sabedoria > pontosDistribuicao) {
+                System.out.println("O atributo não pode conter + que "+ AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS +" pontos de atributo e não deve superar os pontos de " +
                     "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
                 sabedoria = scanner.nextInt();
             }
@@ -99,8 +93,8 @@ public class PersonagemUtil {
 
             System.out.print("Defesa: ");
             defesa = scanner.nextInt();
-            while (defesa < 0 || defesa > 4 || defesa > pontosDistribuicao) {
-                System.out.println("O atributo não pode conter + que 4 pontos de atributo e não deve superar os pontos de " +
+            while (defesa < 0 || defesa > AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS || defesa > pontosDistribuicao) {
+                System.out.println("O atributo não pode conter + que "+ AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS +" pontos de atributo e não deve superar os pontos de " +
                     "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
                 defesa = scanner.nextInt();
             }
@@ -111,38 +105,7 @@ public class PersonagemUtil {
                     "para distribuir. Distribua os pontos novamente.");
         }
 
-        atributoMaiorValor = forca;
-        if (destreza > atributoMaiorValor) {
-            tipoAtributoMaiorValor = TipoAtributo.DESTREZA;
-            atributoMaiorValor = destreza;
-        }
-        
-        if (sabedoria > atributoMaiorValor) {
-            tipoAtributoMaiorValor = TipoAtributo.SABEDORIA;
-            atributoMaiorValor = sabedoria;
-        }
-        
-        if (defesa > atributoMaiorValor) {
-            tipoAtributoMaiorValor = TipoAtributo.DEFESA;
-            atributoMaiorValor = defesa;
-        }
-
-        tipoAtributos.add(tipoAtributoMaiorValor);
-        if (forca == atributoMaiorValor && tipoAtributoMaiorValor != TipoAtributo.FORCA) {
-            tipoAtributos.add(TipoAtributo.FORCA);
-        }
-        if (destreza == atributoMaiorValor && tipoAtributoMaiorValor != TipoAtributo.DESTREZA) {
-            tipoAtributos.add(TipoAtributo.DESTREZA);
-        }
-                
-        if (sabedoria == atributoMaiorValor && tipoAtributoMaiorValor != TipoAtributo.SABEDORIA) {
-            tipoAtributos.add(TipoAtributo.SABEDORIA);
-        }
-        if (defesa == atributoMaiorValor && tipoAtributoMaiorValor != TipoAtributo.DEFESA) {
-            tipoAtributos.add(TipoAtributo.DEFESA);
-        }
-
-        List<Habilidade> habilidades = habilidadeService.findAllRandomByPreRequisitosAndTipo(forca, destreza, sabedoria, defesa, tipoAtributos).subList(0, 3);
+        List<Habilidade> habilidades = habilidadeService.findHabilidadesByPreRequisitos(forca, destreza, sabedoria, defesa);
 
         System.out.println("Escolha uma dentre as " + habilidades.size() + " habilidades abaixo:");
         i = 1;
@@ -161,11 +124,11 @@ public class PersonagemUtil {
 
         habilidades = habilidades.subList(escolha - 1, escolha);
 
-        vida += constituicao * 3;
+        vida = AtributosIniciais.VIDA + (constituicao * AtributosIniciais.MULTIPLICADOR_VIDA);
         vidaMaxima = vida;
 
-        personagem = new Personagem(nome, descricao, classe, vida, vidaMaxima, constituicao + 2, forca + 2, destreza + 2, sabedoria + 2, defesa + 2, habilidades);
-        //personagemService.save(personagem);
+        personagem = new Personagem(nome, descricao, classe, vida, vidaMaxima, constituicao + AtributosIniciais.PONTOS_INICIAIS, forca + AtributosIniciais.PONTOS_INICIAIS, destreza + AtributosIniciais.PONTOS_INICIAIS, sabedoria + AtributosIniciais.PONTOS_INICIAIS, defesa + AtributosIniciais.PONTOS_INICIAIS, habilidades);
+
         return personagem;
     }
 

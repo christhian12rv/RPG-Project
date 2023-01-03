@@ -1,4 +1,4 @@
-package service;
+package repositorys;
 
 import entitys.Habilidade;
 import enums.TipoAtributo;
@@ -8,24 +8,10 @@ import javax.persistence.Query;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class HabilidadeService {
-    private EntityManager entityManager;
-
-    public HabilidadeService(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
-    public void save(Habilidade habilidade) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(habilidade);
-        entityManager.getTransaction().commit();
-    }
-
-    public List<Habilidade> findAll() {
-        Query query = entityManager.createQuery("SELECT h FROM Habilidade h");
-        List<Habilidade> habilidades = query.getResultList();
-
-        return habilidades;
+public class HabilidadeRepository extends BaseRepository<Habilidade> {
+    
+    public HabilidadeRepository(EntityManager entityManager) {
+        super(Habilidade.class, entityManager);
     }
 
     public List<Habilidade> findAllRandomByPreRequisitosAndTipo(int forca, int destreza, int sabedoria, int defesa, List<TipoAtributo> tipoAtributos) {
@@ -36,7 +22,7 @@ public class HabilidadeService {
             whereTipoAtributos += "OR h.tipo = '" + tipoAtributo + "' ";
         }
 
-        Query query = entityManager.createQuery("SELECT h FROM Habilidade h " +
+        Query query = this.getEntityManager().createQuery("SELECT h FROM Habilidade h " +
             "WHERE h.dropavel = true " +
             whereTipoAtributos +
             "ORDER BY RANDOM()");
@@ -58,21 +44,4 @@ public class HabilidadeService {
         return habilidades;
     }
 
-    public Habilidade findById(Integer id) {
-        Habilidade habilidade = entityManager.find(Habilidade.class, id);
-
-        return habilidade;
-    }
-
-    public int deleteById(Integer id) {
-        Habilidade habilidade = entityManager.find(Habilidade.class, id);
-
-        if (habilidade == null)
-            return 0;
-
-        entityManager.getTransaction().begin();
-        entityManager.remove(habilidade);
-        entityManager.getTransaction().commit();
-        return 1;
-    }
 }

@@ -1,40 +1,41 @@
+import entitys.Historia;
 import entitys.Jogador;
-import entitys.Monstro;
-import enums.DificuldadeMonstro;
-import service.*;
-import util.*;
+import entitys.Partida;
+import repositorys.*;
+import services.HabilidadeService;
+import services.InventarioService;
+import services.ItemService;
+import utils.*;
 
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         /*
-        MonstroService monstroService = new MonstroService(entityManager);
+        MonstroRepository monstroRepository = new MonstroRepository(entityManager);
 
 
         Monstro monstro = new Monstro();
         monstro.setDificuldade(DificuldadeMonstro.INICIANTE);
 
-        monstroService.save(monstro);
+        monstroRepository.save(monstro);
 
-        List<Monstro> monstros = monstroService.findAll();
+        List<Monstro> monstros = monstroRepository.findAll();
 
         for (Monstro m: monstros) {
             System.out.println("Id = " + m.getId() + "  Dificuldade = " + m.getDificuldade());
         }
 
-        monstro = monstroService.findById(4);
+        monstro = monstroRepository.findById(4);
         if (monstro == null)
             System.out.println("Esse monstro não existe");
         else
             System.out.println("\nId = " + monstro.getId() + "  Dificuldade = " + monstro.getDificuldade());
 
-        System.out.println(monstroService.deleteById(4));
+        System.out.println(monstroRepository.deleteById(4));
         */
 
         //TimeUnit.NANOSECONDS.sleep( Long.MAX_VALUE - 1);
@@ -43,43 +44,50 @@ public class Main {
         int qtdJogadores = 0;
         int i = 0;
         List<Jogador> jogadores = null;
+        Historia historia = null;
 
         PersonagemUtil personagemUtil = new PersonagemUtil();
         JogadorUtil jogadorUtil = new JogadorUtil();
-        InventarioUtil inventarioUtil = new InventarioUtil();
-        ItemUtil itemUtil = new ItemUtil();
+        HistoriaUtil historiaUtil = new HistoriaUtil();
+        BatalhaUtil batalhaUtil = new BatalhaUtil();
+        PartidaUtil partidaUtil = new PartidaUtil();
 
-        ArmaService armaService = new ArmaService(entityManager);
-        JogadorService jogadorService = new JogadorService(entityManager);
-        HabilidadeService habilidadeService = new HabilidadeService(entityManager);
-        InventarioService inventarioService = new InventarioService(entityManager);
-        ItemService itemService = new ItemService(entityManager);
+        HabilidadeService habilidadeService = new HabilidadeService();
+        InventarioService inventarioService = new InventarioService();
+        ItemService itemService = new ItemService();
+
+        ArmaRepository armaRepository = new ArmaRepository(entityManager);
+        JogadorRepository jogadorRepository = new JogadorRepository(entityManager);
+        HistoriaRepository historiaRepository = new HistoriaRepository(entityManager);
+        HabilidadeRepository habilidadeRepository = new HabilidadeRepository(entityManager);
+        InventarioRepository inventarioRepository = new InventarioRepository(entityManager);
+        ItemRepository itemRepository = new ItemRepository(entityManager);
+        MonstroRepository monstroRepository = new MonstroRepository(entityManager);
+        PartidaRepository partidaRepository = new PartidaRepository(entityManager);
 
         personagemUtil.setHabilidadeService(habilidadeService);
-
         jogadorUtil.setPersonagemUtil(personagemUtil);
-        jogadorUtil.setArmaService(armaService);
-        jogadorUtil.setInventarioUtil(inventarioUtil);
-        jogadorUtil.setJogadorService(jogadorService);
+        jogadorUtil.setArmaRepository(armaRepository);
+        jogadorUtil.setInventarioService(inventarioService);
+        jogadorUtil.setJogadorRepository(jogadorRepository);
+        historiaUtil.setHistoriaRepository(historiaRepository);
+        batalhaUtil.setMonstroRepository(monstroRepository);
+        partidaUtil.setPartidaRepository(partidaRepository);
+        partidaUtil.setBatalhaUtil(batalhaUtil);
 
-        inventarioUtil.setInventarioService(inventarioService);
-        inventarioUtil.setItemUtil(itemUtil);
+        habilidadeService.setHabilidadeRepository(habilidadeRepository);
+        inventarioService.setInventarioRepository(inventarioRepository);
+        inventarioService.setItemService(itemService);
+        itemService.setItemRepository(itemRepository);
 
-        itemUtil.setItemService(itemService);
-
-        System.out.print("Digite a quantidade de jogadores (entre 1 e 4): ");
-        qtdJogadores = scanner.nextInt();
-
-        while (qtdJogadores <= 0 || qtdJogadores > 4) {
-            System.out.print("Quantidade inválida (entre 1 e 4). Digite novamente: ");
-            qtdJogadores = scanner.nextInt();
-        }
 
         jogadores = jogadorUtil.criarJogadores(qtdJogadores);
-
         System.out.println("Jogadores criados");
 
-        
+        historia = historiaUtil.historiaRandomica();
+
+        Partida partida = partidaUtil.criarPartida(jogadores, historia);
+        System.out.println("Partida criada! O jogo irá começar...");
 
         entityManager.close();
         JPAUtil.shutdown();

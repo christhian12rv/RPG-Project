@@ -1,27 +1,26 @@
-package util;
+package utils;
 
 import entitys.Habilidade;
 import enums.TipoAtributo;
-import service.HabilidadeService;
+import repositorys.HabilidadeRepository;
 
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class HabilidadeUtil {
-    private static HabilidadeService habilidadeService;
+    private static HabilidadeRepository habilidadeRepository;
 
     public static void main(String[] args) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
-        habilidadeService = new HabilidadeService(entityManager);
+        habilidadeRepository = new HabilidadeRepository(entityManager);
 
         Habilidade habilidade = criarHabilidade();
-        habilidadeService.save(habilidade);
+        habilidadeRepository.save(habilidade);
 
-        //List<Habilidade> habilidade = habilidadeService.findAll();
-        //List<Habilidade> habilidades = habilidadeService.findAllRandomByPreRequisitosAndTipo(3,4, 9, 2, TipoAtributo.SABEDORIA);
+        //List<Habilidade> habilidade = habilidadeRepository.findAll();
+        //List<Habilidade> habilidades = habilidadeRepository.findAllRandomByPreRequisitosAndTipo(3,4, 9, 2, TipoAtributo.SABEDORIA);
         entityManager.close();
         JPAUtil.shutdown();
     }

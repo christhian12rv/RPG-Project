@@ -1,31 +1,30 @@
-package util;
+package utils;
 
 import entitys.Arma;
-import entitys.Jogador;
 import enums.RaridadeArma;
 import enums.TipoAtributo;
-import service.ArmaService;
-import service.JogadorService;
+import repositorys.ArmaRepository;
+import repositorys.JogadorRepository;
 
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class ArmaUtil {
-    private static ArmaService armaService;
+    private static ArmaRepository armaRepository;
 
     public static void main(String[] args) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
-        armaService = new ArmaService(entityManager);
-        JogadorService jogadorService = new JogadorService(entityManager);
+        armaRepository = new ArmaRepository(entityManager);
 
-        //Arma arma = criarArma();
-        //armaService.save(arma);
+        //Arma armaCriada = criarArma();
+        //armaRepository.save(armaCriada);
 
-        //List<Arma> arma = armaService.findAll();
-        Arma armas = armaService.findByRaridadeAndByTipoAtributo(TipoAtributo.SABEDORIA);
+        List<Arma> armaS = armaRepository.findAll();
+        Arma armaById = armaRepository.findById(1);
+        Arma armaByRaridadeAndTipoAtributo = armaRepository.findOneByRaridadeAndTipoAtributo(TipoAtributo.SABEDORIA);
+
+        int armaDeletada = armaRepository.deleteById(1);
 
         entityManager.close();
         JPAUtil.shutdown();

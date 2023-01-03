@@ -1,17 +1,27 @@
 package entitys;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "jogador")
-@PrimaryKeyJoinColumn( name = "idPersonagem" )
+@PrimaryKeyJoinColumn( name = "idPersonagem", referencedColumnName = "id")
 public class Jogador extends Personagem {
+
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
 
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
+    
     @Column(name = "mana")
     private int mana;
 
@@ -44,6 +54,30 @@ public class Jogador extends Personagem {
         this.inventario = inventario;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     public int getMana() {
         return mana;
     }
@@ -66,13 +100,5 @@ public class Jogador extends Personagem {
 
     public void setArma(Arma arma) {
         this.arma = arma;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 }

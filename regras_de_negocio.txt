@@ -1,24 +1,27 @@
 PASSOS
 
 
-Perguntar quantidade de jogadores  
-Para cada jogador, criar o personagem
-Criar 1 personagem para cada jogador
-
+Perguntar quantidade de jogadores  			✓
+Para cada jogador, criar o personagem		✓
+Criar 1 personagem para cada jogador		✓
 
 Criar nova partida
-	- Perguntar qual Historia quer jogar (Listar do banco de dados e fazer o jogador escolher)
+	- Perguntar qual Historia quer jogar (Listar do banco de dados e fazer o jogador escolher)		✓
 	- Para cada MiniHistoria da Historia
 		- Criar uma batalha da MiniHistoria
 			- Criar uma "iniciativa de personagens" aleatória
 			- Criar batalha
-		- Criar MiniHistoria
 	- Criar nova partida
-
 
 	COMEÇO DO JOGO
 		- Apresentar história do jogo, contextualizar e talz
 		- Iterar cada Batalha:
+			- Verificar o Enum tipoMiniHistoriaBatalha:
+				- Se for do tipo "NENHUM", aprensenta a miniHistoria 1 segue com a Batalha
+				- Se for diferente do tipo "NENHUM":
+					- Faz o usuário escolher entre 2 caminhos (Apresentar as 2 "miniHistoria"):
+						- Se ele escolher o "caminho" 1, apresenta a "miniHistoria1" e segue com a batalha
+						- Se ele escolher o "caminho" 2, faz o que tiver que fazer com base no tipoMiniHistoriBatalha, apresenta o resultadoMiniHistoria2 e segue com a batalha
 			- Apresentar Mini História
 			- Iterar Iniciativa de personagens:
 				- Se o Personagem for um Jogador:
@@ -34,6 +37,7 @@ Criar nova partida
 							- Atacar
 						- Se a opção for 2:
 							- Verifica se a Habilidade é uma habilidade de ataque (NÃO é do tipo "CURA")
+							- Verifica se o "Dano" Habilidade é do tipo "FIXO", "PORCENTAGEM" ou "INTERVALO" e aplica corretamente
 							- Se a Habilidade é uma habilidade de ataque:
 							    - Lançar a habilidade apenas se a MANA do Jogador for >= CUSTO da Habilidade
 								- Para calcular o dano da habilidade:
@@ -56,6 +60,7 @@ Criar nova partida
 				    - Cada Habilidade tem 1/X (onde X é quantidade de Habilidades) chance de ser lançada
 				    - Habilidades de monstros não custam MANA para serem usados.
 				    - Para usar Habilidade:
+						- Verifica se o "Dano" Habilidade é do tipo "FIXO", "PORCENTAGEM" ou "INTERVALO" e aplica corretamente
 				        - Se a Habilidade é uma habilidade de ataque:
 				            - O custo é 0
 				            - Atacar em X Jogadores de acordo com a "area" (Aleatório)
