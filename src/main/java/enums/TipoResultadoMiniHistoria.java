@@ -2,7 +2,10 @@ package enums;
 
 public enum TipoResultadoMiniHistoria {
 	HABILIDADE("Habilidade"),
-	ITEM("Item"),
+	ITEM_MANA("Item Mana"),
+	ITEM_VIDA("Item Vida"),
+	ITEM_HIBRIDA("Item Hibrido"),
+	ARMA("Arma"),
 	DANO("Dano"),
 	CURA("Cura"),
 	NENHUM("Nenhum");

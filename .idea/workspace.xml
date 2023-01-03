@@ -4,45 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="942ae02e-3e40-4074-bd19-b81d0815339a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/HabilidadeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/MiniHistoriaUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/MonstroUtil.java" afterDir="false" />
+    <list default="true" id="942ae02e-3e40-4074-bd19-b81d0815339a" name="Changes" comment="Created Partida and organized project structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/regras_de_negocio.txt" beforeDir="false" afterPath="$PROJECT_DIR$/regras_de_negocio.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Arma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Arma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Batalha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Batalha.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Habilidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Habilidade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Historia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Historia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Inventario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Inventario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Jogador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Jogador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/MiniHistoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/MiniHistoria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Monstro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Monstro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Partida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Partida.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Personagem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Personagem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/ArmaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositorys/ArmaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/BatalhaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositorys/BatalhaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/HabilidadeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositorys/HabilidadeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/HistoriaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositorys/HistoriaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/InventarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositorys/InventarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositorys/ItemRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/JogadorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositorys/JogadorRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/MiniHistoriaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositorys/MiniHistoriaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/MonstroService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositorys/MonstroRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/PartidaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositorys/PartidaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/PersonagemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositorys/PersonagemRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/ArmaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ArmaUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/HabilidadeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/HabilidadeUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/InventarioUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/ItemUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/JPAUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/JPAUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/JogadorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/JogadorUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/PersonagemUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/PersonagemUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/MonstroService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/JPAUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/enums/TipoResultadoMiniHistoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/TipoResultadoMiniHistoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositorys/ArmaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositorys/ArmaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/JogadorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/JogadorUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,13 +35,12 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/entitys/Monstro.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/.m2/settings.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/regras_de_negocio.txt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/entitys/Batalha.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/entitys/Item.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/regras_de_negocio.txt" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/entitys/Monstro.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -88,11 +53,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Morpheus_Tecnologia/Projetos/algarsom-v2-2" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/natan/Desktop/RPG-Project (2)/RPG-Project&quot;
+  }
+}</component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="ArmaUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="utils.ArmaUtil" />
@@ -172,7 +137,19 @@
       <option name="presentableId" value="Default" />
       <updated>1670282167285</updated>
     </task>
+    <task id="LOCAL-00001" summary="Created Partida and organized project structure">
+      <created>1672762625799</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1672762625799</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Created Partida and organized project structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Partida and organized project structure" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

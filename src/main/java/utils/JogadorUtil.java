@@ -71,7 +71,7 @@ public class JogadorUtil {
         if (personagem.getSabedoria() > personagem.getDestreza())
             tipoAtributo = TipoAtributo.SABEDORIA;
 
-        arma = armaRepository.findOneByRaridadeAndTipoAtributo(tipoAtributo);
+        arma = armaRepository.findOneByRaridadeAndTipoAtributo(tipoAtributo, "COMUM");
         inventario = inventarioService.criarInventarioInicial();
 
         Jogador jogador = new Jogador(personagem, mana, manaMaxima, arma, inventario);

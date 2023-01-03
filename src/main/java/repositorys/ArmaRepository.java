@@ -14,9 +14,9 @@ public class ArmaRepository extends BaseRepository<Arma> {
         super(Arma.class, entityManager);
     }
 
-    public Arma findOneByRaridadeAndTipoAtributo(TipoAtributo tipoAtributo) {
+    public Arma findOneByRaridadeAndTipoAtributo(TipoAtributo tipoAtributo, RaridadeArma raridadeArma) {
         Query query = this.getEntityManager().createQuery("SELECT m FROM Arma m " +
-            "WHERE raridade = 'COMUM' " +
+            "WHERE raridade = '" + raridadeArma + "' " +
             "AND tipoAtributo = '" + tipoAtributo + "' " +
             "ORDER BY RANDOM()");
         Arma arma = (Arma) query.getSingleResult();
