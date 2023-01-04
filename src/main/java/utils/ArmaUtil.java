@@ -17,14 +17,14 @@ public class ArmaUtil {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         armaRepository = new ArmaRepository(entityManager);
 
-        //Arma armaCriada = criarArma();
-        //armaRepository.save(armaCriada);
+        Arma armaCriada = criarArma();
+        armaRepository.save(armaCriada);
 
-        List<Arma> armaS = armaRepository.findAll();
+        /*List<Arma> armaS = armaRepository.findAll();
         Arma armaById = armaRepository.findById(1);
-        Arma armaByRaridadeAndTipoAtributo = armaRepository.findOneByRaridadeAndTipoAtributo(TipoAtributo.SABEDORIA);
+        Arma armaByRaridadeAndTipoAtributo = armaRepository.findOneByRaridadeAndTipoAtributo(TipoAtributo.SABEDORIA, RaridadeArma.COMUM);
 
-        int armaDeletada = armaRepository.deleteById(1);
+        int armaDeletada = armaRepository.deleteById(1);*/
 
         entityManager.close();
         JPAUtil.shutdown();

@@ -5,10 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="942ae02e-3e40-4074-bd19-b81d0815339a" name="Changes" comment="Created Partida and organized project structure">
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/ArmaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/enums/TipoResultadoMiniHistoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/TipoResultadoMiniHistoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Batalha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Batalha.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Habilidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Habilidade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repositorys/ArmaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositorys/ArmaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ArmaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ArmaUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/BatalhaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/BatalhaUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/HabilidadeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/HabilidadeUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/JogadorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/JogadorUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,11 +62,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/natan/Desktop/RPG-Project (2)/RPG-Project&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "/home/christhian/Documentos/RPG-Project"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="ArmaUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="utils.ArmaUtil" />
@@ -72,8 +81,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HistoriaUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="utils.HistoriaUtil" />
+    <configuration name="HabilidadeUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="utils.HabilidadeUtil" />
       <module name="RPG-Project" />
       <extension name="coverage">
         <pattern>
@@ -85,8 +94,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JogadorUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="utils.JogadorUtil" />
+    <configuration name="HistoriaUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="utils.HistoriaUtil" />
       <module name="RPG-Project" />
       <extension name="coverage">
         <pattern>
@@ -121,10 +130,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.MonstroUtil" />
-        <item itemvalue="Application.HistoriaUtil" />
         <item itemvalue="Application.ArmaUtil" />
-        <item itemvalue="Application.JogadorUtil" />
+        <item itemvalue="Application.HistoriaUtil" />
+        <item itemvalue="Application.MonstroUtil" />
+        <item itemvalue="Application.HabilidadeUtil" />
       </list>
     </recent_temporary>
   </component>
@@ -176,7 +185,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/utils/HabilidadeUtil.java</url>
-          <line>23</line>
+          <line>24</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -186,17 +195,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>91</line>
+          <line>96</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utils/BatalhaUtil.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="entitys.Partida" memberName="batalhas" />
+        <PinnedItemInfo parentTag="entitys.Batalha" memberName="iniciativa" />
         <PinnedItemInfo parentTag="entitys.Habilidade" memberName="preRequisitos" />
         <PinnedItemInfo parentTag="entitys.Inventario" memberName="itens" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="partida.batalhas.get(0).createdAt" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

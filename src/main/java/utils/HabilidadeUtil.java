@@ -2,6 +2,7 @@ package utils;
 
 import entitys.Habilidade;
 import enums.TipoAtributo;
+import enums.TipoDanoHabilidade;
 import repositorys.HabilidadeRepository;
 
 import javax.persistence.EntityManager;
@@ -33,6 +34,7 @@ public class HabilidadeUtil {
         String tipoAtributoStr;
         TipoAtributo tipoAtributo;
         int dano;
+        TipoDanoHabilidade tipoDanoHabilidade = null;
         int custo;
         int area;
         boolean dropavel;
@@ -50,6 +52,9 @@ public class HabilidadeUtil {
 
         System.out.print("Dano: ");
         dano = scanner.nextInt();
+
+        System.out.println("Tipo Dano Habilidade: ");
+        tipoDanoHabilidade = TipoDanoHabilidade.valueOf(scanner.nextLine());
 
         System.out.print("Custo: ");
         custo = scanner.nextInt();
@@ -72,7 +77,7 @@ public class HabilidadeUtil {
         System.out.print("Defesa: ");
         preRequisitos.add(scanner.nextInt());
 
-        Habilidade habilidade = new Habilidade(nome, descricao, tipoAtributo, dano, custo, area, dropavel, preRequisitos);
+        Habilidade habilidade = new Habilidade(nome, descricao, tipoAtributo, dano, tipoDanoHabilidade, custo, area, dropavel, preRequisitos);
 
         return habilidade;
     }

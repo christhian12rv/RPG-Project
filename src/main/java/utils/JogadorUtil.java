@@ -5,9 +5,11 @@ import entitys.Arma;
 import entitys.Inventario;
 import entitys.Jogador;
 import entitys.Personagem;
+import enums.RaridadeArma;
 import enums.TipoAtributo;
 import repositorys.ArmaRepository;
 import repositorys.JogadorRepository;
+import services.ArmaService;
 import services.InventarioService;
 
 import javax.persistence.EntityManager;
@@ -18,7 +20,7 @@ import java.util.Scanner;
 public class JogadorUtil {
     PersonagemUtil personagemUtil;
     InventarioService inventarioService;
-    ArmaRepository armaRepository;
+    ArmaService armaService;
     static JogadorRepository jogadorRepository;
 
     public static void main(String[] args) {
@@ -71,7 +73,7 @@ public class JogadorUtil {
         if (personagem.getSabedoria() > personagem.getDestreza())
             tipoAtributo = TipoAtributo.SABEDORIA;
 
-        arma = armaRepository.findOneByRaridadeAndTipoAtributo(tipoAtributo, "COMUM");
+        arma = armaService.findArmasByRaridadeAndTipoAtributo(RaridadeArma.COMUM, personagem.getForca(), personagem.getDestreza(), personagem.getSabedoria(), personagem.getDefesa());
         inventario = inventarioService.criarInventarioInicial();
 
         Jogador jogador = new Jogador(personagem, mana, manaMaxima, arma, inventario);
@@ -95,12 +97,12 @@ public class JogadorUtil {
         this.inventarioService = inventarioService;
     }
 
-    public ArmaRepository getArmaRepository() {
-        return armaRepository;
+    public ArmaService getArmaService() {
+        return armaService;
     }
 
-    public void setArmaRepository(ArmaRepository armaRepository) {
-        this.armaRepository = armaRepository;
+    public void setArmaService(ArmaService armaService) {
+        this.armaService = armaService;
     }
 
     public JogadorRepository getJogadorRepository() {

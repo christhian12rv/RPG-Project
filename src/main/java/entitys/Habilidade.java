@@ -58,11 +58,12 @@ public class Habilidade {
 
     }
 
-    public Habilidade(String nome, String descricao, TipoAtributo tipo, int dano, int custo, int area, boolean dropavel, List<Integer> preRequisitos) {
+    public Habilidade(String nome, String descricao, TipoAtributo tipo, int dano, TipoDanoHabilidade tipoDanoHabilidade, int custo, int area, boolean dropavel, List<Integer> preRequisitos) {
         this.nome = nome;
         this.descricao = descricao;
         this.tipo = tipo;
         this.dano = dano;
+        this.tipoDanoHabilidade = tipoDanoHabilidade;
         this.custo = custo;
         this.area = area;
         this.dropavel = dropavel;

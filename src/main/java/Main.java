@@ -2,6 +2,7 @@ import entitys.Historia;
 import entitys.Jogador;
 import entitys.Partida;
 import repositorys.*;
+import services.ArmaService;
 import services.HabilidadeService;
 import services.InventarioService;
 import services.ItemService;
@@ -52,11 +53,13 @@ public class Main {
         BatalhaUtil batalhaUtil = new BatalhaUtil();
         PartidaUtil partidaUtil = new PartidaUtil();
 
+        ArmaService armaService = new ArmaService();
         HabilidadeService habilidadeService = new HabilidadeService();
         InventarioService inventarioService = new InventarioService();
         ItemService itemService = new ItemService();
 
         ArmaRepository armaRepository = new ArmaRepository(entityManager);
+        BatalhaRepository batalhaRepository = new BatalhaRepository(entityManager);
         JogadorRepository jogadorRepository = new JogadorRepository(entityManager);
         HistoriaRepository historiaRepository = new HistoriaRepository(entityManager);
         HabilidadeRepository habilidadeRepository = new HabilidadeRepository(entityManager);
@@ -67,14 +70,16 @@ public class Main {
 
         personagemUtil.setHabilidadeService(habilidadeService);
         jogadorUtil.setPersonagemUtil(personagemUtil);
-        jogadorUtil.setArmaRepository(armaRepository);
+        jogadorUtil.setArmaService(armaService);
         jogadorUtil.setInventarioService(inventarioService);
         jogadorUtil.setJogadorRepository(jogadorRepository);
         historiaUtil.setHistoriaRepository(historiaRepository);
         batalhaUtil.setMonstroRepository(monstroRepository);
+        batalhaUtil.setBatalhaRepository(batalhaRepository);
         partidaUtil.setPartidaRepository(partidaRepository);
         partidaUtil.setBatalhaUtil(batalhaUtil);
 
+        armaService.setArmaRepository(armaRepository);
         habilidadeService.setHabilidadeRepository(habilidadeRepository);
         inventarioService.setInventarioRepository(inventarioRepository);
         inventarioService.setItemService(itemService);

@@ -1,6 +1,7 @@
 package utils;
 
 import entitys.*;
+import repositorys.BatalhaRepository;
 import repositorys.MonstroRepository;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.Random;
 
 public class BatalhaUtil {
     MonstroRepository monstroRepository;
+    BatalhaRepository batalhaRepository;
 
     public Batalha criarBatalha(Historia historia, MiniHistoria miniHistoria, List<Jogador> jogadores) {
         int qtdJogadores = jogadores.size();
@@ -52,6 +54,7 @@ public class BatalhaUtil {
         }
 
         Batalha batalha = new Batalha(miniHistoria, monstros, iniciativa);
+        batalhaRepository.save(batalha);
         return batalha;
     }
 
@@ -61,5 +64,13 @@ public class BatalhaUtil {
 
     public void setMonstroRepository(MonstroRepository monstroRepository) {
         this.monstroRepository = monstroRepository;
+    }
+
+    public BatalhaRepository getBatalhaRepository() {
+        return batalhaRepository;
+    }
+
+    public void setBatalhaRepository(BatalhaRepository batalhaRepository) {
+        this.batalhaRepository = batalhaRepository;
     }
 }

@@ -25,9 +25,11 @@ public class Batalha {
 	private MiniHistoria miniHistoria;
 
 	@ElementCollection
+	@Column(name = "monstros")
 	private List<Monstro> monstros;
 
 	@ElementCollection
+	@Column(name = "iniciativa")
 	private List<Personagem> iniciativa;
 
 	@ManyToOne
