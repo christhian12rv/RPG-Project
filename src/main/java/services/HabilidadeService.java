@@ -1,11 +1,12 @@
 package services;
 
-import entitys.Habilidade;
 import enums.TipoAtributo;
-import repositorys.HabilidadeRepository;
+import repositories.HabilidadeRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import entities.Habilidade;
 
 public class HabilidadeService {
     HabilidadeRepository habilidadeRepository;

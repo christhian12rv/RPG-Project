@@ -1,0 +1,18 @@
+[
+	{
+		"nome": "Esqueleto arqueiro",
+		"descricao": "Um fraco esqueleto lacaio do necromante que assombra a alta torre do castelo do norte",
+		"classe": "Arqueiro",
+		"vida": 2,
+		"vidaMaxima": 2,
+		"constituicao": 0,
+		"forca": 1,
+		"destreza": 2,
+		"sabedoria": 0,
+		"defesa": 0,
+		"habilidades": [1],
+		"dificuldade": "INICIANTE",
+		"tipo": "MORTO_VIVO",
+		"ascii": "(X.X)/"
+	}
+]

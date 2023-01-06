@@ -1,72 +1,83 @@
-import entitys.Historia;
-import entitys.Jogador;
-import entitys.Partida;
-import repositorys.*;
 import services.ArmaService;
 import services.HabilidadeService;
 import services.InventarioService;
 import services.ItemService;
 import utils.*;
+import utils.EntitiesUtils.*;
 
 import javax.persistence.EntityManager;
+
+import entities.Batalha;
+import entities.Habilidade;
+import entities.Historia;
+import entities.Item;
+import entities.Jogador;
+import entities.MiniHistoria;
+import entities.Partida;
+import enums.TipoAtributo;
+import enums.TipoResultadoMiniHistoria;
+import repositories.*;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+    private static Scanner scanner;
+    
+    private static EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+       
+    private static ScannerUtil scannerUtil;
+    private static PersonagemUtil personagemUtil;
+    private static JogadorUtil jogadorUtil;
+    private static HistoriaUtil historiaUtil;
+    private static BatalhaUtil batalhaUtil;
+    private static PartidaUtil partidaUtil;
+    private static PrintUtil printUtil;
+
+    private static ArmaService armaService;
+    private static HabilidadeService habilidadeService;
+    private static InventarioService inventarioService;
+    private static ItemService itemService;
+
+    private static ArmaRepository armaRepository;
+    private static BatalhaRepository batalhaRepository;
+    private static JogadorRepository jogadorRepository;
+    private static HistoriaRepository historiaRepository;
+    private static HabilidadeRepository habilidadeRepository;
+    private static InventarioRepository inventarioRepository;
+    private static ItemRepository itemRepository;
+    private static MonstroRepository monstroRepository;
+    private static PartidaRepository partidaRepository;
+
     public static void main(String[] args) {
-        EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
-        /*
-        MonstroRepository monstroRepository = new MonstroRepository(entityManager);
+        scanner = new Scanner(System.in);
 
+        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+       
+        scannerUtil = new ScannerUtil();
+        personagemUtil = new PersonagemUtil();
+        jogadorUtil = new JogadorUtil();
+        historiaUtil = new HistoriaUtil();
+        batalhaUtil = new BatalhaUtil();
+        partidaUtil = new PartidaUtil();
+        printUtil = new PrintUtil();
 
-        Monstro monstro = new Monstro();
-        monstro.setDificuldade(DificuldadeMonstro.INICIANTE);
+        armaService = new ArmaService();
+        habilidadeService = new HabilidadeService();
+        inventarioService = new InventarioService();
+        itemService = new ItemService();
 
-        monstroRepository.save(monstro);
-
-        List<Monstro> monstros = monstroRepository.findAll();
-
-        for (Monstro m: monstros) {
-            System.out.println("Id = " + m.getId() + "  Dificuldade = " + m.getDificuldade());
-        }
-
-        monstro = monstroRepository.findById(4);
-        if (monstro == null)
-            System.out.println("Esse monstro não existe");
-        else
-            System.out.println("\nId = " + monstro.getId() + "  Dificuldade = " + monstro.getDificuldade());
-
-        System.out.println(monstroRepository.deleteById(4));
-        */
-
-        //TimeUnit.NANOSECONDS.sleep( Long.MAX_VALUE - 1);
-
-        Scanner scanner = new Scanner(System.in);
-        int qtdJogadores = 0;
-        int i = 0;
-        List<Jogador> jogadores = null;
-        Historia historia = null;
-
-        PersonagemUtil personagemUtil = new PersonagemUtil();
-        JogadorUtil jogadorUtil = new JogadorUtil();
-        HistoriaUtil historiaUtil = new HistoriaUtil();
-        BatalhaUtil batalhaUtil = new BatalhaUtil();
-        PartidaUtil partidaUtil = new PartidaUtil();
-
-        ArmaService armaService = new ArmaService();
-        HabilidadeService habilidadeService = new HabilidadeService();
-        InventarioService inventarioService = new InventarioService();
-        ItemService itemService = new ItemService();
-
-        ArmaRepository armaRepository = new ArmaRepository(entityManager);
-        BatalhaRepository batalhaRepository = new BatalhaRepository(entityManager);
-        JogadorRepository jogadorRepository = new JogadorRepository(entityManager);
-        HistoriaRepository historiaRepository = new HistoriaRepository(entityManager);
-        HabilidadeRepository habilidadeRepository = new HabilidadeRepository(entityManager);
-        InventarioRepository inventarioRepository = new InventarioRepository(entityManager);
-        ItemRepository itemRepository = new ItemRepository(entityManager);
-        MonstroRepository monstroRepository = new MonstroRepository(entityManager);
-        PartidaRepository partidaRepository = new PartidaRepository(entityManager);
+        armaRepository = new ArmaRepository(entityManager);
+        batalhaRepository = new BatalhaRepository(entityManager);
+        jogadorRepository = new JogadorRepository(entityManager);
+        historiaRepository = new HistoriaRepository(entityManager);
+        habilidadeRepository = new HabilidadeRepository(entityManager);
+        inventarioRepository = new InventarioRepository(entityManager);
+        itemRepository = new ItemRepository(entityManager);
+        monstroRepository = new MonstroRepository(entityManager);
+        partidaRepository = new PartidaRepository(entityManager);
 
         personagemUtil.setHabilidadeService(habilidadeService);
         jogadorUtil.setPersonagemUtil(personagemUtil);
@@ -85,16 +96,208 @@ public class Main {
         inventarioService.setItemService(itemService);
         itemService.setItemRepository(itemRepository);
 
+        List<Jogador> jogadores = null;
+        Historia historia = null;
+        Partida partida = null;
+        
+        jogadores = jogadorUtil.criarJogadores();
+        printUtil.printStringLetraPorLetraSom("Jogadores criados\n\n");
 
-        jogadores = jogadorUtil.criarJogadores(qtdJogadores);
-        System.out.println("Jogadores criados");
 
         historia = historiaUtil.historiaRandomica();
 
-        Partida partida = partidaUtil.criarPartida(jogadores, historia);
-        System.out.println("Partida criada! O jogo irá começar...");
+        partida = partidaUtil.criarPartida(jogadores, historia);
+        printUtil.printStringLetraPorLetraSom("Partida criada! O jogo irá começar...\n\n");
+
+        começarPartida(partida);
 
         entityManager.close();
         JPAUtil.shutdown();
+    }
+
+    private static void começarPartida(Partida partida) {
+
+        Boolean opcaoInvalida = false;
+
+        Historia historia = partida.getHistoria();
+        List<Batalha> batalhas = partida.getBatalhas();
+        List<Jogador> jogadores = partida.getJogadores();
+
+        printUtil.printStringLetraPorLetraSom(historia.getDescricao() + "\n\n");
+        printUtil.textDelay(1000);
+
+        printarJogadores(jogadores);
+
+        for (Batalha batalha: batalhas) {
+
+            MiniHistoria miniHistoria = batalha.getMiniHistoria();
+
+            if (miniHistoria.getMiniHistoriaEscolhaOposta() != null) {
+                MiniHistoria miniHistoriaEscolhaOposta = miniHistoria.getMiniHistoriaEscolhaOposta();
+                int escolha = 0;
+                int i = 0;
+                Random rand = new Random();
+                
+                Jogador jogadorEscolhido = jogadores.get(rand.nextInt(jogadores.size()));
+
+                printUtil.printStringLetraPorLetraSom(jogadorEscolhido.getNome() + ", ");
+                printUtil.printStringLetraPorLetraSom(miniHistoria.getDescricao() + "\n");
+                printUtil.printStringLetraPorLetraSom(miniHistoriaEscolhaOposta.getDescricao());
+                printUtil.printStringLetraPorLetraSom("\nEscolha uma opção: ");
+
+                escolha = scannerUtil.getInt(scanner, 1, 2);
+
+                MiniHistoria miniHistoriaEscolhida = null;
+
+                if (escolha == 1)
+                    miniHistoriaEscolhida = miniHistoria;
+                else
+                    miniHistoriaEscolhida = miniHistoriaEscolhaOposta;
+
+                printUtil.printStringLetraPorLetraSom(miniHistoriaEscolhida.getResultadoEscolha() + "\n");
+
+                switch (miniHistoriaEscolhida.getTipoResultado()) {
+                    case HABILIDADE:
+                        Habilidade habilidade = habilidadeRepository.findOneRandom();
+
+                        printUtil.printStringLetraPorLetra(habilidade.toString() + '\n');
+                        printUtil.printStringLetraPorLetra("\nPré requisitos:\n");
+                        i = 0;
+                        for (int preRequisito: habilidade.getPreRequisitos()) {
+                            printUtil.printStringLetraPorLetra(TipoAtributo.values()[i] +": " + preRequisito + "\n");
+                            i++;
+                        }
+
+                        List<Jogador> jogadoresAptosHabilidade = new ArrayList<>();
+
+                        for (Jogador jogador: jogadores) {
+                            if (jogador.temPreRequisitosHabilidade(habilidade) &&
+                                (jogador.getId() == jogadorEscolhido.getId() && !jogadorEscolhido.getHabilidades().stream().filter(h -> h.getId() == habilidade.getId()).findFirst().isPresent()))
+                                jogadoresAptosHabilidade.add(jogador);
+                        }
+
+                        if (jogadoresAptosHabilidade.size() > 0) {
+                            printUtil.printStringLetraPorLetra("\nJogadores Aptos:\n");
+                            i = 1;
+                            for (Jogador jogadoreAptoHabilidade: jogadoresAptosHabilidade) {
+                                printUtil.printStringLetraPorLetra("[" + i + "] " + jogadoreAptoHabilidade.getNome() + "\n");
+                                i++;
+                            }
+
+                            printUtil.printStringLetraPorLetra("[" + i + "] Jogar habilidade fora\n");
+
+                            printUtil.printStringLetraPorLetra(jogadorEscolhido.getNome()+", escolha um jogador para dar essa habilidade:\n");
+                            escolha = scannerUtil.getInt(scanner, 1, jogadoresAptosHabilidade.size() + 1);
+
+                            if (escolha != i) {
+                                jogadoresAptosHabilidade.get(escolha-1).getHabilidades().add(habilidade);
+                                printUtil.printStringLetraPorLetra("O jogador " + jogadoresAptosHabilidade.get(escolha-1).getNome() + " ganhou a habilidade!\n\n");
+                            } else {
+                                printUtil.printStringLetraPorLetra("A habilidade foi perdida\n\n");
+                            }
+                        } else {
+                            printUtil.printStringLetraPorLetra("Ninguém da sua equipe está apto a aprender esta habilidade.");
+                        }
+                        break;
+
+                    case ITEM_MANA:
+                        Item itemMana = itemService.criarItemMana(miniHistoriaEscolhida.getDanoCura());
+                        printUtil.printStringLetraPorLetra("Você ganhou o seguinte item: \n");
+                        printUtil.printStringLetraPorLetra(itemMana.toString() + '\n');
+
+                        i = 1;
+                        for (Jogador jogador: jogadores) {
+                            printUtil.printStringLetraPorLetra("[" + i + "] " + jogador.getNome() + "\n");
+                            i++;
+                        }
+
+                        printUtil.printStringLetraPorLetra("[" + i + "] Jogar item fora\n");
+
+                        printUtil.printStringLetraPorLetra(jogadorEscolhido.getNome() + ", escolha um jogador para dar essa poção:\n");
+                        escolha = scannerUtil.getInt(scanner, 1, jogadores.size());
+
+                        if (escolha != i) {
+                            jogadores.get(escolha-1).getInventario().getItens().add(itemMana);
+                            printUtil.printStringLetraPorLetra("O jogador " + jogadores.get(escolha-1).getNome() + " ganhou a poção de mana!\n\n");
+                        } else {
+                            printUtil.printStringLetraPorLetra("A poção foi perdida\n\n");
+                        }
+                        break;
+                    case ITEM_VIDA:
+                        Item itemVida = itemService.criarItemVida(miniHistoriaEscolhida.getDanoCura());
+                        printUtil.printStringLetraPorLetra("Você ganhou o seguinte item: \n");
+                        printUtil.printStringLetraPorLetra(itemVida.toString() + '\n');
+
+                        i = 1;
+                        for (Jogador jogador: jogadores) {
+                            printUtil.printStringLetraPorLetra("[" + i + "] " + jogador.getNome() + "\n");
+                            i++;
+                        }
+
+                        printUtil.printStringLetraPorLetra("[" + i + "] Jogar item fora\n");
+
+                        printUtil.printStringLetraPorLetra(jogadorEscolhido.getNome() + ", escolha um jogador para dar essa poção:\n");
+                        escolha = scannerUtil.getInt(scanner, 1, jogadores.size());
+
+                        if (escolha != i) {
+                            jogadores.get(escolha-1).getInventario().getItens().add(itemVida);
+                            printUtil.printStringLetraPorLetra("O jogador " + jogadores.get(escolha-1).getNome() + " ganhou a poção de vida!\n\n");
+                        } else {
+                            printUtil.printStringLetraPorLetra("A poção foi perdida\n\n");
+                        }
+                        break;
+                    
+                    case ITEM_HIBRIDA:
+                        Item itemHibrida = itemService.criarItemHibrida(miniHistoriaEscolhida.getDanoCura(), miniHistoriaEscolhida.getDanoCura());
+                        printUtil.printStringLetraPorLetra("Você ganhou o seguinte item: \n");
+                        printUtil.printStringLetraPorLetra(itemHibrida.toString() + '\n');
+
+                        i = 1;
+                        for (Jogador jogador: jogadores) {
+                            printUtil.printStringLetraPorLetra("[" + i + "] " + jogador.getNome() + "\n");
+                            i++;
+                        }
+
+                        printUtil.printStringLetraPorLetra("[" + i + "] Jogar item fora\n");
+
+                        printUtil.printStringLetraPorLetra(jogadorEscolhido.getNome() + ", escolha um jogador para dar essa poção:\n");
+                        escolha = scannerUtil.getInt(scanner, 1, jogadores.size());
+
+                        if (escolha != i) {
+                            jogadores.get(escolha-1).getInventario().getItens().add(itemHibrida);
+                            printUtil.printStringLetraPorLetra("O jogador " + jogadores.get(escolha-1).getNome() + " ganhou a poção híbrida!\n\n");
+                        } else {
+                            printUtil.printStringLetraPorLetra("A poção foi perdida\n\n");
+                        }
+                    
+                        break;
+                    case ARMA:
+                    
+                        break;
+                    case DANO:
+                    
+                        break;
+                    case CURA:
+                    
+                        break;
+                    case NENHUM:
+                    
+                        break;
+                    default:
+                        break;
+                }
+            } else { 
+                printUtil.printStringLetraPorLetraSom(miniHistoria.getDescricao());
+            }
+        }
+
+    }
+
+    private static void printarJogadores(List<Jogador> jogadores) {
+        printUtil.printStringLetraPorLetraSom("Grupo da aventura:\n\n");
+
+        for (Jogador jogador: jogadores) {
+            printUtil.printStringLetraPorLetraSom(jogador.toString() + "\n\n");
+        }
     }
 }

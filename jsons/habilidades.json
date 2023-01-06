@@ -1,0 +1,57 @@
+[
+    {
+        "nome": "Ataque da Discórdia",
+        "descricao": "Um ataque feroz que dilacera os membros do inimigo",
+        "tipo": "FORCA",
+        "dano": 15,
+        "tipoDanoHabilidade": "INTERVALO",
+        "custo": 2,
+        "area": 1,
+        "dropavel": true,
+        "preRequisitos": [4,0,0,0]
+    },
+    {
+        "nome": "Hipertrofia aumentada",
+        "descricao": "Por um breve momento, seus muscúlos crescem, ficam definidos e sua força é potencializada ao máximo .",
+        "tipo": "FORCA",
+        "dano": 11,
+        "tipoDanoHabilidade": "FIXO",
+        "custo": 3,
+        "area": 1,
+        "dropavel": true,
+        "preRequisitos": [4,0,0,3]
+    },
+    {
+        "nome": "Pisão destruidor de rochas",
+        "descricao": "Com a enorme força de suas pernas, você as levanta para cima e logo em seguida as bate com todas as suas forças no chão, criando fendas e causando dano em 2 inimigos.",
+        "tipo": "FORCA",
+        "dano": 10,
+        "tipoDanoHabilidade": "INTERVALO",
+        "custo": 4,
+        "area": 2,
+        "dropavel": true,
+        "preRequisitos": [5,0,0,3]
+    },
+    {
+        "nome": "Nuvem de veneno",
+        "descricao": "Uma roxa e densa nuvem envenenada, faz com que qualquer criatura que entre em seu raio sinta-se meio tonta e com uma dor indescritivel.",
+        "tipo": "SABEDORIA",
+        "dano": 3,
+        "tipoDanoHabilidade": "FIXO",
+        "custo": 5,
+        "area": 3,
+        "dropavel": true,
+        "preRequisitos": [0,1,3,0]
+    },
+    {
+        "nome": "Martelo Divino",
+        "descricao": "Um martelo feito de pura fé com essência dos deuses destroça até os mais poderosos demônios do submundo. Cuidado, o martelo é um canalizador de sua fé, ele responde apenas aos mais crentes.",
+        "tipo": "SABEDORIA",
+        "dano": 40,
+        "tipoDanoHabilidade": "INTERVALO",
+        "custo": 10,
+        "area": 1,
+        "dropavel": true,
+        "preRequisitos": [4,0,5,0]
+    }
+]

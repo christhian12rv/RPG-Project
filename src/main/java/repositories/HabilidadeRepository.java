@@ -24,7 +24,7 @@ public class HabilidadeRepository extends BaseRepository<Habilidade> {
             whereTipoAtributos += "OR h.tipo = '" + tipoAtributo + "' ";
         }
 
-        Query query = this.getEntityManager().createQuery("SELECT h FROM Habilidade h " +
+        Query query = getEntityManager().createQuery("SELECT h FROM Habilidade h " +
             "WHERE h.dropavel = true " +
             whereTipoAtributos +
             "ORDER BY RANDOM()");
@@ -47,7 +47,7 @@ public class HabilidadeRepository extends BaseRepository<Habilidade> {
     }
 
     public Habilidade findOneRandom() {
-        Query query = this.getEntityManager().createQuery("SELECT h FROM Habilidade h " +
+        Query query = getEntityManager().createQuery("SELECT h FROM Habilidade h " +
         "WHERE h.dropavel = true " +
         "ORDER BY RANDOM()");
         Habilidade habilidade = (Habilidade) query.setMaxResults(1).getSingleResult();

@@ -1,8 +1,8 @@
 package services;
 
-import entitys.Item;
+import entities.Item;
 import enums.TipoItem;
-import repositorys.ItemRepository;
+import repositories.ItemRepository;
 
 public class ItemService {
     ItemRepository itemRepository;

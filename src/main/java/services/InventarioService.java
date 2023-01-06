@@ -1,9 +1,9 @@
 package services;
 
 import config.AtributosIniciais;
-import entitys.Inventario;
-import entitys.Item;
-import repositorys.InventarioRepository;
+import entities.Inventario;
+import entities.Item;
+import repositories.InventarioRepository;
 
 import java.util.ArrayList;
 import java.util.List;

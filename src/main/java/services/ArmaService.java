@@ -1,12 +1,13 @@
 package services;
 
-import entitys.Arma;
 import enums.RaridadeArma;
 import enums.TipoAtributo;
-import repositorys.ArmaRepository;
+import repositories.ArmaRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import entities.Arma;
 
 public class ArmaService {
     ArmaRepository armaRepository;

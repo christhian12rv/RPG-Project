@@ -5,18 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="942ae02e-3e40-4074-bd19-b81d0815339a" name="Changes" comment="Created Partida and organized project structure">
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/ArmaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jsons/historias.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/ArmaUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/HabilidadeUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/HistoriaUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/MonstroUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/JsonUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Batalha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Batalha.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Arma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Arma.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Habilidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Habilidade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositorys/ArmaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositorys/ArmaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ArmaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ArmaUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/BatalhaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/BatalhaUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/HabilidadeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/HabilidadeUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/JogadorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/JogadorUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Historia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Historia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/MiniHistoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/MiniHistoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Monstro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Monstro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Personagem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Personagem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/enums/TipoMonstro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/TipoMonstro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ArmaUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/BatalhaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/BatalhaUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/HabilidadeUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/HistoriaUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/JogadorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/JogadorUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/MiniHistoriaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/MiniHistoriaUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/MonstroUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/PartidaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/PartidaUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/PersonagemUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/PersonagemUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +42,7 @@
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -67,13 +81,18 @@
     "last_opened_file_path": "/home/christhian/Documentos/RPG-Project"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/utils" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="ArmaUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="utils.ArmaUtil" />
+      <option name="MAIN_CLASS_NAME" value="utils.EntitysUtils.ArmaUtil" />
       <module name="RPG-Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="utils.*" />
+          <option name="PATTERN" value="utils.EntitysUtils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -82,11 +101,11 @@
       </method>
     </configuration>
     <configuration name="HabilidadeUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="utils.HabilidadeUtil" />
+      <option name="MAIN_CLASS_NAME" value="utils.EntitysUtils.HabilidadeUtil" />
       <module name="RPG-Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="utils.*" />
+          <option name="PATTERN" value="utils.EntitysUtils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -95,11 +114,11 @@
       </method>
     </configuration>
     <configuration name="HistoriaUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="utils.HistoriaUtil" />
+      <option name="MAIN_CLASS_NAME" value="utils.EntitysUtils.HistoriaUtil" />
       <module name="RPG-Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="utils.*" />
+          <option name="PATTERN" value="utils.EntitysUtils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,11 +134,11 @@
       </method>
     </configuration>
     <configuration name="MonstroUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="utils.MonstroUtil" />
+      <option name="MAIN_CLASS_NAME" value="utils.EntitysUtils.MonstroUtil" />
       <module name="RPG-Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="utils.*" />
+          <option name="PATTERN" value="utils.EntitysUtils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -130,8 +149,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.ArmaUtil" />
         <item itemvalue="Application.HistoriaUtil" />
+        <item itemvalue="Application.ArmaUtil" />
         <item itemvalue="Application.MonstroUtil" />
         <item itemvalue="Application.HabilidadeUtil" />
       </list>
@@ -184,28 +203,18 @@
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utils/HabilidadeUtil.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utils/ArmaUtil.java</url>
-          <line>26</line>
+          <url>file://$PROJECT_DIR$/src/main/java/utils/EntitysUtils/ArmaUtil.java</url>
+          <line>33</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>96</line>
+          <line>73</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utils/BatalhaUtil.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>91</line>
+          <line>68</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>

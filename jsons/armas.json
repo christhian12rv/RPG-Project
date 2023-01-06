@@ -1,0 +1,20 @@
+[
+    {
+        "nome": "Machado de pedra",
+        "descricao": "Um simples machado feito de pedra, parece ser antigo.",
+        "raridade": "COMUM",
+        "qtdDados": 2,
+        "tipoDado": 6,
+        "adicional": 1,
+        "tipoAtributo": "FORCA"
+    },
+    {
+        "nome": "Espada longa",
+        "descricao": "Uma grande espada que reflete a luz do sol em sua lamina, afiada e bem atraente.",
+        "raridade": "COMUM",
+        "qtdDados": 2,
+        "tipoDado": 6,
+        "adicional": 1,
+        "tipoAtributo": "FORCA"
+    }
+]

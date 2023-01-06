@@ -7,21 +7,21 @@ Criar 1 personagem para cada jogador		✓
 
 Criar nova partida
 	- Perguntar qual Historia quer jogar (Listar do banco de dados e fazer o jogador escolher)		✓
-	- Para cada MiniHistoria da Historia
-		- Criar uma batalha da MiniHistoria
-			- Criar uma "iniciativa de personagens" aleatória
-			- Criar batalha
-	- Criar nova partida
+	- Para cada MiniHistoria da Historia		✓
+		- Criar uma batalha da MiniHistoria		✓
+			- Criar uma "iniciativa de personagens" aleatória		✓
+			- Criar batalha		✓
+	- Criar nova partida		✓
 
 	COMEÇO DO JOGO
-		- Apresentar história do jogo, contextualizar e talz
-		- Iterar cada Batalha:
-			- Verificar o Enum tipoMiniHistoriaBatalha:
-				- Se for do tipo "NENHUM", aprensenta a miniHistoria 1 segue com a Batalha
-				- Se for diferente do tipo "NENHUM":
+		- Apresentar história do jogo, contextualizar e talz		✓
+		- Iterar cada Batalha:		✓
+			- Verificar o atributo miniHistoriaEscolhaOposta:
+				- Se for nulo, apresenta a miniHistoria 1 e segue com a Batalha
+				- Se for diferente de nulo:
 					- Faz o usuário escolher entre 2 caminhos (Apresentar as 2 "miniHistoria"):
 						- Se ele escolher o "caminho" 1, apresenta a "miniHistoria1" e segue com a batalha
-						- Se ele escolher o "caminho" 2, faz o que tiver que fazer com base no tipoMiniHistoriBatalha, apresenta o resultadoMiniHistoria2 e segue com a batalha
+						- Se ele escolher o "caminho" 2, faz o que tiver que fazer com base no tipoMiniHistoriaBatalha, apresenta o resultadoMiniHistoria2 e segue com a batalha
 			- Apresentar Mini História
 			- Iterar Iniciativa de personagens:
 				- Se o Personagem for um Jogador:
