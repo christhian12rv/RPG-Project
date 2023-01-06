@@ -29,7 +29,7 @@ public class ArmaRepository extends BaseRepository<Arma> {
                 "WHERE raridade = '" + raridadeArma + "' " +
                 whereTipoAtributos +
                 "ORDER BY RANDOM() ");
-        Arma armas = (Arma) query.setMaxResults(1).getSingleResult();
+        Arma armas = (Arma) query.getSingleResult();
 
         return armas;
     }
@@ -39,7 +39,15 @@ public class ArmaRepository extends BaseRepository<Arma> {
             "WHERE raridade = '" + raridadeArma + "' " +
             "AND tipoAtributo = '" + tipoAtributo + "' " +
             "ORDER BY RANDOM()");
-        Arma arma = (Arma) query.getSingleResult();
+        Arma arma = (Arma) query.setMaxResults(1).getSingleResult();
+        return arma;
+    }
+
+    public Arma findOneByRaridade(RaridadeArma raridadeArma) {
+        Query query = this.getEntityManager().createQuery("SELECT m FROM Arma m " +
+            "WHERE raridade = '" + raridadeArma + "' " +
+            "ORDER BY RANDOM()");
+        Arma arma = (Arma) query.setMaxResults(1).getSingleResult();
         return arma;
     }
 

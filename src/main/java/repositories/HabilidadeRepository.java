@@ -55,4 +55,13 @@ public class HabilidadeRepository extends BaseRepository<Habilidade> {
         return habilidade;
     }
 
+    public Habilidade findByNomeAndDropavel(String name, Boolean dropavel) {
+        Query query = getEntityManager().createQuery("SELECT h FROM Habilidade h " +
+        "WHERE name = '" + name + "' " + 
+        "AND dropavel = " + dropavel);
+        Habilidade habilidade = (Habilidade) query.setMaxResults(1).getSingleResult();
+
+        return habilidade;
+    }
+
 }

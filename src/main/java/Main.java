@@ -7,6 +7,7 @@ import utils.EntitiesUtils.*;
 
 import javax.persistence.EntityManager;
 
+import entities.Arma;
 import entities.Batalha;
 import entities.Habilidade;
 import entities.Historia;
@@ -14,6 +15,7 @@ import entities.Item;
 import entities.Jogador;
 import entities.MiniHistoria;
 import entities.Partida;
+import enums.RaridadeArma;
 import enums.TipoAtributo;
 import enums.TipoResultadoMiniHistoria;
 import repositories.*;
@@ -147,6 +149,8 @@ public class Main {
 
                 escolha = scannerUtil.getInt(scanner, 1, 2);
 
+                System.out.println("");
+
                 MiniHistoria miniHistoriaEscolhida = null;
 
                 if (escolha == 1)
@@ -196,7 +200,7 @@ public class Main {
                                 printUtil.printStringLetraPorLetra("A habilidade foi perdida\n\n");
                             }
                         } else {
-                            printUtil.printStringLetraPorLetra("Ninguém da sua equipe está apto a aprender esta habilidade.");
+                            printUtil.printStringLetraPorLetra("Ninguém da sua equipe está apto a aprender esta habilidade.\n\n");
                         }
                         break;
 
@@ -269,20 +273,53 @@ public class Main {
                         } else {
                             printUtil.printStringLetraPorLetra("A poção foi perdida\n\n");
                         }
-                    
                         break;
+
                     case ARMA:
-                    
+                        RaridadeArma raridadeArma = RaridadeArma.valueOf(RaridadeArma.values()[miniHistoriaEscolhida.getDificuldade().ordinal()].name());
+                        Arma arma = armaRepository.findOneByRaridade(raridadeArma);
+
+                        printUtil.printStringLetraPorLetra("Você ganhou a seguinte arma: \n");
+                        printUtil.printStringLetraPorLetra(arma.toString() + '\n');
+
+                        i = 1;
+                        for (Jogador jogador: jogadores) {
+                            printUtil.printStringLetraPorLetra("[" + i + "] " + jogador.getNome() + "\n");
+                            i++;
+                        }
+
+                        printUtil.printStringLetraPorLetra("[" + i + "] Jogar arma fora\n");
+
+                        printUtil.printStringLetraPorLetra(jogadorEscolhido.getNome() + ", escolha um jogador para dar essa arma:\n");
+                        escolha = scannerUtil.getInt(scanner, 1, jogadores.size());
+
+                        System.out.println("");
+
+                        if (escolha != i) {
+                            jogadores.get(escolha-1).setArma(arma);
+                            printUtil.printStringLetraPorLetra("O jogador " + jogadores.get(escolha-1).getNome() + " equipou a arma!\n\n");
+                        } else {
+                            printUtil.printStringLetraPorLetra("A arma foi perdida\n\n");
+                        }
                         break;
+
                     case DANO:
-                    
+                        jogadorEscolhido.setVida(jogadorEscolhido.getVida() - miniHistoriaEscolhida.getDanoCura());
+                        if (!jogadorEscolhido.estaVivo()) {
+                            partida.removerJogador(jogadorEscolhido, batalha.getId());
+                            batalha.removerJogador(jogadorEscolhido);
+                            printUtil.printStringLetraPorLetraLentoSom(jogadorEscolhido.getNome() + ", a sua jornada chegou ao fim...\n\n");
+                        }                    
                         break;
+                        
                     case CURA:
-                    
+                        if (jogadorEscolhido.getVida() + miniHistoriaEscolhida.getDanoCura() > jogadorEscolhido.getVidaMaxima()) {
+                            jogadorEscolhido.setVida(jogadorEscolhido.getVidaMaxima());
+                        } else {
+                            jogadorEscolhido.setVida(jogadorEscolhido.getVida() + miniHistoriaEscolhida.getDanoCura());
+                        }
                         break;
-                    case NENHUM:
-                    
-                        break;
+
                     default:
                         break;
                 }

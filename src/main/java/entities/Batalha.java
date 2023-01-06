@@ -46,6 +46,10 @@ public class Batalha {
 		this.iniciativa = iniciativa;
 	}
 
+	public void removerJogador(Jogador jogador) {
+		iniciativa.removeIf(p -> p.getPersonagemId() == jogador.getPersonagemId());
+	}
+
 	public Integer getId() {
 		return id;
 	}

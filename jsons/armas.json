@@ -16,5 +16,14 @@
         "tipoDado": 6,
         "adicional": 1,
         "tipoAtributo": "FORCA"
+    },
+    {
+        "nome": "Grimório Comum",
+        "descricao": "Um livro que guarda o conhecimento superficial do reino.",
+        "raridade": "COMUM",
+        "qtdDados": 2,
+        "tipoDado": 6,
+        "adicional": 1,
+        "tipoAtributo": "SABEDORIA"
     }
 ]

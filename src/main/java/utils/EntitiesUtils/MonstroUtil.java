@@ -52,10 +52,10 @@ public class MonstroUtil implements JsonUtil {
                 List<Habilidade> habilidades = new ArrayList<>();
 
                 for (JsonElement element: habilidadesJsonArray) {
-                    Integer h = element.getAsInt();
-                    Habilidade habilidade = habilidadeRepository.findById(h);
+                    String hNome = element.getAsString();
+                    Habilidade habilidade = habilidadeRepository.findByNomeAndDropavel(hNome, false);
                     if (habilidade == null)
-                        throw new Error("Habilidade com id = " + h + " não existe no banco de dados");
+                        throw new Error("Habilidade com nome = " + hNome + " e dropavel = false não existe no banco de dados");
 
                     habilidades.add(habilidade);
                 }

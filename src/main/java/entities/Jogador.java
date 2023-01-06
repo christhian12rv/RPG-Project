@@ -47,8 +47,8 @@ public class Jogador extends Personagem {
 
     public Jogador(Personagem personagem, int mana, int manaMaxima, Arma arma, Inventario inventario) {
         super(personagem.getNome(), personagem.getDescricao(), personagem.getClasse(), personagem.getVida(),
-                personagem.getVidaMaxima(), personagem.getConstituicao(), personagem.getForca(), personagem.getDestreza(),
-                personagem.getSabedoria(), personagem.getDefesa(), personagem.getHabilidades());
+            personagem.getVidaMaxima(), personagem.getConstituicao(), personagem.getForca(), personagem.getDestreza(),
+            personagem.getSabedoria(), personagem.getDefesa(), personagem.getHabilidades());
         this.mana = mana;
         this.manaMaxima = manaMaxima;
         this.arma = arma;
@@ -122,7 +122,7 @@ public class Jogador extends Personagem {
         return inventario;
     }
 
-    public void setInventario(Arma inventario) {
+    public void setInventario(Inventario inventario) {
         this.inventario = inventario;
     }
 

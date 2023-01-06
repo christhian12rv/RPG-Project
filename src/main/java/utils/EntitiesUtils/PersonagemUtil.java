@@ -113,7 +113,7 @@ public class PersonagemUtil {
 
         List<Habilidade> habilidades = habilidadeService.findHabilidadesByPreRequisitos(forca, destreza, sabedoria, defesa);
 
-        System.out.println("Escolha uma dentre as " + habilidades.size() + " habilidades abaixo:");
+        System.out.println("\nEscolha uma dentre as " + habilidades.size() + " habilidades abaixo:");
         i = 1;
         for (Habilidade h: habilidades) {
             System.out.println("[" + i + "]\n" + h + "\n");

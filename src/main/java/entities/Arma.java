@@ -139,4 +139,17 @@ public class Arma {
 		this.tipoAtributo = tipoAtributo;
 	}
 
+	@Override
+	public String toString() {
+		String valor = "Nome: " + nome +
+			"Descrição: " + descricao +
+			"Raridade: " + raridade.getValor() +
+			"Quantidade da dados: " + qtdDados +
+			"Tipo de dado: " + tipoDado +
+			"Adicional: " + adicional +
+			"Tipo de atributo: " + tipoAtributo.getValor();
+
+		return valor;
+	}
+
 }

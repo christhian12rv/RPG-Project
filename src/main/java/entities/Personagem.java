@@ -15,7 +15,7 @@ public class Personagem {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue
-	private Integer id;
+	private Integer personagemId;
 
 	@CreationTimestamp
 	private LocalDateTime createdAt;
@@ -74,12 +74,16 @@ public class Personagem {
 		this.habilidades = habilidades;
 	}
 
-	public Integer getId() {
-        return id;
+	public boolean estaVivo() {
+		return vida > 0;
+	}
+
+	public Integer getPersonagemId() {
+        return personagemId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setPersonagemId(Integer personagemId) {
+        this.personagemId = personagemId;
     }
 
     public LocalDateTime getCreatedAt() {

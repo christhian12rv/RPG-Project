@@ -53,5 +53,49 @@
         "area": 1,
         "dropavel": true,
         "preRequisitos": [4,0,5,0]
+    },
+    {
+        "nome": "Nevasca",
+        "descricao": "Uma tempestade de neve que faz com que os inimigos percam a sensibilidade do corpo devido a extrema friagem.",
+        "tipo": "SABEDORIA",
+        "dano": 30,
+        "tipoDanoHabilidade": "PORCENTAGEM",
+        "custo": 6,
+        "area": 4,
+        "dropavel": true,
+        "preRequisitos": [0,3,5,0]
+    },
+    {
+        "nome": "Flecha de osso",
+        "descricao": "O esqueleto faz um tiro superficial em seus inimigos.",
+        "tipo": "DESTREZA",
+        "dano": 4,
+        "tipoDanoHabilidade": "INTERVALO",
+        "custo": 0,
+        "area": 1,
+        "dropavel": false,
+        "preRequisitos": [0,0,0,0]
+    },
+    {
+        "nome": "Susurro da alma",
+        "descricao": "",
+        "tipo": "FORCA",
+        "dano": 10,
+        "tipoDanoHabilidade": "PORCENTAGEM",
+        "custo": 0,
+        "area": 2,
+        "dropavel": false,
+        "preRequisitos": [0,0,0,0]
+    },
+    {
+        "nome": "Soco decrepto",
+        "descricao": "",
+        "tipo": "FORCA",
+        "dano": 3,
+        "tipoDanoHabilidade": "FIXO",
+        "custo": 0,
+        "area": 2,
+        "dropavel": false,
+        "preRequisitos": [0,0,0,0]
     }
 ]

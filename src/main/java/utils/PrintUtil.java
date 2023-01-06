@@ -25,6 +25,18 @@ public class PrintUtil {
 			}
 		}
 
+		public void printStringLetraPorLetraLentoSom(String str) {
+			for(int i = 0; i<=str.length() - 1; i++) {
+					java.awt.Toolkit.getDefaultToolkit().beep();
+					System.out.print(str.charAt(i));
+					try {
+							Thread.sleep(200); 
+					} catch (Exception e) {
+							e.printStackTrace();
+					}
+			}
+		}
+
 		public void textDelay(int x) {
 			try {
 				Thread.sleep(x); 

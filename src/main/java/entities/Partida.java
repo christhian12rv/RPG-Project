@@ -41,6 +41,14 @@ public class Partida {
         this.jogadores = jogadores;
     }
 
+    public void removerJogador(Jogador jogador, Integer batalhaAtualId) {
+        jogadores.removeIf(j -> j.getId() == jogador.getId());
+
+        for (int i = batalhaAtualId; i < batalhas.size(); i++) {
+            batalhas.get(i).removerJogador(jogador);
+        }
+    }
+
     public Integer getId() {
         return id;
     }
