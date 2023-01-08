@@ -35,7 +35,7 @@ public class HabilidadeUtil implements JsonUtil {
                 habilidade.setNome(jsonObject.get("nome").getAsString());
                 habilidade.setDescricao(jsonObject.get("descricao").getAsString());
                 habilidade.setTipo(TipoAtributo.valueOf(jsonObject.get("tipo").getAsString()));
-                habilidade.setDano(jsonObject.get("dano").getAsInt());
+                habilidade.setDanoCura(jsonObject.get("danoCura").getAsInt());
                 habilidade.setTipoDanoHabilidade(TipoDanoHabilidade.valueOf(jsonObject.get("tipoDanoHabilidade").getAsString()));
                 habilidade.setCusto(jsonObject.get("custo").getAsInt());
                 habilidade.setArea(jsonObject.get("area").getAsInt());

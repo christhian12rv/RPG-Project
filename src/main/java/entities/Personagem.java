@@ -14,8 +14,8 @@ public class Personagem {
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue
-	private Integer personagemId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
 	@CreationTimestamp
 	private LocalDateTime createdAt;
@@ -74,16 +74,28 @@ public class Personagem {
 		this.habilidades = habilidades;
 	}
 
+	public void receberDano(int dano) {
+		setVida(getVida() - dano);
+	}
+
+	public void curar(int cura) {
+		if (getVida() + cura >= getVidaMaxima()) {
+            setVida(getVidaMaxima());
+        } else {
+            setVida(getVida() + cura);
+        }
+	}
+
 	public boolean estaVivo() {
 		return vida > 0;
 	}
 
-	public Integer getPersonagemId() {
-        return personagemId;
+	public Integer getId() {
+        return id;
     }
 
-    public void setPersonagemId(Integer personagemId) {
-        this.personagemId = personagemId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public LocalDateTime getCreatedAt() {

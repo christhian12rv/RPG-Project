@@ -11,6 +11,7 @@ import repositories.JogadorRepository;
 import services.ArmaService;
 import services.InventarioService;
 import utils.JPAUtil;
+import utils.PrintUtil;
 
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class JogadorUtil {
     private InventarioService inventarioService;
     private ArmaService armaService;
     private JogadorRepository jogadorRepository;
+    private PrintUtil printUtil;
 
     public List<Jogador> criarJogadores() {
         Scanner scanner = new Scanner(System.in);
@@ -39,6 +41,7 @@ public class JogadorUtil {
         int i = 0;
 
         for (i = 0; i < qtdJogadores; i++) {
+            printUtil.clearTerminal();
             System.out.println("Jogador " + (i + 1));
             jogadores.add(criarJogador());
         }
@@ -59,7 +62,7 @@ public class JogadorUtil {
         if (personagem.getSabedoria() > personagem.getDestreza())
             tipoAtributo = TipoAtributo.SABEDORIA;
 
-        arma = armaService.findArmasByRaridadeAndTipoAtributo(RaridadeArma.COMUM, personagem.getForca(), personagem.getDestreza(), personagem.getSabedoria(), personagem.getDefesa());
+        arma = armaService.findArmaByRaridadeAndTipoAtributo(RaridadeArma.COMUM, personagem.getForca(), personagem.getDestreza(), personagem.getSabedoria(), personagem.getDefesa());
         inventario = inventarioService.criarInventarioInicial();
 
         Jogador jogador = new Jogador(personagem, mana, manaMaxima, arma, inventario);
@@ -97,5 +100,13 @@ public class JogadorUtil {
 
     public void setJogadorRepository(JogadorRepository jogadorRepository) {
         this.jogadorRepository = jogadorRepository;
+    }
+
+    public PrintUtil getPrintUtil() {
+        return printUtil;
+    }
+
+    public void setPrintUtil(PrintUtil printUtil) {
+        this.printUtil = printUtil;
     }
 }

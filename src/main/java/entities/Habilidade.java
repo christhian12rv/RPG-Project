@@ -34,8 +34,8 @@ public class Habilidade {
     @Column(name = "tipo")
     private TipoAtributo tipo;
 
-    @Column(name = "dano")
-    private int dano;
+    @Column(name = "danoCura")
+    private int danoCura;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipoDanoHabilidade")
@@ -58,11 +58,11 @@ public class Habilidade {
 
     }
 
-    public Habilidade(String nome, String descricao, TipoAtributo tipo, int dano, TipoDanoHabilidade tipoDanoHabilidade, int custo, int area, boolean dropavel, List<Integer> preRequisitos) {
+    public Habilidade(String nome, String descricao, TipoAtributo tipo, int danoCura, TipoDanoHabilidade tipoDanoHabilidade, int custo, int area, boolean dropavel, List<Integer> preRequisitos) {
         this.nome = nome;
         this.descricao = descricao;
         this.tipo = tipo;
-        this.dano = dano;
+        this.danoCura = danoCura;
         this.tipoDanoHabilidade = tipoDanoHabilidade;
         this.custo = custo;
         this.area = area;
@@ -118,12 +118,12 @@ public class Habilidade {
         this.tipo = tipo;
     }
 
-    public int getDano() {
-        return dano;
+    public int getDanoCura() {
+        return danoCura;
     }
 
-    public void setDano(int dano) {
-        this.dano = dano;
+    public void setDanoCura(int danoCura) {
+        this.danoCura = danoCura;
     }
 
     public TipoDanoHabilidade getTipoDanoHabilidade() {
@@ -171,7 +171,7 @@ public class Habilidade {
         String valor = "Nome: " + nome +
         "\nDescrição: " + descricao +
         "\nTipo: " + tipo +
-        "\nDano: " + dano +
+        "\nDano/Cura: " + danoCura +
         "\nTipo de dano: " + tipoDanoHabilidade.getValor() + 
         "\nCusto: " + custo +
         "\nArea: " + area;

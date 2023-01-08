@@ -29,7 +29,7 @@ public class BatalhaUtil {
 
         for (Personagem personagem : personagens) {
             Random random = new Random();
-            ini =  random.nextInt(20) + 1;
+            ini =  random.nextInt(20) + 1 + personagem.getDestreza();
 
             if (iniciativa.size() <= 0) {
                 valoresIniciativa.add(ini);

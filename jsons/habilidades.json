@@ -3,7 +3,7 @@
         "nome": "Ataque da Discórdia",
         "descricao": "Um ataque feroz que dilacera os membros do inimigo",
         "tipo": "FORCA",
-        "dano": 15,
+        "danoCura": 15,
         "tipoDanoHabilidade": "INTERVALO",
         "custo": 2,
         "area": 1,
@@ -11,10 +11,10 @@
         "preRequisitos": [4,0,0,0]
     },
     {
-        "nome": "Hipertrofia aumentada",
+        "nome": "Hipertrofia Aumentada",
         "descricao": "Por um breve momento, seus muscúlos crescem, ficam definidos e sua força é potencializada ao máximo .",
         "tipo": "FORCA",
-        "dano": 11,
+        "danoCura": 11,
         "tipoDanoHabilidade": "FIXO",
         "custo": 3,
         "area": 1,
@@ -22,10 +22,10 @@
         "preRequisitos": [4,0,0,3]
     },
     {
-        "nome": "Pisão destruidor de rochas",
+        "nome": "Pisão Destruidor de Rochas",
         "descricao": "Com a enorme força de suas pernas, você as levanta para cima e logo em seguida as bate com todas as suas forças no chão, criando fendas e causando dano em 2 inimigos.",
         "tipo": "FORCA",
-        "dano": 10,
+        "danoCura": 10,
         "tipoDanoHabilidade": "INTERVALO",
         "custo": 4,
         "area": 2,
@@ -33,10 +33,10 @@
         "preRequisitos": [5,0,0,3]
     },
     {
-        "nome": "Nuvem de veneno",
+        "nome": "Nuvem de Veneno",
         "descricao": "Uma roxa e densa nuvem envenenada, faz com que qualquer criatura que entre em seu raio sinta-se meio tonta e com uma dor indescritivel.",
         "tipo": "SABEDORIA",
-        "dano": 3,
+        "danoCura": 3,
         "tipoDanoHabilidade": "FIXO",
         "custo": 5,
         "area": 3,
@@ -47,7 +47,7 @@
         "nome": "Martelo Divino",
         "descricao": "Um martelo feito de pura fé com essência dos deuses destroça até os mais poderosos demônios do submundo. Cuidado, o martelo é um canalizador de sua fé, ele responde apenas aos mais crentes.",
         "tipo": "SABEDORIA",
-        "dano": 40,
+        "danoCura": 40,
         "tipoDanoHabilidade": "INTERVALO",
         "custo": 10,
         "area": 1,
@@ -58,7 +58,7 @@
         "nome": "Nevasca",
         "descricao": "Uma tempestade de neve que faz com que os inimigos percam a sensibilidade do corpo devido a extrema friagem.",
         "tipo": "SABEDORIA",
-        "dano": 30,
+        "danoCura": 30,
         "tipoDanoHabilidade": "PORCENTAGEM",
         "custo": 6,
         "area": 4,
@@ -66,10 +66,10 @@
         "preRequisitos": [0,3,5,0]
     },
     {
-        "nome": "Flecha de osso",
+        "nome": "Flecha de Osso",
         "descricao": "O esqueleto faz um tiro superficial em seus inimigos.",
         "tipo": "DESTREZA",
-        "dano": 4,
+        "danoCura": 4,
         "tipoDanoHabilidade": "INTERVALO",
         "custo": 0,
         "area": 1,
@@ -77,10 +77,10 @@
         "preRequisitos": [0,0,0,0]
     },
     {
-        "nome": "Susurro da alma",
+        "nome": "Sussurro da Alma",
         "descricao": "",
         "tipo": "FORCA",
-        "dano": 10,
+        "danoCura": 10,
         "tipoDanoHabilidade": "PORCENTAGEM",
         "custo": 0,
         "area": 2,
@@ -88,13 +88,24 @@
         "preRequisitos": [0,0,0,0]
     },
     {
-        "nome": "Soco decrepto",
+        "nome": "Soco Decrepto",
         "descricao": "",
         "tipo": "FORCA",
-        "dano": 3,
+        "danoCura": 3,
         "tipoDanoHabilidade": "FIXO",
         "custo": 0,
         "area": 2,
+        "dropavel": false,
+        "preRequisitos": [0,0,0,0]
+    },
+    {
+        "nome": "Mordida Paralisante",
+        "descricao": "",
+        "tipo": "DESTREZA",
+        "danoCura": 10,
+        "tipoDanoHabilidade": "INTERVALO",
+        "custo": 0,
+        "area": 1,
         "dropavel": false,
         "preRequisitos": [0,0,0,0]
     }

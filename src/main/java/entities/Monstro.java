@@ -7,12 +7,10 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "monstro")
-@PrimaryKeyJoinColumn( name = "idPersonagem" )
-public class Monstro extends Personagem {
+public class Monstro extends Personagem implements Comparable<Monstro> {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -101,5 +99,13 @@ public class Monstro extends Personagem {
 
     public void setAscii(String ascii) {
         this.ascii = ascii;
+    }
+
+    @Override
+    public int compareTo(Monstro m) {
+        Integer m1AsciiLinesCount = getAscii().split("\n").length;
+        Integer m2AsciiLinesCount = m.getAscii().split("\n").length;
+
+        return m1AsciiLinesCount.compareTo(m2AsciiLinesCount);
     }
 }

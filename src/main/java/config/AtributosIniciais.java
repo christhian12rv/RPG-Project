@@ -10,4 +10,6 @@ public class AtributosIniciais {
     public static final int PONTOS_INICIAIS = 2;
     public static final int DISTRIBUICAO_PONTOS_TOTAL_INICIAIS = 7;
     public static final int DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS = 4;
+    public static final int TIPO_DADO_DEFESA = 20;
+    public static final int DEFESA_ADICIONAL = 10;
 }

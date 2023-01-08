@@ -12,7 +12,7 @@ import entities.Arma;
 public class ArmaService {
     ArmaRepository armaRepository;
 
-    public Arma findArmasByRaridadeAndTipoAtributo(RaridadeArma raridadeArma, int forca, int destreza, int sabedoria, int defesa) {
+    public Arma findArmaByRaridadeAndTipoAtributo(RaridadeArma raridadeArma, int forca, int destreza, int sabedoria, int defesa) {
         int atributoMaiorValor = forca;
         TipoAtributo tipoAtributoMaiorValor = TipoAtributo.FORCA;
         List<TipoAtributo> tipoAtributos = new ArrayList<>();
@@ -47,7 +47,7 @@ public class ArmaService {
             tipoAtributos.add(TipoAtributo.DEFESA);
         }
 
-        Arma arma = armaRepository.findAllRandomByTipoAtributo(raridadeArma, tipoAtributos);
+        Arma arma = armaRepository.findOneRandomByRaridadeTipoAtributo(raridadeArma, tipoAtributos);
 
         return arma;
     }

@@ -13,7 +13,7 @@
 		"habilidades": ["Flecha de Osso"],
 		"dificuldade": "INICIANTE",
 		"tipo": "MORTO_VIVO",
-		"ascii": "(X.X)/"
+		"ascii": "     .-.    \n    (o.o)   \n     |=|    \n    __|__   \n  //.=|=.\\\\ \n // .=|=. \\\\\n \\\\ .=|=. //\n  \\\\(_=_)// \n   (:| |:)  \n    || ||   \n    () ()   \n    || ||   \n    || ||   \n   ==' '==  \n"
 	},
 	{
 		"nome": "Berrante",
@@ -26,10 +26,10 @@
 		"destreza": 0,
 		"sabedoria": 0,
 		"defesa": 1,
-		"habilidades": ["Sussurro da alma"],
+		"habilidades": ["Sussurro da Alma"],
 		"dificuldade": "INICIANTE",
 		"tipo": "MORTO_VIVO",
-		"ascii": "~|(O)|~"
+		"ascii": "     .-.    \n    (o.o)   \n     |=|    \n    __|__   \n  //.=|=.\\\\ \n // .=|=. \\\\\n \\\\ .=|=. //\n  \\\\(_=_)// \n   (:| |:)  \n    || ||   \n    () ()   \n    || ||   \n    || ||   \n   ==' '==  \n"
 	},
 	{
 		"nome": "Zumbi",
@@ -42,9 +42,25 @@
 		"destreza": 0,
 		"sabedoria": 0,
 		"defesa": -1,
-		"habilidades": ["Soco decrepto"],
+		"habilidades": ["Soco Decrepto"],
 		"dificuldade": "INICIANTE",
 		"tipo": "MORTO_VIVO",
-		"ascii": "-|o.o|-"
+		"ascii": "     .-.    \n    (o.o)   \n     |=|    \n    __|__   \n  //.=|=.\\\\ \n // .=|=. \\\\\n \\\\ .=|=. //\n  \\\\(_=_)// \n   (:| |:)  \n    || ||   \n    () ()   \n    || ||   \n    || ||   \n   ==' '==  \n"
+	},
+	{
+		"nome": "Vampiro Transformado",
+		"descricao": "Um vampiro que inferior que está permanentemente em sua forma de morcego, é fraco, mas mortal.",
+		"classe": "Vampiro",
+		"vida": 10,
+		"vidaMaxima": 10,
+		"constituicao": 1,
+		"forca": 0,
+		"destreza": 3,
+		"sabedoria": 0,
+		"defesa": 1,
+		"habilidades": ["Mordida Paralisante"],
+		"dificuldade": "INICIANTE",
+		"tipo": "MORTO_VIVO",
+		"ascii": "     /\\                 /\\  \n    / \\'._   (\\_/)   _.'/ \\ \n    |.''._'--(o.o)--'_.''.| \n     \\_ / `;=/ \" \\=;` \\ _/  \n       `\\__| \\___/ |__/`    \n            \\(_|_)/         \n             \" ` \"          \n"
 	}
 ]

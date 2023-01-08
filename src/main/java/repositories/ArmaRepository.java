@@ -17,7 +17,7 @@ public class ArmaRepository extends BaseRepository<Arma> {
         super(Arma.class, entityManager);
     }
 
-    public Arma findAllRandomByTipoAtributo(RaridadeArma raridadeArma, List<TipoAtributo> tipoAtributos) {
+    public Arma findOneRandomByRaridadeTipoAtributo(RaridadeArma raridadeArma, List<TipoAtributo> tipoAtributos) {
         String whereTipoAtributos = "AND a.tipoAtributo = '" + tipoAtributos.get(0) + "' ";
         tipoAtributos.remove(0);
 
@@ -29,18 +29,9 @@ public class ArmaRepository extends BaseRepository<Arma> {
                 "WHERE raridade = '" + raridadeArma + "' " +
                 whereTipoAtributos +
                 "ORDER BY RANDOM() ");
-        Arma armas = (Arma) query.getSingleResult();
+        Arma armas = (Arma) query.setMaxResults(1).getSingleResult();
 
         return armas;
-    }
-
-    public Arma findOneByRaridadeAndTipoAtributo(TipoAtributo tipoAtributo, RaridadeArma raridadeArma) {
-        Query query = this.getEntityManager().createQuery("SELECT m FROM Arma m " +
-            "WHERE raridade = '" + raridadeArma + "' " +
-            "AND tipoAtributo = '" + tipoAtributo + "' " +
-            "ORDER BY RANDOM()");
-        Arma arma = (Arma) query.setMaxResults(1).getSingleResult();
-        return arma;
     }
 
     public Arma findOneByRaridade(RaridadeArma raridadeArma) {

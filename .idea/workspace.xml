@@ -5,31 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="942ae02e-3e40-4074-bd19-b81d0815339a" name="Changes" comment="Created Partida and organized project structure">
-      <change afterPath="$PROJECT_DIR$/jsons/historias.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/ArmaUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/HabilidadeUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/HistoriaUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/MonstroUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/JsonUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsons/habilidades.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsons/habilidades.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsons/historias.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsons/historias.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsons/monstros.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsons/monstros.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/regras_de_negocio.txt" beforeDir="false" afterPath="$PROJECT_DIR$/regras_de_negocio.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Arma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Arma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Habilidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Habilidade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Historia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Historia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/MiniHistoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/MiniHistoria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Monstro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Monstro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entitys/Personagem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entitys/Personagem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/enums/TipoMonstro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/TipoMonstro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ArmaUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/BatalhaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/BatalhaUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/HabilidadeUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/HistoriaUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/JogadorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/JogadorUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/MiniHistoriaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/MiniHistoriaUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/MonstroUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/PartidaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/PartidaUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/PersonagemUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitysUtils/PersonagemUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/config/AtributosIniciais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/AtributosIniciais.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Batalha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Batalha.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Habilidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Habilidade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Jogador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Jogador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Monstro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Monstro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Personagem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Personagem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/ArmaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/ArmaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/HabilidadeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/HabilidadeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/MonstroRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/MonstroRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositorys/HabilidadeRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositorys/HistoriaRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/ArmaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ArmaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/BatalhaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/BatalhaUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/HabilidadeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/HabilidadeUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/JogadorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/JogadorUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/PrintUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/PrintUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,9 +59,6 @@
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/regras_de_negocio.txt" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/Main.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/entitys/Batalha.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/entitys/Item.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/entitys/Monstro.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -78,6 +73,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "last_opened_file_path": "/home/christhian/Documentos/RPG-Project"
   }
 }]]></component>
@@ -201,21 +197,6 @@
           <url>jar://$USER_HOME$/.jdks/corretto-18.0.2/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java</url>
           <line>445</line>
           <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utils/EntitysUtils/ArmaUtil.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -21,7 +21,7 @@ public class MonstroRepository extends BaseRepository<Monstro>{
             "WHERE dificuldade = '" + dificuldade + "' " +
             "AND tipo = '" + tipo + "' " +
             "ORDER BY RANDOM()");
-        Monstro monstro = (Monstro) query.getSingleResult();
+        Monstro monstro = (Monstro) query.setMaxResults(1).getSingleResult();
 
         return monstro;
     }
