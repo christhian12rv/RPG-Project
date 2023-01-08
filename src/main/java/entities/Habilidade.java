@@ -178,4 +178,41 @@ public class Habilidade {
 
         return valor;
     }
+
+    public String toString(Personagem personagem) {
+        int valorAtributo = 0;
+        
+        switch (tipo) {
+            case FORCA:
+                valorAtributo = personagem.getForca();
+                break;
+            case DESTREZA:
+                valorAtributo = personagem.getDestreza();
+                break;
+            case SABEDORIA:
+                valorAtributo = personagem.getSabedoria();
+                break;
+            case DEFESA:
+                valorAtributo = personagem.getDefesa();
+                break;
+        }
+        
+        String dano = "";
+        if (tipoDanoHabilidade == TipoDanoHabilidade.FIXO) {
+            dano = danoCura + " + " + valorAtributo; 
+        } else if (tipoDanoHabilidade == TipoDanoHabilidade.PORCENTAGEM) {
+            dano = danoCura + "%";
+        } else {
+            dano = "1 - " + danoCura;
+        }
+        
+        String valor = "Nome: " + nome +
+        "\nDescrição: " + descricao +
+        "\nTipo: " + tipo +
+        "\nDano/Cura: " + dano +
+        "\nCusto: " + custo +
+        "\nArea: " + area;
+
+        return valor;
+    }
 }

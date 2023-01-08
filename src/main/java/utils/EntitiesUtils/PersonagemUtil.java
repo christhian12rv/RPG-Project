@@ -52,7 +52,7 @@ public class PersonagemUtil {
 
         while (pontosDistribuicao > 0) {
             pontosDistribuicao = AtributosIniciais.DISTRIBUICAO_PONTOS_TOTAL_INICIAIS;
-            System.out.println("***************** Pontos de distribuição *****************");
+            System.out.println("\n***************** Pontos de distribuição *****************");
             System.out.println("Cada atributo terá no mínimo " + AtributosIniciais.PONTOS_INICIAIS + " pontos e você poderá distribuir "+ AtributosIniciais.DISTRIBUICAO_PONTOS_TOTAL_INICIAIS +" para os atributos seguintes.");
             System.out.println("Você poderá distribuir no máximo "+ AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS +" pontos para cada atributo.");
 
@@ -101,8 +101,8 @@ public class PersonagemUtil {
             pontosDistribuicao -= defesa;
 
             if (pontosDistribuicao > 0)
-                System.out.println("Você não distribuiu os pontos corretamente. Faltam " + pontosDistribuicao +
-                    "para distribuir. Distribua os pontos novamente.");
+                System.out.println("\nVocê não distribuiu os pontos corretamente. Faltam " + pontosDistribuicao +
+                    " para distribuir. Distribua os pontos novamente.");
         }
 
         constituicao += AtributosIniciais.PONTOS_INICIAIS;

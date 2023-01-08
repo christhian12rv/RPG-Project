@@ -76,7 +76,11 @@ public class Jogador extends Personagem {
                 break;
         }
 
-        setMana(getMana() - habilidade.getCusto());
+        if (getMana() - habilidade.getCusto() > 0)
+            setMana(getMana() - habilidade.getCusto());
+        else
+            setMana(0);
+            
         jogadorEscolhido.curar(cura);
     
         return jogadorEscolhido.getNome() + " foi curado em " + cura + " de vida!";
@@ -101,7 +105,11 @@ public class Jogador extends Personagem {
                 break;
         }
 
-        setMana(getMana() - habilidade.getCusto());
+        if (getMana() - habilidade.getCusto() > 0)
+            setMana(getMana() - habilidade.getCusto());
+        else
+            setMana(0);
+
         boolean acertouAtaque = acertaAtaque(monstroEscolhido, atributoTipoAtributoHabilidade + arma.getAdicional());
 
         if (acertouAtaque) {       

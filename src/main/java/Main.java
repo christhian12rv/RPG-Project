@@ -30,7 +30,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -99,6 +101,7 @@ public class Main {
         jogadorUtil.setInventarioService(inventarioService);
         jogadorUtil.setJogadorRepository(jogadorRepository);
         jogadorUtil.setPrintUtil(printUtil);
+        jogadorUtil.setScannerUtil(scannerUtil);
         historiaUtil.setHistoriaRepository(historiaRepository);
         batalhaUtil.setMonstroRepository(monstroRepository);
         batalhaUtil.setBatalhaRepository(batalhaRepository);
@@ -118,12 +121,12 @@ public class Main {
         printUtil.clearTerminal();
         
         jogadores = jogadorUtil.criarJogadores();
-        printUtil.printStringLetraPorLetraSom("Jogadores criados\n\n");
+        printUtil.printStringLetraPorLetraSom(15, "Jogadores criados\n\n");
 
         historia = historiaUtil.historiaRandomica();
 
         partida = partidaUtil.criarPartida(jogadores, historia);
-        printUtil.printStringLetraPorLetraSom("Partida criada! O jogo irá começar...\n\n");
+        printUtil.printStringLetraPorLetraSom(15, "Partida criada! O jogo irá começar...\n\n");
 
         printUtil.textDelay(2000);
         printUtil.clearTerminal();
@@ -142,13 +145,21 @@ public class Main {
         List<Batalha> batalhas = partida.getBatalhas();
         List<Jogador> jogadores = partida.getJogadores();
 
-        printUtil.printStringLetraPorLetraSom(historia.getDescricao() + "\n\n");
+        printUtil.printStringLetraPorLetraSom(15, historia.getDescricao() + "\n\n");
         printUtil.textDelay(1000);
 
         printarJogadores(jogadores);
 
-        for (Batalha batalha: batalhas) {
-            
+        List<Jogador> jogadoresDerrotados = new ArrayList<>();
+        for (int z = 0; z < batalhas.size(); z++) {
+
+            Batalha batalha = batalhas.get(z);
+
+            if (jogadoresDerrotados.size() > 0) {
+                batalha.setIniciativa(batalha.getIniciativa().stream().filter(p -> p instanceof Monstro || (p instanceof Jogador && !jogadoresDerrotados.contains(p))).toList());
+                partida.setJogadores(partida.getJogadores().stream().filter(j -> !jogadoresDerrotados.contains(j)).toList());
+            }
+
             MiniHistoria miniHistoria = batalha.getMiniHistoria();
 
             if (miniHistoria.getMiniHistoriaEscolhaOposta() != null) {
@@ -159,10 +170,10 @@ public class Main {
                 
                 Jogador jogadorEscolhido = jogadores.get(rand.nextInt(jogadores.size()));
 
-                printUtil.printStringLetraPorLetraSom(jogadorEscolhido.getNome() + ", ");
-                printUtil.printStringLetraPorLetraSom(miniHistoria.getDescricao() + "\n");
-                printUtil.printStringLetraPorLetraSom(miniHistoriaEscolhaOposta.getDescricao());
-                printUtil.printStringLetraPorLetraSom("\nEscolha uma opção: ");
+                printUtil.printStringLetraPorLetraSom(15, jogadorEscolhido.getNome() + ", ");
+                printUtil.printStringLetraPorLetraSom(15, miniHistoria.getDescricao() + "\n");
+                printUtil.printStringLetraPorLetraSom(15, miniHistoriaEscolhaOposta.getDescricao());
+                printUtil.printStringLetraPorLetraSom(15, "\nEscolha uma opção: ");
 
                 escolha = scannerUtil.getInt(scanner, 1, 2);
 
@@ -175,17 +186,17 @@ public class Main {
                 else
                     miniHistoriaEscolhida = miniHistoriaEscolhaOposta;
 
-                printUtil.printStringLetraPorLetraSom(miniHistoriaEscolhida.getResultadoEscolha() + "\n");
+                printUtil.printStringLetraPorLetraSom(15, miniHistoriaEscolhida.getResultadoEscolha() + "\n");
 
                 switch (miniHistoriaEscolhida.getTipoResultado()) {
                     case HABILIDADE:
                         Habilidade habilidade = habilidadeRepository.findOneRandom();
 
-                        printUtil.printStringLetraPorLetra(habilidade.toString() + '\n');
-                        printUtil.printStringLetraPorLetra("\nPré requisitos:\n");
+                        printUtil.printStringLetraPorLetra(5, habilidade.toString() + '\n');
+                        printUtil.printStringLetraPorLetra(5, "\nPré requisitos:\n");
                         i = 0;
                         for (int preRequisito: habilidade.getPreRequisitos()) {
-                            printUtil.printStringLetraPorLetra(TipoAtributo.values()[i] +": " + preRequisito + "\n");
+                            printUtil.printStringLetraPorLetra(5, TipoAtributo.values()[i] +": " + preRequisito + "\n");
                             i++;
                         }
 
@@ -197,97 +208,97 @@ public class Main {
                         }
 
                         if (jogadoresAptosHabilidade.size() > 0) {
-                            printUtil.printStringLetraPorLetra("\nJogadores Aptos:\n");
+                            printUtil.printStringLetraPorLetra(5, "\nJogadores Aptos:\n");
                             i = 1;
                             for (Jogador jogadoreAptoHabilidade: jogadoresAptosHabilidade) {
-                                printUtil.printStringLetraPorLetra("[" + i + "] " + jogadoreAptoHabilidade.getNome() + "\n");
+                                printUtil.printStringLetraPorLetra(5, "[" + i + "] " + jogadoreAptoHabilidade.getNome() + "\n");
                                 i++;
                             }
 
-                            printUtil.printStringLetraPorLetra("[" + i + "] Jogar habilidade fora\n");
+                            printUtil.printStringLetraPorLetra(5, "[" + i + "] Jogar habilidade fora\n");
 
-                            printUtil.printStringLetraPorLetra(jogadorEscolhido.getNome()+", escolha um jogador para dar essa habilidade:\n");
+                            printUtil.printStringLetraPorLetra(5, jogadorEscolhido.getNome()+", escolha um jogador para dar essa habilidade:\n");
                             escolha = scannerUtil.getInt(scanner, 1, jogadoresAptosHabilidade.size() + 1);
 
                             if (escolha != i) {
                                 jogadoresAptosHabilidade.get(escolha-1).getHabilidades().add(habilidade);
-                                printUtil.printStringLetraPorLetra("O jogador " + jogadoresAptosHabilidade.get(escolha-1).getNome() + " ganhou a habilidade!\n\n");
+                                printUtil.printStringLetraPorLetra(5, "O jogador " + jogadoresAptosHabilidade.get(escolha-1).getNome() + " ganhou a habilidade!\n\n");
                             } else {
-                                printUtil.printStringLetraPorLetra("A habilidade foi perdida\n\n");
+                                printUtil.printStringLetraPorLetra(5, "A habilidade foi perdida\n\n");
                             }
                         } else {
-                            printUtil.printStringLetraPorLetra("Ninguém da sua equipe está apto a aprender esta habilidade.\n\n");
+                            printUtil.printStringLetraPorLetra(5, "Ninguém da sua equipe está apto a aprender esta habilidade.\n\n");
                         }
                         break;
 
                     case ITEM_MANA:
                         Item itemMana = itemService.criarItemMana(miniHistoriaEscolhida.getDanoCura());
-                        printUtil.printStringLetraPorLetra("Você ganhou o seguinte item: \n");
-                        printUtil.printStringLetraPorLetra(itemMana.toString() + '\n');
+                        printUtil.printStringLetraPorLetra(5, "Você ganhou o seguinte item: \n");
+                        printUtil.printStringLetraPorLetra(5, itemMana.toString() + '\n');
 
                         i = 1;
                         for (Jogador jogador: jogadores) {
-                            printUtil.printStringLetraPorLetra("[" + i + "] " + jogador.getNome() + "\n");
+                            printUtil.printStringLetraPorLetra(5, "[" + i + "] " + jogador.getNome() + "\n");
                             i++;
                         }
 
-                        printUtil.printStringLetraPorLetra("[" + i + "] Jogar item fora\n");
+                        printUtil.printStringLetraPorLetra(5, "[" + i + "] Jogar item fora\n");
 
-                        printUtil.printStringLetraPorLetra(jogadorEscolhido.getNome() + ", escolha um jogador para dar essa poção:\n");
-                        escolha = scannerUtil.getInt(scanner, 1, jogadores.size());
+                        printUtil.printStringLetraPorLetra(5, jogadorEscolhido.getNome() + ", escolha um jogador para dar essa poção:\n");
+                        escolha = scannerUtil.getInt(scanner, 1, jogadores.size() + 1);
 
                         if (escolha != i) {
                             jogadores.get(escolha-1).getInventario().getItens().add(itemMana);
-                            printUtil.printStringLetraPorLetra("O jogador " + jogadores.get(escolha-1).getNome() + " ganhou a poção de mana!\n\n");
+                            printUtil.printStringLetraPorLetra(5, "O jogador " + jogadores.get(escolha-1).getNome() + " ganhou a poção de mana!\n\n");
                         } else {
-                            printUtil.printStringLetraPorLetra("A poção foi perdida\n\n");
+                            printUtil.printStringLetraPorLetra(5, "A poção foi perdida\n\n");
                         }
                         break;
                     case ITEM_VIDA:
                         Item itemVida = itemService.criarItemVida(miniHistoriaEscolhida.getDanoCura());
-                        printUtil.printStringLetraPorLetra("Você ganhou o seguinte item: \n");
-                        printUtil.printStringLetraPorLetra(itemVida.toString() + '\n');
+                        printUtil.printStringLetraPorLetra(5, "Você ganhou o seguinte item: \n");
+                        printUtil.printStringLetraPorLetra(5, itemVida.toString() + '\n');
 
                         i = 1;
                         for (Jogador jogador: jogadores) {
-                            printUtil.printStringLetraPorLetra("[" + i + "] " + jogador.getNome() + "\n");
+                            printUtil.printStringLetraPorLetra(5, "[" + i + "] " + jogador.getNome() + "\n");
                             i++;
                         }
 
-                        printUtil.printStringLetraPorLetra("[" + i + "] Jogar item fora\n");
+                        printUtil.printStringLetraPorLetra(5, "[" + i + "] Jogar item fora\n");
 
-                        printUtil.printStringLetraPorLetra(jogadorEscolhido.getNome() + ", escolha um jogador para dar essa poção:\n");
-                        escolha = scannerUtil.getInt(scanner, 1, jogadores.size());
+                        printUtil.printStringLetraPorLetra(5, jogadorEscolhido.getNome() + ", escolha um jogador para dar essa poção:\n");
+                        escolha = scannerUtil.getInt(scanner, 1, jogadores.size() + 1);
 
                         if (escolha != i) {
                             jogadores.get(escolha-1).getInventario().getItens().add(itemVida);
-                            printUtil.printStringLetraPorLetra("O jogador " + jogadores.get(escolha-1).getNome() + " ganhou a poção de vida!\n\n");
+                            printUtil.printStringLetraPorLetra(5, "O jogador " + jogadores.get(escolha-1).getNome() + " ganhou a poção de vida!\n\n");
                         } else {
-                            printUtil.printStringLetraPorLetra("A poção foi perdida\n\n");
+                            printUtil.printStringLetraPorLetra(5, "A poção foi perdida\n\n");
                         }
                         break;
                     
                     case ITEM_HIBRIDA:
                         Item itemHibrida = itemService.criarItemHibrida(miniHistoriaEscolhida.getDanoCura(), miniHistoriaEscolhida.getDanoCura());
-                        printUtil.printStringLetraPorLetra("Você ganhou o seguinte item: \n");
-                        printUtil.printStringLetraPorLetra(itemHibrida.toString() + '\n');
+                        printUtil.printStringLetraPorLetra(5, "Você ganhou o seguinte item: \n");
+                        printUtil.printStringLetraPorLetra(5, itemHibrida.toString() + '\n');
 
                         i = 1;
                         for (Jogador jogador: jogadores) {
-                            printUtil.printStringLetraPorLetra("[" + i + "] " + jogador.getNome() + "\n");
+                            printUtil.printStringLetraPorLetra(5, "[" + i + "] " + jogador.getNome() + "\n");
                             i++;
                         }
 
-                        printUtil.printStringLetraPorLetra("[" + i + "] Jogar item fora\n");
+                        printUtil.printStringLetraPorLetra(5, "[" + i + "] Jogar item fora\n");
 
-                        printUtil.printStringLetraPorLetra(jogadorEscolhido.getNome() + ", escolha um jogador para dar essa poção:\n");
-                        escolha = scannerUtil.getInt(scanner, 1, jogadores.size());
+                        printUtil.printStringLetraPorLetra(5, jogadorEscolhido.getNome() + ", escolha um jogador para dar essa poção:\n");
+                        escolha = scannerUtil.getInt(scanner, 1, jogadores.size() + 1);
 
                         if (escolha != i) {
                             jogadores.get(escolha-1).getInventario().getItens().add(itemHibrida);
-                            printUtil.printStringLetraPorLetra("O jogador " + jogadores.get(escolha-1).getNome() + " ganhou a poção híbrida!\n\n");
+                            printUtil.printStringLetraPorLetra(5, "O jogador " + jogadores.get(escolha-1).getNome() + " ganhou a poção híbrida!\n\n");
                         } else {
-                            printUtil.printStringLetraPorLetra("A poção foi perdida\n\n");
+                            printUtil.printStringLetraPorLetra(5, "A poção foi perdida\n\n");
                         }
                         break;
 
@@ -295,27 +306,27 @@ public class Main {
                         RaridadeArma raridadeArma = RaridadeArma.valueOf(RaridadeArma.values()[miniHistoriaEscolhida.getDificuldade().ordinal()].name());
                         Arma arma = armaRepository.findOneByRaridade(raridadeArma);
 
-                        printUtil.printStringLetraPorLetra("Você ganhou a seguinte arma: \n");
-                        printUtil.printStringLetraPorLetra(arma.toString() + '\n');
+                        printUtil.printStringLetraPorLetra(5, "Você ganhou a seguinte arma: \n");
+                        printUtil.printStringLetraPorLetra(5, arma.toString() + '\n');
 
                         i = 1;
                         for (Jogador jogador: jogadores) {
-                            printUtil.printStringLetraPorLetra("[" + i + "] " + jogador.getNome() + "\n");
+                            printUtil.printStringLetraPorLetra(5, "[" + i + "] " + jogador.getNome() + "\n");
                             i++;
                         }
 
-                        printUtil.printStringLetraPorLetra("[" + i + "] Jogar arma fora\n");
+                        printUtil.printStringLetraPorLetra(5, "[" + i + "] Jogar arma fora\n");
 
-                        printUtil.printStringLetraPorLetra(jogadorEscolhido.getNome() + ", escolha um jogador para dar essa arma:\n");
+                        printUtil.printStringLetraPorLetra(5, jogadorEscolhido.getNome() + ", escolha um jogador para dar essa arma:\n");
                         escolha = scannerUtil.getInt(scanner, 1, jogadores.size());
 
                         System.out.println("");
 
                         if (escolha != i) {
                             jogadores.get(escolha-1).setArma(arma);
-                            printUtil.printStringLetraPorLetra("O jogador " + jogadores.get(escolha-1).getNome() + " equipou a arma!\n\n");
+                            printUtil.printStringLetraPorLetra(5, "O jogador " + jogadores.get(escolha-1).getNome() + " equipou a arma!\n\n");
                         } else {
-                            printUtil.printStringLetraPorLetra("A arma foi perdida\n\n");
+                            printUtil.printStringLetraPorLetra(5, "A arma foi perdida\n\n");
                         }
                         break;
 
@@ -324,90 +335,108 @@ public class Main {
                         if (!jogadorEscolhido.estaVivo()) {
                             partida.removerJogador(jogadorEscolhido, batalha.getId());
                             batalha.removerJogador(jogadorEscolhido);
-                            printUtil.printStringLetraPorLetraLentoSom(jogadorEscolhido.getNome() + ", a sua jornada chegou ao fim...\n\n");
+                            printUtil.printStringLetraPorLetraSom(200, jogadorEscolhido.getNome() + ", a sua jornada chegou ao fim...\n\n");
                         } else {
-                            printUtil.printStringLetraPorLetra("A sua vida agora é " + jogadorEscolhido.getVida() + ".\n\n");
+                            printUtil.printStringLetraPorLetra(5, "A sua vida agora é " + jogadorEscolhido.getVida() + ".\n\n");
                         }
                         break;
                         
                     case CURA:
                         jogadorEscolhido.curar(miniHistoriaEscolhida.getDanoCura());
-                        printUtil.printStringLetraPorLetra("A sua vida agora é " + jogadorEscolhido.getVida() + ".\n\n");
+                        printUtil.printStringLetraPorLetra(5, "A sua vida agora é " + jogadorEscolhido.getVida() + ".\n\n");
                         break;
 
                     default:
                         break;
                 }
             } else { 
-                printUtil.printStringLetraPorLetraSom(miniHistoria.getDescricao());
+                printUtil.printStringLetraPorLetraSom(15, miniHistoria.getDescricao());
             }
 
-            printUtil.printStringLetraPorLetraSom("Aperte enter para continuar...");
+            printUtil.printStringLetraPorLetraSom(15, "\nAperte enter para continuar...");
             scanner.nextLine();
+            scanner.nextLine();
+            printUtil.clearTerminal();
+
+            printUtil.printStringLetraPorLetraSom(15, "Apareceram os seguintes inimigos:\n");
+            for (Monstro monstro: batalha.getMonstros()) {
+                printUtil.printStringLetraPorLetraSom(15, "\n");
+                printUtil.printStringLetraPorLetraSom(15, "Nome: " + monstro.getNome() + "\n");
+                printUtil.printStringLetraPorLetraSom(15, "Descrição: " + monstro.getDescricao() + "\n");
+                printUtil.printStringLetraPorLetraSom(15, "Classe: " + monstro.getClasse() + "\n\n");
+            }
+
+            printarMonstros(batalha.getMonstros(), true);
+
+            printUtil.printStringLetraPorLetraSom(15, "\nAperte enter para continuar...");
             scanner.nextLine();
 
             Boolean inimigosDerrotados = false;
 
+            List<Monstro> monstrosDerrotados = new ArrayList<>();
+
+            Boolean primeiraIniciativa = true;
+
             while ((!batalha.getMonstros().stream().allMatch(m -> !m.estaVivo()) || !partida.getJogadores().stream().allMatch(j -> !j.estaVivo())) && !inimigosDerrotados) {
-                List<Monstro> monstrosDerrotados = new ArrayList<>();
-                for (Monstro m: monstrosDerrotados) {
-                    batalha.getMonstros().remove(m);
-                    batalha.getIniciativa().remove(m);
-                }
-                
-                for (Personagem personagem: batalha.getIniciativa()) {
+
+                List<Personagem> iniciativa = batalha.getIniciativa();
+                for (int x = 0; x < iniciativa.size(); x++) {
+
+                    Personagem personagem = iniciativa.get(x);
+
                     printUtil.clearTerminal();
                     
                     if (batalha.getMonstros().stream().allMatch(m -> !m.estaVivo())) {
-                        printUtil.printStringLetraPorLetraSom("Todos os inimigos foram derrotados!\n\n");
+                        printUtil.printStringLetraPorLetraSom(15, "Todos os inimigos foram derrotados!\n\n");
                         inimigosDerrotados = true;
                         break;
                     }
                     if (partida.getJogadores().stream().allMatch(j -> !j.estaVivo())) {
-                        printUtil.printStringLetraPorLetraLentoSom("Todos os jogadores foram derrotados, a jornada do grupo chegou fim...\n\n");
+                        printUtil.printStringLetraPorLetraSom(200, "Todos os jogadores foram derrotados, a jornada do grupo chegou ao fim...\n\n");
                         return;
                     }
 
-                    if (personagem instanceof Jogador) { // printador
+                    if (personagem instanceof Jogador && !jogadoresDerrotados.contains(personagem)) {
                         Jogador jogador = (Jogador) personagem;
                         int i = 0;
                         int k = 0;
                         int escolhaMonstro = 0;
 
-                        printarMonstros(batalha.getMonstros());
+                        printarMonstros(batalha.getMonstros(), false);
 
-                        printUtil.printStringLetraPorLetra("Turno: " + jogador.getNome());
-                        printUtil.printStringLetraPorLetra(String.format("\nCON: %d FOR: %d DES: %d SAB: %d DEF: %d\n", jogador.getConstituicao(), jogador.getForca(), jogador.getDestreza(), jogador.getSabedoria(), jogador.getDefesa()));
-                        printUtil.printStringLetraPorLetra("\nVida: " + jogador.getVida() + " / " + jogador.getVidaMaxima());
-                        printUtil.printStringLetraPorLetra("\nMana: " + jogador.getMana() + " / " + jogador.getManaMaxima());
-                        printUtil.printStringLetraPorLetra("\nArma: " + jogador.getArma().getNome() + "  /  " + jogador.getArma().getQtdDados() + "D"+ jogador.getArma().getTipoDado() + " + " +
+                        printUtil.printStringLetraPorLetra(5, "\n\nTurno: " + jogador.getNome());
+                        printUtil.printStringLetraPorLetra(5, String.format("\nCON: %d FOR: %d DES: %d SAB: %d DEF: %d\n", jogador.getConstituicao(), jogador.getForca(), jogador.getDestreza(), jogador.getSabedoria(), jogador.getDefesa()));
+                        printUtil.printStringLetraPorLetra(5, "\nVida: " + jogador.getVida() + " / " + jogador.getVidaMaxima());
+                        printUtil.printStringLetraPorLetra(5, "\nMana: " + jogador.getMana() + " / " + jogador.getManaMaxima());
+                        printUtil.printStringLetraPorLetra(5, "\nArma: " + jogador.getArma().getNome() + "  /  " + jogador.getArma().getQtdDados() + "D"+ jogador.getArma().getTipoDado() + " + " +
                             jogador.getArma().getAdicional() + "  /  " + jogador.getArma().getTipoAtributo().getValor() + "  /  " + jogador.getArma().getRaridade());
-                        printUtil.printStringLetraPorLetra("\n\nHabilidades\n");
+                        printUtil.printStringLetraPorLetra(5, "\n\nHabilidades\n");
                         i = 1;
                         for (Habilidade hab : jogador.getHabilidades()) {
-                            printUtil.printStringLetraPorLetra("[" + i + "] " + hab.toString() + "\n");
+                            printUtil.printStringLetraPorLetra(5, "[" + i + "] " + hab.toString(jogador) + "\n");
                             i++;
                         }
-                        printUtil.printStringLetraPorLetra("\nItens: ");
+                        printUtil.printStringLetraPorLetra(5, "\nItens: ");
                         for (Item item : jogador.getInventario().getItens()) {
-                            printUtil.printStringLetraPorLetra(item.toString() + "\n");
+                            printUtil.printStringLetraPorLetra(5, item.toString() + "\n");
                         }
                         
-                        printUtil.printStringLetraPorLetra("\nAções\n");
-                        printUtil.printStringLetraPorLetra("[1] Atacar\n");
-                        printUtil.printStringLetraPorLetra("[2] Usar uma habilidade\n");
-                        printUtil.printStringLetraPorLetra("[3] Usar Item\n");
-                        printUtil.printStringLetraPorLetra("Escolha uma ação: ");
+                        printUtil.printStringLetraPorLetra(5, "\nAções\n");
+                        printUtil.printStringLetraPorLetra(5, "[1] Atacar\n");
+                        printUtil.printStringLetraPorLetra(5, "[2] Usar uma habilidade\n");
+                        printUtil.printStringLetraPorLetra(5, "[3] Usar Item\n");
+                        printUtil.printStringLetraPorLetra(5, "Escolha uma ação: ");
                         int escolha = scannerUtil.getInt(scanner, 1, 3);
 
-                        List<Habilidade> habilidadesNaoLancaveis = null;
+                        List<Habilidade> habilidadesNaoLancaveis = new ArrayList<>();
                         do {
+                            habilidadesNaoLancaveis = jogador.getHabilidades().stream().filter(h -> jogador.getMana() < h.getCusto()).toList();
+
                             if (escolha == 2) {
-                                habilidadesNaoLancaveis = jogador.getHabilidades().stream().filter(h -> jogador.getMana() < h.getCusto()).toList();
 
                                 if (habilidadesNaoLancaveis.size() == jogador.getHabilidades().size()) {
-                                    while (escolha < 1 || escolha > 3) {
-                                        printUtil.printStringLetraPorLetra("Você não tem mana o suficiente para lançar alguma habilidade. Escolha novamente: ");
+                                    while (escolha == 2) {
+                                        printUtil.printStringLetraPorLetra(5, "Você não tem mana o suficiente para lançar alguma habilidade. Escolha novamente: ");
                                         escolha = scannerUtil.getInt(scanner, 1, 3);
                                     }
                                 }
@@ -415,8 +444,8 @@ public class Main {
                             
                             if (escolha == 3) {
                                 if (jogador.getInventario().getItens().size() <= 0) {
-                                    while (escolha < 1 || escolha > 3) {
-                                        printUtil.printStringLetraPorLetra("Você não tem nenhum item no inventário. Escolha novamente: ");
+                                    while (escolha == 3) {
+                                        printUtil.printStringLetraPorLetra(5, "Você não tem nenhum item no inventário. Escolha novamente: ");
                                         escolha = scannerUtil.getInt(scanner, 1, 3);
                                     }
                                 }
@@ -425,12 +454,12 @@ public class Main {
 
                         switch (escolha) {
                             case 1:
-                                printUtil.printStringLetraPorLetra("\nEscolha o inimigo a ser atacado\n");
+                                printUtil.printStringLetraPorLetra(5, "\nEscolha o inimigo a ser atacado\n");
 
                                 i = 1;
 
                                 for (Monstro monstro: batalha.getMonstros()) {
-                                    printUtil.printStringLetraPorLetra("[" + i + "] - " + monstro.getNome() + "\n\n");
+                                    printUtil.printStringLetraPorLetra(5, "[" + i + "] - " + monstro.getNome() + "\n\n");
                                     i++;
                                 }
 
@@ -438,10 +467,12 @@ public class Main {
 
                                 Monstro monstroEscolhido = batalha.getMonstros().get(escolhaMonstro - 1);
                                 
-                                printUtil.printStringLetraPorLetra(jogador.aplicarDanoArma(monstroEscolhido) + "\n"); 
+                                printUtil.printStringLetraPorLetra(5, jogador.aplicarDanoArma(monstroEscolhido) + "\n"); 
 
                                 if (!monstroEscolhido.estaVivo()) {
                                     monstrosDerrotados.add(monstroEscolhido);
+                                    batalha.getMonstros().remove(monstroEscolhido);
+                                    batalha.getIniciativa().remove(monstroEscolhido);
                                 }
                                 break;
                             case 2:
@@ -450,11 +481,11 @@ public class Main {
                                 i = 1;
                                 
                                 for (Habilidade habilidade: habilidades) {
-                                    printUtil.printStringLetraPorLetra("[" + i + "] " + habilidade.toString() + "\n");
+                                    printUtil.printStringLetraPorLetra(5, "[" + i + "] " + habilidade.toString() + "\n");
                                     i++;
                                 }
 
-                                printUtil.printStringLetraPorLetra("Escolha uma habilidade:");
+                                printUtil.printStringLetraPorLetra(5, "Escolha uma habilidade: ");
 
                                 int escolhaHabilidade = scannerUtil.getInt(scanner, 1, habilidades.size());
 
@@ -467,37 +498,37 @@ public class Main {
                                         List<Jogador> jogadoresEscolhidos = new ArrayList<>();
                                         List<Jogador> jogadoresAux = new ArrayList<>(jogadores);
                                     
-                                        printUtil.printStringLetraPorLetra("Jogadore(s)\n");
+                                        printUtil.printStringLetraPorLetra(5, "Jogadore(s)\n");
                                         
                                         k = 0;
                                         for (i = 0; i < (areaHabilidade > jogadores.size() ? jogadores.size() : areaHabilidade); i++) {
                                             for (Jogador j : jogadoresAux) {
                                                 k++;
-                                                printUtil.printStringLetraPorLetra("[" + k + "]" + j.getNome() + "\n");
+                                                printUtil.printStringLetraPorLetra(5, "[" + k + "]" + j.getNome() + "\n");
                                             }
-                                            printUtil.printStringLetraPorLetra("\nEscolha um jogador: ");
+                                            printUtil.printStringLetraPorLetra(5, "\nEscolha um jogador: ");
                                             int escolhaJogador = scannerUtil.getInt(scanner, 1, jogadoresAux.size());
                                             jogadoresEscolhidos.add(jogadoresAux.get(escolhaJogador - 1));
                                             jogadoresAux.remove(escolhaJogador - 1);
                                         }
                                         
                                         for (Jogador jogadorEscolhido: jogadoresEscolhidos) {
-                                            printUtil.printStringLetraPorLetra(jogador.aplicarCuraHabilidade(jogadorEscolhido, habilidadeEscolhida) + "\n");
+                                            printUtil.printStringLetraPorLetra(5, jogador.aplicarCuraHabilidade(jogadorEscolhido, habilidadeEscolhida) + "\n");
                                         }
                                         break;
                                     default:
                                         List<Monstro> monstrosEscolhidos = new ArrayList<>();
                                         List<Monstro> monstrosAux = new ArrayList<>(batalha.getMonstros());
 
-                                        printUtil.printStringLetraPorLetra("\nInimigo(s)\n");
+                                        printUtil.printStringLetraPorLetra(5, "\nInimigo(s)\n");
                                         
                                         k = 1;
                                         for (i = 0; i < (areaHabilidade > batalha.getMonstros().size() ? batalha.getMonstros().size() : areaHabilidade); i++) {
                                             for (Monstro m: monstrosAux) {
-                                                printUtil.printStringLetraPorLetra("[" + k + "]" + m.getNome() + "\n");
+                                                printUtil.printStringLetraPorLetra(5, "[" + k + "]" + m.getNome() + "\n");
                                                 k++;
                                             }
-                                            printUtil.printStringLetraPorLetra("\nEscolha um inimigo: ");
+                                            printUtil.printStringLetraPorLetra(5, "\nEscolha um inimigo: ");
                                             int escolhaJogador = scannerUtil.getInt(scanner, 1, monstrosAux.size());
                                             monstrosEscolhidos.add(monstrosAux.get(escolhaJogador - 1));
                                             monstrosAux.remove(escolhaJogador - 1);
@@ -505,10 +536,12 @@ public class Main {
                                         }
                                 
                                         for (Monstro m: monstrosEscolhidos) {
-                                            printUtil.printStringLetraPorLetra(jogador.aplicarDanoHabilidade(m, habilidadeEscolhida) + "\n");
+                                            printUtil.printStringLetraPorLetra(5, jogador.aplicarDanoHabilidade(m, habilidadeEscolhida) + "\n");
 
                                             if (!m.estaVivo()) {
                                                 monstrosDerrotados.add(m);
+                                                batalha.getMonstros().remove(m);
+                                                batalha.getIniciativa().remove(m);
                                             }
                                         }
                                     break;
@@ -519,11 +552,11 @@ public class Main {
                                 int escolhaJogador = 0;
                                 List<Item> itens = jogador.getInventario().getItens();
                                 
-                                printUtil.printStringLetraPorLetra("Escolha um item\n");
+                                printUtil.printStringLetraPorLetra(5, "Escolha um item\n");
 
                                 i = 1;
                                 for (Item item: itens) {
-                                    printUtil.printStringLetraPorLetra("[" + i + "]" + item.getNome());
+                                    printUtil.printStringLetraPorLetra(5, "[" + i + "]" + item.getNome() + "\n");
                                     i++;
                                 }
 
@@ -531,11 +564,11 @@ public class Main {
 
                                 i = 1;
                                 for (Jogador j: jogadores) {
-                                    printUtil.printStringLetraPorLetra("[" + i + "] " + j.getNome() + "\n");
+                                    printUtil.printStringLetraPorLetra(5, "[" + i + "] " + j.getNome() + "\n");
                                     i++;
                                 }
         
-                                printUtil.printStringLetraPorLetra("Escolha um jogador para usar seu item:\n");
+                                printUtil.printStringLetraPorLetra(5, "Escolha um jogador para usar seu item:\n");
                                 escolhaJogador = scannerUtil.getInt(scanner, 1, jogadores.size());
 
                                 jogador.usarItem(escolhaItem - 1, jogadores.get(escolhaJogador - 1));
@@ -544,8 +577,72 @@ public class Main {
                                 break;
                         }
 
-                        printUtil.printStringLetraPorLetra("Aperte enter para continuar...");
+                        printUtil.printStringLetraPorLetra(5, "Aperte enter para continuar...");
                         scanner.nextLine();
+                        scanner.nextLine();
+                    } else if (!monstrosDerrotados.contains(personagem)) {        // Personagem é Monstro
+                        Monstro monstro = (Monstro) personagem;
+
+                        printUtil.clearTerminal();
+                        printUtil.printStringLetraPorLetra(5, "Turno de inimigo: " + monstro.getNome() + "...\n" );
+                        printUtil.textDelay(2000);
+
+                        Random random = new Random();
+                        int chance = random.nextInt(100);
+                         
+                        if (chance < 70 || monstro.getHabilidades().stream().allMatch(h -> h.getTipo() != TipoAtributo.CURA)) {      // Habilidade de DANO
+                            List<Habilidade> habilidadesDano = monstro.getHabilidades().stream().filter(h -> h.getTipo() != TipoAtributo.CURA).toList();
+                            int qtdHabilidades = habilidadesDano.size();
+                            chance = random.nextInt(qtdHabilidades);
+                            
+                            Habilidade habilidade = habilidadesDano.get(chance);
+
+                            List<Jogador> jogadoresEscolhidos = new ArrayList<>();
+                            Jogador jogadorEscolhido = null;
+
+                            for (int c = 1; c <= habilidade.getArea() && jogadoresEscolhidos.size() < jogadores.size(); c++) {
+
+                                do {
+                                    chance = random.nextInt(jogadores.size());
+
+                                    jogadorEscolhido = jogadores.get(chance);
+                                } while (jogadoresEscolhidos.contains(jogadorEscolhido));
+
+                                jogadoresEscolhidos.add(jogadorEscolhido);
+
+                                printUtil.printStringLetraPorLetra(5, monstro.aplicarDanoHabilidade(jogadorEscolhido, habilidade) + "\n");
+
+                                if (!jogadorEscolhido.estaVivo()) {
+                                    jogadoresDerrotados.add(jogadorEscolhido);
+                                    batalha.getIniciativa().remove(jogadorEscolhido);
+                                }
+                            }
+
+                        } else {        // Habilidade de CURA
+                            List<Habilidade> habilidadesCura = monstro.getHabilidades().stream().filter(h -> h.getTipo() == TipoAtributo.CURA).toList();
+                            int qtdHabilidades = habilidadesCura.size();
+                            chance = random.nextInt(qtdHabilidades);
+                            
+                            Habilidade habilidade = habilidadesCura.get(chance);
+                            
+                            List<Monstro> monstrosEscolhidos = new ArrayList<>();
+                            Monstro monstroEscolhido = null;
+
+                            for (int c = 1; c <= habilidade.getArea() && monstrosEscolhidos.size() < batalha.getMonstros().size(); c++) {
+
+                                do {
+                                    chance = random.nextInt(batalha.getMonstros().size());
+
+                                    monstroEscolhido = batalha.getMonstros().get(chance);
+                                } while (monstrosEscolhidos.contains(monstroEscolhido));
+
+                                monstrosEscolhidos.add(monstroEscolhido);
+
+                                printUtil.printStringLetraPorLetra(5, monstro.aplicarCuraHabilidade(monstroEscolhido, habilidade) + "\n");
+                            }
+                        }
+
+                        printUtil.printStringLetraPorLetra(5, "Aperte enter para continuar...");
                         scanner.nextLine();
                     }
 
@@ -555,14 +652,14 @@ public class Main {
     }
 
     private static void printarJogadores(List<Jogador> jogadores) {
-        printUtil.printStringLetraPorLetraSom("Grupo da aventura:\n\n");
+        printUtil.printStringLetraPorLetraSom(15, "Grupo da aventura:\n\n");
 
         for (Jogador jogador: jogadores) {
-            printUtil.printStringLetraPorLetraSom(jogador.toString() + "\n\n");
+            printUtil.printStringLetraPorLetraSom(15, jogador.toString() + "\n\n");
         }
     }
 
-    private static void printarMonstros(List<Monstro> monstros) {
+    private static void printarMonstros(List<Monstro> monstros, Boolean letraPorLetra) {
         Collections.sort(monstros, new Comparator<Monstro>() {
             public int compare(Monstro m1, Monstro m2) {
                 Integer m1LinesCount = m1.getAscii().split("\n").length;
@@ -577,127 +674,15 @@ public class Main {
 
         Collections.shuffle(monstros);
 
-        int i = 0, j = 0;
-
-        /*List<List<String>> nomes = new ArrayList<List<String>>();
-        List<List<String>> descricoes = new ArrayList<List<String>>();
-        List<List<String>> classes = new ArrayList<List<String>>();
-
-        List<List<String>> nomesOrdenados = new ArrayList<List<String>>();
-        List<List<String>> descricoesOrdenadas = new ArrayList<List<String>>();
-        List<List<String>> classesOrdenadas = new ArrayList<List<String>>();
-        
-        for (Monstro monstro: monstros) {
-            String nome = monstro.getNome().replaceAll("(.{49})", "$1\n");
-            if (nome.length() > (50 - 6))
-                nome = nome.substring(0,11) + "\n" + nome.substring(11, nome.length());
-            
-            nomes.add(Arrays.asList(nome.split("\n")));
-        }
-        System.out.println("");
-        for (Monstro monstro: monstros) {
-            String descricao = monstro.getDescricao().replaceAll("(.{49})", "$1\n");
-            if (descricao.length() > (50 - 11))
-                descricao = descricao.substring(0,11) + "\n" + descricao.substring(11, descricao.length());
-                
-            descricoes.add(Arrays.asList(descricao.split("\n")));
-        }
-        System.out.println("");
-        for (Monstro monstro: monstros) {
-            String classe = monstro.getClasse().replaceAll("(.{49})", "$1\n");
-            if (classe.length() > (50 - 8))
-                classe = classe.substring(0,11) + "\n" + classe.substring(11, classe.length());
-
-            classes.add(Arrays.asList(classe.split("\n")));
-        }
-
-        nomesOrdenados.add(nomes.get(0));
-        for (i = 1; i < nomes.size(); i++) {
-            for (j = 0; j <= nomesOrdenados.size(); j++) {
-                if (j == nomesOrdenados.size()) {
-                    nomesOrdenados.add(nomes.get(i));
-                    break;
-                } else if (nomes.get(i).size() > nomesOrdenados.get(j).size()) {
-                    if (j + 1 >= nomesOrdenados.size()) {
-                        nomesOrdenados.add(nomes.get(i));
-                        break;
-                    }
-                    nomesOrdenados.add(j + 1, nomes.get(i));
-                    break;
-                }
-            }
-        }
-        descricoesOrdenadas.add(descricoes.get(0));
-        for (i = 1; i < descricoes.size(); i++) {
-            for (j = 0; j <= descricoesOrdenadas.size(); j++) {
-                if (j == descricoesOrdenadas.size()) {
-                    descricoesOrdenadas.add(descricoes.get(i));
-                    break;
-                } else if (descricoes.get(i).size() > descricoesOrdenadas.get(j).size()) {
-                    if (j + 1 >= descricoesOrdenadas.size()) {
-                        descricoesOrdenadas.add(nomes.get(i));
-                        break;
-                    }
-                    descricoesOrdenadas.add(j + 1, descricoes.get(i));
-                    break;
-                }
-            }
-        }
-        classesOrdenadas.add(classes.get(0));
-        for (i = 1; i < classes.size(); i++) {
-            for (j = 0; j <= classesOrdenadas.size(); j++) {
-                if (j == classesOrdenadas.size()) {
-                    classesOrdenadas.add(classes.get(i));
-                    break;
-                } else if (classes.get(i).size() > classesOrdenadas.get(j).size()) {
-                    if (j + 1 >= classesOrdenadas.size()) {
-                        classesOrdenadas.add(nomes.get(i));
-                        break;
-                    }
-                    classesOrdenadas.add(j + 1, classes.get(i));
-                    break;
-                }
-            }
-        }
-
-        for (List<String> nome: nomesOrdenados) {
-            nome.add(0, "Nome:");
-        }
-        for (List<String> descricao: descricoesOrdenadas) {
-            descricao.add(0, "Descrição:");
-        }
-        for (List<String> classe: classesOrdenadas) {
-            classe.add(0, "Classe:");
-        }
-
-        for (i = 0; i < nomesOrdenados.get(0).size(); i++) {
-            for (List<String> nome: nomesOrdenados) {
-                if (i < nome.size());
-                    System.out.print(String.format("%-50s", nome.get(i)));
-            }
-            System.out.println("");
-        }
-        for (i = 0; i < descricoesOrdenadas.get(0).size(); i++) {
-            for (List<String> descricao: descricoesOrdenadas) {
-                if (i < descricao.size());
-                    System.out.print(String.format("%-50s", descricao.get(i)));
-            }
-            System.out.println("");
-        }
-        for (i = 0; i < classesOrdenadas.get(0).size(); i++) {
-            for (List<String> classe: classesOrdenadas) {
-                if (i < classe.size());
-                    System.out.print(String.format("%-50s", classe.get(i)));
-            }
-            System.out.println("");
-        }
-
-        System.out.println("");*/
+        int i = 0;
 
         for (i = 0; i < maiorAsciiMonstro; i++) {
             for (Monstro monstro: monstros) {
                 List<String> qtdAscii = Arrays.asList(monstro.getAscii().split("\n"));
-                System.out.print((qtdAscii.size() > i ? String.format("%-50s", qtdAscii.get(i)) : String.format("%-50s", "")));
+                if (letraPorLetra)
+                    printUtil.printStringLetraPorLetra(3, (qtdAscii.size() > i ? String.format("%-50s", qtdAscii.get(i)) : String.format("%-50s", "")));
+                else
+                    System.out.print((qtdAscii.size() > i ? String.format("%-50s", qtdAscii.get(i)) : String.format("%-50s", "")));
             }
             System.out.println("");
         }

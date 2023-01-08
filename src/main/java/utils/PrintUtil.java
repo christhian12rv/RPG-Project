@@ -2,35 +2,23 @@ package utils;
 
 public class PrintUtil {
 
-		public void printStringLetraPorLetraSom(String str) {
+		public void printStringLetraPorLetraSom(int delay, String str) {
 			for(int i = 0; i<=str.length() - 1; i++) {
 					java.awt.Toolkit.getDefaultToolkit().beep();
 					System.out.print(str.charAt(i));
 					try {
-							Thread.sleep(15); 
+							Thread.sleep(delay); 
 					} catch (Exception e) {
 							e.printStackTrace();
 					}
 			}
 		}
 
-		public void printStringLetraPorLetra(String str) {
+		public void printStringLetraPorLetra(int delay, String str) {
 			for(int i = 0; i<=str.length() - 1; i++) {
 					System.out.print(str.charAt(i));
 					try {
-							Thread.sleep(5); 
-					} catch (Exception e) {
-							e.printStackTrace();
-					}
-			}
-		}
-
-		public void printStringLetraPorLetraLentoSom(String str) {
-			for(int i = 0; i<=str.length() - 1; i++) {
-					java.awt.Toolkit.getDefaultToolkit().beep();
-					System.out.print(str.charAt(i));
-					try {
-							Thread.sleep(200); 
+							Thread.sleep(delay); 
 					} catch (Exception e) {
 							e.printStackTrace();
 					}

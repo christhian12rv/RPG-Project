@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.google.gson.Gson;
+
 import entities.*;
 import repositories.BatalhaRepository;
 import repositories.MonstroRepository;
@@ -22,7 +24,8 @@ public class BatalhaUtil {
         List<Integer> valoresIniciativa = new ArrayList<>();
 
         for (i = 0; i < qtdJogadores; i++) {
-            monstros.add(monstroRepository.findOneRandomByDificuldadeAndTipo(miniHistoria.getDificuldade(), historia.getTipoMonstros()));   
+            Monstro monstro = new Monstro(monstroRepository.findOneRandomByDificuldadeAndTipo(miniHistoria.getDificuldade(), historia.getTipoMonstros()));
+            monstros.add(monstro);   
         }
 
         personagens.addAll(monstros);

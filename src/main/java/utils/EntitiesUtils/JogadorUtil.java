@@ -12,6 +12,7 @@ import services.ArmaService;
 import services.InventarioService;
 import utils.JPAUtil;
 import utils.PrintUtil;
+import utils.ScannerUtil;
 
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
@@ -24,18 +25,14 @@ public class JogadorUtil {
     private ArmaService armaService;
     private JogadorRepository jogadorRepository;
     private PrintUtil printUtil;
+    private ScannerUtil scannerUtil;
 
     public List<Jogador> criarJogadores() {
         Scanner scanner = new Scanner(System.in);
         int qtdJogadores = 0;
 
         System.out.print("Digite a quantidade de jogadores (entre 1 e 4): ");
-        qtdJogadores = scanner.nextInt();
-
-        while (qtdJogadores <= 0 || qtdJogadores > 4) {
-            System.out.print("Quantidade inválida (entre 1 e 4). Digite novamente: ");
-            qtdJogadores = scanner.nextInt();
-        }
+        qtdJogadores = scannerUtil.getInt(scanner, 1, 4);
 
         List<Jogador> jogadores = new ArrayList<>();
         int i = 0;
@@ -108,5 +105,13 @@ public class JogadorUtil {
 
     public void setPrintUtil(PrintUtil printUtil) {
         this.printUtil = printUtil;
+    }
+
+    public ScannerUtil getScannerUtil() {
+        return scannerUtil;
+    }
+
+    public void setScannerUtil(ScannerUtil scannerUtil) {
+        this.scannerUtil = scannerUtil;
     }
 }

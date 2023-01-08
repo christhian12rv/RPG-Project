@@ -71,7 +71,3 @@ Criar nova partida
 				            - O custo é 0
 				            - Curar X Monstros de acordo com a "area" (Aleatório)
 				            - O "dano" é fixo
-
-
-ERROS:
-	- Não está removendo o monstro da Batalha - Monstros nem Iniciativa
