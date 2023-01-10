@@ -142,12 +142,12 @@ public class Arma {
 	@Override
 	public String toString() {
 		String valor = "Nome: " + nome +
-			"Descrição: " + descricao +
-			"Raridade: " + raridade.getValor() +
-			"Quantidade da dados: " + qtdDados +
-			"Tipo de dado: " + tipoDado +
-			"Adicional: " + adicional +
-			"Tipo de atributo: " + tipoAtributo.getValor();
+			"\nDescrição: " + descricao +
+			"\nRaridade: " + raridade.getValor() +
+			"\nQuantidade da dados: " + qtdDados +
+			"\nTipo de dado: " + tipoDado +
+			"\nAdicional: " + adicional +
+			"\nTipo de atributo: " + tipoAtributo.getValor();
 
 		return valor;
 	}

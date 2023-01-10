@@ -26,7 +26,7 @@ public class MiniHistoria {
 	@Expose
 	private LocalDateTime updatedAt;
 
-	@Column(name = "descricao")
+	@Column(name = "descricao", length = 1500)
 	private String descricao;
 
 	@Enumerated(EnumType.STRING)
@@ -36,8 +36,11 @@ public class MiniHistoria {
 	@OneToOne
 	private MiniHistoria miniHistoriaEscolhaOposta;
 
-	@Column(name = "resultadoEscolha")
+	@Column(name = "resultadoEscolha", length = 1500)
 	private String resultadoEscolha;
+
+	@Column(name = "textoEntreEventos", length = 1500)
+	private String textoEntreEventos;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "tipoResultado")
@@ -113,6 +116,14 @@ public class MiniHistoria {
 
 	public void setResultadoEscolha(String resultadoEscolha) {
 		this.resultadoEscolha = resultadoEscolha;
+	}
+
+	public String getTextoEntreEventos() {
+		return textoEntreEventos;
+	}
+
+	public void setTextoEntreEventos(String textoEntreEventos) {
+		this.textoEntreEventos = textoEntreEventos;
 	}
 
 	public TipoResultadoMiniHistoria getTipoResultado() {

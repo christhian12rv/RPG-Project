@@ -30,10 +30,10 @@ public class Historia {
 	@Column(name = "tipoMonstros")
 	private TipoMonstro tipoMonstros;
 
-	@Column(name = "descricao", length = 1300)
+	@Column(name = "descricao", length = 1500)
 	private String descricao;
 
-	@Column(name = "previaDescricao")
+	@Column(name = "previaDescricao", length = 1500)
 	private String previaDescricao;
 
 	@ElementCollection

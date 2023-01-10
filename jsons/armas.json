@@ -3,27 +3,45 @@
         "nome": "Machado de pedra",
         "descricao": "Um simples machado feito de pedra, parece ser antigo.",
         "raridade": "COMUM",
-        "qtdDados": 2,
-        "tipoDado": 6,
-        "adicional": 1,
+        "qtdDados": 1,
+        "tipoDado": 8,
+        "adicional": 0,
         "tipoAtributo": "FORCA"
     },
     {
         "nome": "Espada longa",
         "descricao": "Uma grande espada que reflete a luz do sol em sua lamina, afiada e bem atraente.",
         "raridade": "COMUM",
-        "qtdDados": 2,
-        "tipoDado": 6,
-        "adicional": 1,
+        "qtdDados": 1,
+        "tipoDado": 8,
+        "adicional": 0,
         "tipoAtributo": "FORCA"
     },
     {
         "nome": "Grimório Comum",
         "descricao": "Um livro que guarda o conhecimento superficial do reino.",
         "raridade": "COMUM",
-        "qtdDados": 2,
+        "qtdDados": 1,
         "tipoDado": 6,
         "adicional": 1,
         "tipoAtributo": "SABEDORIA"
+    },
+    {
+        "nome": "Adaga necrótica",
+        "descricao": "Um punhal que emana energia maligna, talvez o chamado não é tão ruim assim.",
+        "raridade": "RARO",
+        "qtdDados": 3,
+        "tipoDado": 4,
+        "adicional": 3,
+        "tipoAtributo": "DESTREZA"
+    },
+    {
+        "nome": "Chicote de Adamantino",
+        "descricao": "Um chicote tão pesado que qualquer um que for atingido por ele receberá uma cicatriz eterna.",
+        "raridade": "RARO",
+        "qtdDados": 2,
+        "tipoDado": 6,
+        "adicional": 3,
+        "tipoAtributo": "FORCA"
     }
 ]

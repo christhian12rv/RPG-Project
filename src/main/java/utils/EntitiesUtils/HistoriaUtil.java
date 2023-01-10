@@ -84,12 +84,14 @@ public class HistoriaUtil implements JsonUtil {
                         miniHistoriaEscolhaOposta.setDificuldade(DificuldadeMonstro.valueOf(jsonObjectMiniHistoriaEscolhaOposta.get("dificuldade").getAsString()));
                         miniHistoriaEscolhaOposta.setMiniHistoriaEscolhaOposta(null);
                         miniHistoriaEscolhaOposta.setResultadoEscolha(jsonObjectMiniHistoriaEscolhaOposta.get("resultadoEscolha").getAsString());
+                        miniHistoriaEscolhaOposta.setTextoEntreEventos(jsonObjectMiniHistoria.get("textoEntreEventos").getAsString());
                         miniHistoriaEscolhaOposta.setTipoResultado(TipoResultadoMiniHistoria.valueOf(jsonObjectMiniHistoriaEscolhaOposta.get("tipoResultado").getAsString()));
                         miniHistoriaEscolhaOposta.setDanoCura(jsonObjectMiniHistoriaEscolhaOposta.get("danoCura").getAsInt());
                     }
 
                     miniHistoria.setMiniHistoriaEscolhaOposta(miniHistoriaEscolhaOposta);
                     miniHistoria.setResultadoEscolha(jsonObjectMiniHistoria.get("resultadoEscolha").getAsString());
+                    miniHistoria.setTextoEntreEventos(jsonObjectMiniHistoria.get("textoEntreEventos").getAsString());
                     miniHistoria.setTipoResultado(TipoResultadoMiniHistoria.valueOf(jsonObjectMiniHistoria.get("tipoResultado").getAsString()));
                     miniHistoria.setDanoCura(jsonObjectMiniHistoria.get("danoCura").getAsInt());
                     

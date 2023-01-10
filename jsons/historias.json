@@ -1,37 +1,75 @@
 [
 	{
 		"tipoMonstro": "MORTO_VIVO",
-		"descricao": "HISTORINHA NOSSAAAA",
-		"previaDescricao": "The beautiful Baron Von Koëldwethout",
+		"descricao": "Em 2017, na cidade de Londres, coisas estranhas começaram a acontecer na região West End. Todas as comunicações foram cortadas e estranhamente pessoas começaram a desaparecer. Uma equipe militar foi enviada ao local para investigar o acontecimento, no entanto, nunca mais fizeram contato.\nUm grupo de amigos (seu grupo) decidiram sozinhos adentrar o mistério e tentar descobrir o que estaria acontecendo. Eles caminharam até o final da rua Baker e, ao chegar, notaram uma estranha esfera flutuando coberta com várias sombras negras. Então, um integrante do grupo, com coragem, pôs sua mão no estranho objeto...\nUm integrante do grupo, ao encostar no objeto, começa a desaparecer vagarosamente até estar completamente invisível diante das sombras do estranho objeto. Então, o grupo ao perceber tal comportamento, decidem também colocar a mão no estranho objeto...\nEntão depois de segundos, percebem que foram teleportados para uma estranha e rústica cidade, que parece ser o mesmo local de antes, porém no passado.\nTodo o grupo começa a perceber que estão com uma estranha sensação de poder. Logo em seguida, notam que estão equipados com armas, armaduras e sentem um fluxo de magia correndo pelas suas veias.",
+		"previaDescricao": "Anomalia Temporal",
 		"miniHistorias": [
 			{
-				"descricao": "você vê um pergaminho flutuando entre duas rochas.\n[1] Você ignora e continua sua viagem",
+				"descricao": "seu grupo decide continuar caminhando e você percebe que existem 2 caminhos distintos logo em sua frente. Você tem duas opções:\n[1] Seguir pelo beco",
 				"dificuldade": "INICIANTE",
 				"miniHistoriaEscolhaOposta": {
-					"descricao": "[2] Você decide olhar",
+					"descricao": "[2] Seguir pela rua principal",
 					"dificuldade": "INICIANTE",
 					"miniHistoriaEscolhaOposta": null,
-					"resultadoEscolha": "Você ganhou uma habilidade",
+					"resultadoEscolha": "Ao seguir pela rua principal, você e seu grupo percebem que a cidade está abandonada, as casas estão com as portas e janelas entreabertas e as poucas lojas da rua foram vandalizadas. Barulhos de grunhidos agudos e o som de pegadas pesadas de algo colossal andando ao longe infectam o ambiente com um ar sombrio. Uma loja específica chama atenção, ela está com a vidraça quebrada, como se quem a tivesse quebrado estava saindo com pressa, do lado dos estilhaços de vidro, está uma nota dizendo o seguinte: \"Eu vou a uma loja na rua principal para pegar suprimentos, diga a todos que os refugiados do bairro de West End estão localizados na Igreja no centro dessa cidade, tenham cuidado com as criaturas que perambulam pelas ruas da cidade, elas não parecem ser desse mundo... e não  têm misericórdia.\" Ao lado da nota está um pergaminho escrito com tinta dourada imbuída de magia, você encontra um Pergaminho!",
+					"textoEntreEventos": "Vocês decidem seguir para a igreja e investigar o estranho fenômeno que assombra essa pequena cidade. Vocês avistam a igreja no horizonte e ao se aproximarem dela seu grupo percebe uma pequena horda de monstros tentando invadí-la, vocês decidem pará-los.",
 					"tipoResultado": "HABILIDADE",
 					"danoCura": 0
 				},
-				"resultadoEscolha": "Você segue sua aventura normalmente.",
+				"resultadoEscolha": "Ao seguir pelo beco, voce e seu grupo conseguem ouvir sons estranhos ao longe, quase como se fosse um bater de asas e sons de marteladas. Vocês logo se deparam com um misterioso homem com capuz preto e cabelos grisalhos, logo ele diz: \"Finalmente encontrei alguém que não fosse aquelas... coisas. Estou muito agradecido de estarem aqui\", o velho os informam que a cidade foi tomada por criaturas que ele nunca tinha visto antes e ele é uma das pessoas desaparecidas do bairro West End, ele termina dizendo: \"Fiquei sabendo que algumas pessoas usaram a igreja no centro da cidade como refúgio, eu logo estarei indo para lá, peguem isso, será de grande ajuda\", o velho te dá um saco com algo dentro, você recebe uma Poção Híbrida!",
+				"textoEntreEventos": "Vocês decidem seguir para a igreja e investigar o estranho fenômeno que assombra essa pequena cidade. Vocês avistam a igreja no horizonte e ao se aproximarem dela seu grupo percebe uma pequena horda de monstros tentando invadí-la, vocês decidem pará-los.",
+				"tipoResultado": "ITEM_HIBRIDA",
+				"danoCura": 20
+			},
+			{
+				"descricao": "após derrotar os monstros e adentrar a igreja, você e seu grupo se deparam com, aproximadamente, uma dúzia de pessoas que estão se refugiando ali dentro. Dentre elas, está a líder da equipe militar responsável por averiguar a região de West End, que diz: \"Nossa equipe está vasculhando o cemitério e preciso verificar como eles estão. Existem pessoas corajosas o suficiente aqui para me acompanhar?\". Com isso, seu grupo é um dos voluntariados e vocês partem para o destino...\nNo meio do trajeto, a líder do esquadrão avisa: \"Vamos passar pelo esgoto em breve, tomem cuidado\". No entanto, o caminho está obstruído por destroços de um edifício próximo. Você tem duas escolhas:\n[1] Escalar os destroços e continuar pelo trajeto inicial",
+				"dificuldade": "FACIL",
+				"miniHistoriaEscolhaOposta": {
+					"descricao": "[2] Fazer um desvio passando por dentro de uma pequena casa que se encontra ao lado dos destroços",
+					"dificuldade": "FACIL",
+					"miniHistoriaEscolhaOposta": null,
+					"resultadoEscolha": "Vocês decidem fazer o desvio por dentro dessa pequena casa que a primeira vista parece uma residência bem simples, mas logo notam que quem morava ali era um amante de livros por possuir estantes e estandes repletas dos mais variados tipos de livros. Um em escpecífico chama sua atenção, é um livro emanando um leve brilho azul. Você encontra uma página de Pergaminho dentro do livro!",
+					"textoEntreEventos": "Após terminarem de averiguar a casa, vocês saem pelas portas do fundo em direção a praça onde está localizada a entrada dos esgotos. Lá dentro, vocês continuam seguindo a líder por um trajeto específico que apenas ela conhece, mesmo os esgotos possuindo um forte cheiro pútrido e sendo mais húmidos, lar de várias pragas como ratos, eles continuam sendo mais seguros que as ruas na superficie. Contudo, vocês se deparam com um pequeno grupo de inimigos vigiando as saídas dos esgotos, é preciso derrotá-los para continuar.",
+					"tipoResultado": "HABILIDADE",
+					"danoCura": 0
+				},
+				"resultadoEscolha": "O grupo de vocês escalam os destroços e ao chegar ao topo conseguem visualizar com mais clareza uma pequena praça no horizonte que de acordo com a líder se localiza próxima a entrada dos esgotos.",
+				"textoEntreEventos": "Ao descer dos destroços a praça que parecia estar longe está logo adiante. Ao chegar na entrada dos esgotos perto praça, vocês continuam seguindo a líder por um trajeto específico que apenas ela conhece, mesmo os esgotos possuindo um forte cheiro pútrido e sendo mais húmidos, lar de várias pragas como ratos, eles continuam sendo mais seguros que as ruas na superficie. Contudo, vocês se deparam com um pequeno grupo de inimigos vigiando as saídas dos esgotos, é preciso derrotá-los para continuar.",
 				"tipoResultado": "NENHUM",
 				"danoCura": 0
 			},
 			{
-				"descricao": "Taking off his cap, he placed it over the muzzle of his rifle. Then he pushed the rifle slowly upward over the parapet, until the cap was visible from the opposite side of the street.",
-				"dificuldade": "INICIANTE",
+				"descricao": "após você e seu grupo derrotar os inimigos, vocês saem dos esgotos e partem em direção ao cemitério que está diante de seus olhos. Um grande terreno cheio de túmulos com uma enigmática construção central que dá calafrios em todos os presentes, porém, de acordo com a líder do esquadrão, é lá que ambos os soldados e o resto das pessoas desaparecidas se encontram. Só resta adentrar esse lugar sombrio...\nOs túmulos revirados no terreno do cemitério dão um ar de preocupação para o grupo, ao adentrarem a construção principal, você se depara com uma bifurcação dentro das catacumbas, uma das passagens possui entalhes antigos no molde da porta enquanto que a outra dá para um corredor com uma luz laranja crepitante no fim, seguidos de barulhos de choros. Para qual lado você escolhe seguir:\n[1] Passar pela porta com os entalhes antigos",
+				"dificuldade": "MEDIO",
 				"miniHistoriaEscolhaOposta": {
-					"descricao": "The honest man could contain himself no longer. He caught his daughter and her child in his arms.",
-					"dificuldade": "INICIANTE",
+					"descricao": "[2] Seguir em direção ao corredor de onde os choros estão vindo",
+					"dificuldade": "MEDIO",
 					"miniHistoriaEscolhaOposta": null,
-					"resultadoEscolha": "Você ganhou uma Habilidade",
-					"tipoResultado": "HABILIDADE",
+					"resultadoEscolha": "Você decide que seguir em direção aos choros lhes levariam diretamente para onde os refugiados estão aprisionados.",
+					"textoEntreEventos": "Após caminhar por um corredor velho e abandonado, vocês encontram várias pessoas aprisionadas em uma das catacumbas, pouco tempo depois vocês libertam os prisioneiros e os mandam para a igreja passando pelo caminho dos esgotos que agora está seguro. Logo depois de confirmar que todos foram libertos, vocês se tocam que a porta principal que foi fechada anteriormente estava se abrindo, rapidamente todos se esgueiraram para um esconderijo e começaram a ouvir uma conversa dos cultistas que ali adentravam, algo sobre a finalização do ritual na Casa de Ópera da cidade, não demorou muito até que eles notassem suas presenças e partissem para o ataque.",
+					"tipoResultado": "NENHUM",
 					"danoCura": 0
 				},
-				"resultadoEscolha": "Você achou uma poção de vida",
-				"tipoResultado": "ITEM_VIDA",
+				"resultadoEscolha": "Ao seguir pela passagem com os entalhes antigos, você e seu grupo se depara com um grande túmulo de um herói antigo com uma tabuleta de pedra contando a história de uma pessoa que há muito tempo salvou o povo dessa cidade de uma catástrofe iminente. Dentro desse túmulo semi aberto você encontra ao lado do herói caído seus pertences:",
+				"textoEntreEventos": "Após vasculharem o túmulo do herói, vocês decidem investigar os choros advindos do corredor. Logo de chegar no final do corredor, vocês encontram várias pessoas aprisionadas em uma das catacumbas, pouco tempo depois vocês libertam os prisioneiros e os mandam para a igreja passando pelo caminho dos esgotos que agora está seguro. Logo depois de confirmar que todos foram libertos, vocês se tocam que a porta principal que foi fechada anteriormente estava se abrindo, rapidamente todos se esgueiraram para um esconderijo e começaram a ouvir uma conversa dos cultistas que ali adentravam, algo sobre a finalização do ritual na Casa de Ópera da cidade, não demorou muito até que eles notassem suas presenças e partissem para o ataque.",
+				"tipoResultado": "ARMA",
+				"danoCura": 0
+			},
+			{
+				"descricao": "derrotando os cultistas você e seu grupo decide partir para a Casa de Ópera onde está sendo feito o ritual que provavelmente é a causa dos acontecimentos de West End. Esse distrito da cidade tem um silêncio tão esmagador que chega ser ensurdecedor, ele distoa muito do resto da cidade tomada pelas criaturas, é como se algo não estivesse certo. É nesse momento olhando ao redor que vocês percebem que a líder do esquadrão não está mais entre vocês, talvez ela tenha se perdido ou se juntado aos prisioneiros para levá-los a igreja. No caminho vocês se deparam com uma ponte bastante conhecida e famosa da região que atravessa um estreito mas longo riacho de cor amarronzada, contudo, ela se encontra um pouco desgastada devido a sua idade e os acontecimentos recentes. Para prosseguir é necessário passar para o outro lado de algum modo, o que você deseja fazer:\n[1] Atravessar a ponte",
+				"dificuldade": "DIFICIL",
+				"miniHistoriaEscolhaOposta": {
+					"descricao": "[2] Descer pelo riacho",
+					"dificuldade": "DIFICIL",
+					"miniHistoriaEscolhaOposta": null,
+					"resultadoEscolha": "Vocês opitam por descer pelo riacho, tendo em vista que será um caminho mais seguro do que atravessar pela ponte antiga. Ao descer pelo riacho, em baixo da ponte, na escura sombra que a ponte cria ao bloquear o sol se encontra mais criaturas bizarras, vocês estão cara a cara com novas aberrações, novos inimigos frente:",
+					"textoEntreEventos": "",
+					"tipoResultado": "NENHUM",
+					"danoCura": 0
+				},
+				"resultadoEscolha": "Você decide que seguir pela ponte é mais rápido do que descer pelo riacho, e urgência para acabar com o ritual é fundamental. Com esse pensamento você dá os primeiros passos para passar a ponte, um pouco antes da metade da ponte você sente tremores que permeiam todo seu alicerce e pouco tempo depois rachaduras começam a se espalhar por toda sua estrutura, com uma última tentativa de fugir do seu destino iminente, você dispara em corrida para trás onde seu grupo lhe está esperando, mas sem sorte você acaba caindo junto com o desmoronamento da ponte, você leva 10 de dano. Não só isso, várias criaturas que se escondiam do sol embaixo da ponte se irritam com sua chegada e partem para o ataque:",
+				"textoEntreEventos": "",
+				"tipoResultado": "DANO",
 				"danoCura": 10
 			}
 		]

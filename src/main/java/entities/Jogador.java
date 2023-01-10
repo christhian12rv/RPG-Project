@@ -66,7 +66,7 @@ public class Jogador extends Personagem {
                 cura = habilidade.getDanoCura();
                 break;
             case PORCENTAGEM:
-                cura = jogadorEscolhido.getVidaMaxima() * (habilidade.getDanoCura()/100);
+                cura = (int)(jogadorEscolhido.getVidaMaxima() * ((double)habilidade.getDanoCura()/100));
                 break;
             case INTERVALO:
                 Random random = new Random();
@@ -120,7 +120,7 @@ public class Jogador extends Personagem {
                     dano = habilidade.getDanoCura() + atributoTipoAtributoHabilidade;
                     break;
                 case PORCENTAGEM:
-                    dano = (monstroEscolhido.getVidaMaxima() * (habilidade.getDanoCura() / 100)) - monstroEscolhido.getDefesa();
+                    dano = (int)(monstroEscolhido.getVidaMaxima() * (((double)habilidade.getDanoCura() - monstroEscolhido.getDefesa()) / 100));;
                     break;
                 case INTERVALO:
                     Random random = new Random();
@@ -226,6 +226,24 @@ public class Jogador extends Personagem {
         inventario.getItens().remove(item);
 
         return menssagem;
+    }
+
+    public void regenerarVidaPosBatalha() {
+        int qtdRegeneracao = (int)(getVidaMaxima() * AtributosIniciais.REGENERACAO_POS_BATALHA);
+        if(getVida() + qtdRegeneracao >= getVidaMaxima()) {
+            setVida(getVidaMaxima());
+        } else {
+            setVida(getVida() + qtdRegeneracao);
+        }
+    }
+
+    public void regenerarManaPosBatalha() {
+        int qtdRegeneracao = (int)(getManaMaxima() * AtributosIniciais.REGENERACAO_POS_BATALHA);
+        if(getMana() + qtdRegeneracao >= getManaMaxima()) {
+            setMana(getManaMaxima());
+        } else {
+            setMana(getMana() + qtdRegeneracao);
+        }
     }
     
     public void regenerarMana(int mana) {

@@ -6,6 +6,8 @@ import utils.*;
 import utils.EntitiesUtils.*;
 
 import javax.persistence.EntityManager;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
@@ -22,10 +24,12 @@ import entities.MiniHistoria;
 import entities.Monstro;
 import entities.Partida;
 import entities.Personagem;
+import enums.DificuldadeMonstro;
 import enums.RaridadeArma;
 import enums.TipoAtributo;
 import repositories.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -64,9 +68,15 @@ public class Main {
     private static MonstroRepository monstroRepository;
     private static PartidaRepository partidaRepository;
 
+    private static Clip clip;
+    private static javax.sound.sampled.AudioInputStream audioIn;
+    private static File fClip;
+
     public static void main(String[] args) {
         // Logger.getRootLogger().setLevel(Level.OFF);
         // Logger.getLogger("org.hibernate").setLevel(Level.OFF);
+
+        playSound("Encounter_with_a_Wizard");
 
         scanner = new Scanner(System.in);
 
@@ -140,18 +150,35 @@ public class Main {
     private static void começarPartida(Partida partida) {
 
         Boolean opcaoInvalida = false;
+        Boolean modoDificil = false;
+        int escolha = 0;
 
         Historia historia = partida.getHistoria();
         List<Batalha> batalhas = partida.getBatalhas();
         List<Jogador> jogadores = partida.getJogadores();
 
+        System.out.print("Em qual modo você deseja jogar?\n[1] Normal\n[2] Difícil\n");
+        System.out.print("Digite sua escolha: ");
+        escolha = scannerUtil.getInt(scanner, 1, 2);
+        if (escolha == 1)
+            modoDificil = false;
+        else
+            modoDificil = true;
+
+        printUtil.clearTerminal();
+        
         printUtil.printStringLetraPorLetraSom(15, historia.getDescricao() + "\n\n");
-        printUtil.textDelay(1000);
+        printUtil.textDelay(2000);
 
         printarJogadores(jogadores);
 
         List<Jogador> jogadoresDerrotados = new ArrayList<>();
         for (int z = 0; z < batalhas.size(); z++) {
+
+            if (fClip.getName() != "Encounter_with_a_Wizard.wav") {
+                stopSound();
+                playSound("Encounter_with_a_Wizard");
+            }
 
             Batalha batalha = batalhas.get(z);
 
@@ -161,10 +188,12 @@ public class Main {
             }
 
             MiniHistoria miniHistoria = batalha.getMiniHistoria();
+            MiniHistoria miniHistoriaEscolhida = null;
 
             if (miniHistoria.getMiniHistoriaEscolhaOposta() != null) {
                 MiniHistoria miniHistoriaEscolhaOposta = miniHistoria.getMiniHistoriaEscolhaOposta();
-                int escolha = 0;
+                
+                escolha = 0;
                 int i = 0, j = 0;
                 Random rand = new Random();
                 
@@ -179,14 +208,12 @@ public class Main {
 
                 System.out.println("");
 
-                MiniHistoria miniHistoriaEscolhida = null;
-
                 if (escolha == 1)
                     miniHistoriaEscolhida = miniHistoria;
                 else
                     miniHistoriaEscolhida = miniHistoriaEscolhaOposta;
 
-                printUtil.printStringLetraPorLetraSom(15, miniHistoriaEscolhida.getResultadoEscolha() + "\n");
+                printUtil.printStringLetraPorLetraSom(15, miniHistoriaEscolhida.getResultadoEscolha() + "\n\n");
 
                 switch (miniHistoriaEscolhida.getTipoResultado()) {
                     case HABILIDADE:
@@ -233,7 +260,7 @@ public class Main {
 
                     case ITEM_MANA:
                         Item itemMana = itemService.criarItemMana(miniHistoriaEscolhida.getDanoCura());
-                        printUtil.printStringLetraPorLetra(5, "Você ganhou o seguinte item: \n");
+                        printUtil.printStringLetraPorLetra(5, "\nVocê ganhou o seguinte item: \n");
                         printUtil.printStringLetraPorLetra(5, itemMana.toString() + '\n');
 
                         i = 1;
@@ -256,7 +283,7 @@ public class Main {
                         break;
                     case ITEM_VIDA:
                         Item itemVida = itemService.criarItemVida(miniHistoriaEscolhida.getDanoCura());
-                        printUtil.printStringLetraPorLetra(5, "Você ganhou o seguinte item: \n");
+                        printUtil.printStringLetraPorLetra(5, "\nVocê ganhou o seguinte item: \n");
                         printUtil.printStringLetraPorLetra(5, itemVida.toString() + '\n');
 
                         i = 1;
@@ -280,7 +307,7 @@ public class Main {
                     
                     case ITEM_HIBRIDA:
                         Item itemHibrida = itemService.criarItemHibrida(miniHistoriaEscolhida.getDanoCura(), miniHistoriaEscolhida.getDanoCura());
-                        printUtil.printStringLetraPorLetra(5, "Você ganhou o seguinte item: \n");
+                        printUtil.printStringLetraPorLetra(5, "\nVocê ganhou o seguinte item: \n");
                         printUtil.printStringLetraPorLetra(5, itemHibrida.toString() + '\n');
 
                         i = 1;
@@ -356,9 +383,22 @@ public class Main {
             printUtil.printStringLetraPorLetraSom(15, "\nAperte enter para continuar...");
             scanner.nextLine();
             scanner.nextLine();
+
             printUtil.clearTerminal();
 
-            printUtil.printStringLetraPorLetraSom(15, "Apareceram os seguintes inimigos:\n");
+            printUtil.printStringLetraPorLetraSom(15, miniHistoriaEscolhida.getTextoEntreEventos() + "\n");
+
+            printUtil.textDelay(2000);
+
+            if (miniHistoria.getDificuldade() == DificuldadeMonstro.CHEFE) {
+                stopSound();
+                playSound("The_Final_Battle");
+            } else {
+                stopSound();
+                playSound("Entering_the_Castle");
+            }
+
+            printUtil.printStringLetraPorLetraSom(15, "\nApareceram os seguintes inimigos:\n");
             for (Monstro monstro: batalha.getMonstros()) {
                 printUtil.printStringLetraPorLetraSom(15, "\n");
                 printUtil.printStringLetraPorLetraSom(15, "Nome: " + monstro.getNome() + "\n");
@@ -392,7 +432,11 @@ public class Main {
                         break;
                     }
                     if (partida.getJogadores().stream().allMatch(j -> !j.estaVivo())) {
+                        //stopSound();
+                        //playSound("End_Game_Lose");
                         printUtil.printStringLetraPorLetraSom(200, "Todos os jogadores foram derrotados, a jornada do grupo chegou ao fim...\n\n");
+                        printUtil.printStringLetraPorLetraSom(200, "Aperte enter para finalizar...");
+                        scanner.nextLine();
                         return;
                     }
 
@@ -426,7 +470,7 @@ public class Main {
                         printUtil.printStringLetraPorLetra(5, "[2] Usar uma habilidade\n");
                         printUtil.printStringLetraPorLetra(5, "[3] Usar Item\n");
                         printUtil.printStringLetraPorLetra(5, "Escolha uma ação: ");
-                        int escolha = scannerUtil.getInt(scanner, 1, 3);
+                        escolha = scannerUtil.getInt(scanner, 1, 3);
 
                         List<Habilidade> habilidadesNaoLancaveis = new ArrayList<>();
                         do {
@@ -648,7 +692,19 @@ public class Main {
 
                 }
             }
+
+            if (!modoDificil) {
+                for (Jogador jogador : partida.getJogadores()) {
+                    jogador.regenerarManaPosBatalha();
+                    jogador.regenerarVidaPosBatalha();
+                }
+            }
         }
+
+        stopSound();
+        playSound("End_Game_Win");
+        printUtil.printStringLetraPorLetraSom(200, "Aperte enter para finalizar...");
+        scanner.nextLine();
     }
 
     private static void printarJogadores(List<Jogador> jogadores) {
@@ -685,6 +741,31 @@ public class Main {
                     System.out.print((qtdAscii.size() > i ? String.format("%-50s", qtdAscii.get(i)) : String.format("%-50s", "")));
             }
             System.out.println("");
+        }
+    }
+
+    public static synchronized void playSound(String sound) {
+
+        fClip = new File("musicas/" + sound + ".wav");
+        
+        try {
+            audioIn = AudioSystem.getAudioInputStream(fClip);  
+            clip = AudioSystem.getClip();
+            clip.open(audioIn);
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+            
+        }
+    }
+
+    public static synchronized void stopSound() {
+        try {
+            clip.stop();
+            audioIn.close();
+            clip.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

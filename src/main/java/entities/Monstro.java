@@ -77,7 +77,7 @@ public class Monstro extends Personagem implements Comparable<Monstro> {
                 cura = habilidade.getDanoCura();
                 break;
             case PORCENTAGEM:
-                cura = monstroEscolhido.getVidaMaxima() * (habilidade.getDanoCura()/100);
+                cura = (int) (monstroEscolhido.getVidaMaxima() * ((double)habilidade.getDanoCura()/100));
                 break;
             case INTERVALO:
                 Random random = new Random();

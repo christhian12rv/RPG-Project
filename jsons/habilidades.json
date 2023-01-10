@@ -80,7 +80,7 @@
         "nome": "Sussurro da Alma",
         "descricao": "",
         "tipo": "FORCA",
-        "danoCura": 1,
+        "danoCura": 30,
         "tipoDanoHabilidade": "PORCENTAGEM",
         "custo": 0,
         "area": 2,
@@ -106,6 +106,28 @@
         "tipoDanoHabilidade": "INTERVALO",
         "custo": 0,
         "area": 1,
+        "dropavel": false,
+        "preRequisitos": [0,0,0,0]
+    },
+    {
+        "nome": "Dedo Da Morte",
+        "descricao": "",
+        "tipo": "SABEDORIA",
+        "danoCura": 40,
+        "tipoDanoHabilidade": "PORCENTAGEM",
+        "custo": 0,
+        "area": 1,
+        "dropavel": false,
+        "preRequisitos": [0,0,0,0]
+    },
+    {
+        "nome": "Raio De Veneno",
+        "descricao": "",
+        "tipo": "SABEDORIA",
+        "danoCura": 5,
+        "tipoDanoHabilidade": "FIXO",
+        "custo": 0,
+        "area": 2,
         "dropavel": false,
         "preRequisitos": [0,0,0,0]
     },
