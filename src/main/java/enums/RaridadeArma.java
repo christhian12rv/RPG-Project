@@ -5,7 +5,7 @@ public enum RaridadeArma {
 	INCOMUM("Incomum"),
 	RARO("Raro"),
 	LENDARIO("Lendário"),
-	MISTICO("Místico");
+	MITICO("Mítico");
 
 	private String valor;
 

@@ -12,10 +12,9 @@ import enums.TipoMonstro;
 import enums.TipoResultadoMiniHistoria;
 import repositories.HistoriaRepository;
 import repositories.MiniHistoriaRepository;
-import utils.JPAUtil;
 import utils.JsonUtil;
+import utils.ScannerUtil;
 
-import javax.persistence.EntityManager;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,8 @@ import java.util.Scanner;
 public class HistoriaUtil implements JsonUtil {
     private HistoriaRepository historiaRepository;
     private MiniHistoriaRepository miniHistoriaRepository;
-    private MiniHistoriaUtil miniHistoriaUtil;
+    private ScannerUtil scannerUtil;
+    private Scanner scanner;
 
     public Historia historiaRandomica() {
         Scanner scanner = new Scanner(System.in);
@@ -44,12 +44,7 @@ public class HistoriaUtil implements JsonUtil {
         }
 
         System.out.print("Digite uma historia: ");
-        escolha = scanner.nextInt();
-
-        while (escolha <= 0 || escolha > historias.size()) {
-            System.out.print("Historia incorreta. Digite novamente: ");
-            escolha = scanner.nextInt();
-        }
+        escolha = scannerUtil.getInt(scanner, 1, historias.size());
 
         return historias.get(escolha - 1);
     }
@@ -131,5 +126,21 @@ public class HistoriaUtil implements JsonUtil {
 
     public void setMiniHistoriaRepository(MiniHistoriaRepository miniHistoriaRepository) {
         this.miniHistoriaRepository = miniHistoriaRepository;
+    }
+
+    public ScannerUtil getScannerUtil() {
+        return scannerUtil;
+    }
+
+    public void setScannerUtil(ScannerUtil scannerUtil) {
+        this.scannerUtil = scannerUtil;
+    }
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
     }
 }

@@ -6,18 +6,11 @@ import utils.*;
 import utils.EntitiesUtils.*;
 
 import javax.persistence.EntityManager;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 
 import entities.Arma;
 import entities.Batalha;
 import entities.Habilidade;
 import entities.Historia;
-import entities.Inventario;
 import entities.Item;
 import entities.Jogador;
 import entities.MiniHistoria;
@@ -29,14 +22,11 @@ import enums.RaridadeArma;
 import enums.TipoAtributo;
 import repositories.*;
 
-import java.io.File;
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -52,6 +42,7 @@ public class Main {
     private static BatalhaUtil batalhaUtil;
     private static PartidaUtil partidaUtil;
     private static PrintUtil printUtil;
+    private static SoundUtil soundUtil;
 
     private static ArmaService armaService;
     private static HabilidadeService habilidadeService;
@@ -68,15 +59,10 @@ public class Main {
     private static MonstroRepository monstroRepository;
     private static PartidaRepository partidaRepository;
 
-    private static Clip clip;
-    private static javax.sound.sampled.AudioInputStream audioIn;
-    private static File fClip;
-
     public static void main(String[] args) {
-        // Logger.getRootLogger().setLevel(Level.OFF);
-        // Logger.getLogger("org.hibernate").setLevel(Level.OFF);
 
-        playSound("Encounter_with_a_Wizard");
+        soundUtil = new SoundUtil();
+        soundUtil.playSound("Encounter_with_a_Wizard");
 
         scanner = new Scanner(System.in);
 
@@ -106,6 +92,8 @@ public class Main {
         partidaRepository = new PartidaRepository(entityManager);
 
         personagemUtil.setHabilidadeService(habilidadeService);
+        personagemUtil.setScannerUtil(scannerUtil);
+        personagemUtil.setScanner(scanner);
         jogadorUtil.setPersonagemUtil(personagemUtil);
         jogadorUtil.setArmaService(armaService);
         jogadorUtil.setInventarioService(inventarioService);
@@ -113,6 +101,8 @@ public class Main {
         jogadorUtil.setPrintUtil(printUtil);
         jogadorUtil.setScannerUtil(scannerUtil);
         historiaUtil.setHistoriaRepository(historiaRepository);
+        historiaUtil.setScannerUtil(scannerUtil);
+        historiaUtil.setScanner(scanner);
         batalhaUtil.setMonstroRepository(monstroRepository);
         batalhaUtil.setBatalhaRepository(batalhaRepository);
         partidaUtil.setPartidaRepository(partidaRepository);
@@ -129,14 +119,16 @@ public class Main {
         Partida partida = null;
 
         printUtil.clearTerminal();
-        
+
+        printInicioJogo();
+
         jogadores = jogadorUtil.criarJogadores();
         printUtil.printStringLetraPorLetraSom(15, "Jogadores criados\n\n");
 
         historia = historiaUtil.historiaRandomica();
 
         partida = partidaUtil.criarPartida(jogadores, historia);
-        printUtil.printStringLetraPorLetraSom(15, "Partida criada! O jogo irá começar...\n\n");
+        printUtil.printStringLetraPorLetraSom(15, "Partida criada! A jornada irá começar...");
 
         printUtil.textDelay(2000);
         printUtil.clearTerminal();
@@ -149,7 +141,6 @@ public class Main {
 
     private static void começarPartida(Partida partida) {
 
-        Boolean opcaoInvalida = false;
         Boolean modoDificil = false;
         int escolha = 0;
 
@@ -175,16 +166,16 @@ public class Main {
         List<Jogador> jogadoresDerrotados = new ArrayList<>();
         for (int z = 0; z < batalhas.size(); z++) {
 
-            if (fClip.getName() != "Encounter_with_a_Wizard.wav") {
-                stopSound();
-                playSound("Encounter_with_a_Wizard");
+            if (soundUtil.getFileName() != "Encounter_with_a_Wizard") {
+                soundUtil.stopSound();
+                soundUtil.playSound("Encounter_with_a_Wizard");
             }
 
             Batalha batalha = batalhas.get(z);
 
             if (jogadoresDerrotados.size() > 0) {
                 batalha.setIniciativa(batalha.getIniciativa().stream().filter(p -> p instanceof Monstro || (p instanceof Jogador && !jogadoresDerrotados.contains(p))).toList());
-                partida.setJogadores(partida.getJogadores().stream().filter(j -> !jogadoresDerrotados.contains(j)).toList());
+                partida.setJogadores(jogadores.stream().filter(j -> !jogadoresDerrotados.contains(j)).toList());
             }
 
             MiniHistoria miniHistoria = batalha.getMiniHistoria();
@@ -194,7 +185,7 @@ public class Main {
                 MiniHistoria miniHistoriaEscolhaOposta = miniHistoria.getMiniHistoriaEscolhaOposta();
                 
                 escolha = 0;
-                int i = 0, j = 0;
+                int i = 0;
                 Random rand = new Random();
                 
                 Jogador jogadorEscolhido = jogadores.get(rand.nextInt(jogadores.size()));
@@ -391,11 +382,11 @@ public class Main {
             printUtil.textDelay(2000);
 
             if (miniHistoria.getDificuldade() == DificuldadeMonstro.CHEFE) {
-                stopSound();
-                playSound("The_Final_Battle");
+                soundUtil.stopSound();
+                soundUtil.playSound("The_Final_Battle");
             } else {
-                stopSound();
-                playSound("Entering_the_Castle");
+                soundUtil.stopSound();
+                soundUtil.playSound("Entering_the_Castle");
             }
 
             printUtil.printStringLetraPorLetraSom(15, "\nApareceram os seguintes inimigos:\n");
@@ -415,9 +406,9 @@ public class Main {
 
             List<Monstro> monstrosDerrotados = new ArrayList<>();
 
-            Boolean primeiraIniciativa = true;
+            while ((!batalha.getMonstros().stream().allMatch(m -> !m.estaVivo()) || !jogadores.stream().allMatch(j -> !j.estaVivo())) && !inimigosDerrotados) {
 
-            while ((!batalha.getMonstros().stream().allMatch(m -> !m.estaVivo()) || !partida.getJogadores().stream().allMatch(j -> !j.estaVivo())) && !inimigosDerrotados) {
+                jogadores = jogadores.stream().filter(j -> !jogadoresDerrotados.contains(j)).toList();
 
                 List<Personagem> iniciativa = batalha.getIniciativa();
                 for (int x = 0; x < iniciativa.size(); x++) {
@@ -431,11 +422,12 @@ public class Main {
                         inimigosDerrotados = true;
                         break;
                     }
-                    if (partida.getJogadores().stream().allMatch(j -> !j.estaVivo())) {
-                        //stopSound();
-                        //playSound("End_Game_Lose");
-                        printUtil.printStringLetraPorLetraSom(200, "Todos os jogadores foram derrotados, a jornada do grupo chegou ao fim...\n\n");
-                        printUtil.printStringLetraPorLetraSom(200, "Aperte enter para finalizar...");
+                    if (jogadores.stream().allMatch(j -> !j.estaVivo())) {
+                        soundUtil.stopSound();
+                        soundUtil.playSound("End_Game_Lose");
+                        printUtil.printStringLetraPorLetra(20, "Todos os jogadores foram derrotados\n\n\n");
+                        printFimDaJornada();
+                        printUtil.printStringLetraPorLetra(20, "\n\nAperte enter para finalizar...");
                         scanner.nextLine();
                         return;
                     }
@@ -520,7 +512,7 @@ public class Main {
                                 }
                                 break;
                             case 2:
-                                List<Habilidade> habilidades = jogador.getHabilidades();
+                                List<Habilidade> habilidades = jogador.getHabilidades().stream().filter(h -> jogador.getMana() >= h.getCusto()).toList();
 
                                 i = 1;
                                 
@@ -533,7 +525,7 @@ public class Main {
 
                                 int escolhaHabilidade = scannerUtil.getInt(scanner, 1, habilidades.size());
 
-                                Habilidade habilidadeEscolhida = jogador.getHabilidades().get(escolhaHabilidade - 1);
+                                Habilidade habilidadeEscolhida = habilidades.get(escolhaHabilidade - 1);
 
                                 int areaHabilidade = habilidadeEscolhida.getArea();
 
@@ -694,15 +686,15 @@ public class Main {
             }
 
             if (!modoDificil) {
-                for (Jogador jogador : partida.getJogadores()) {
+                for (Jogador jogador : jogadores) {
                     jogador.regenerarManaPosBatalha();
                     jogador.regenerarVidaPosBatalha();
                 }
             }
         }
 
-        stopSound();
-        playSound("End_Game_Win");
+        soundUtil.stopSound();
+        soundUtil.playSound("End_Game_Win");
         printUtil.printStringLetraPorLetraSom(200, "Aperte enter para finalizar...");
         scanner.nextLine();
     }
@@ -743,29 +735,32 @@ public class Main {
             System.out.println("");
         }
     }
-
-    public static synchronized void playSound(String sound) {
-
-        fClip = new File("musicas/" + sound + ".wav");
-        
-        try {
-            audioIn = AudioSystem.getAudioInputStream(fClip);  
-            clip = AudioSystem.getClip();
-            clip.open(audioIn);
-            clip.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-            
-        }
+    
+    public static void printInicioJogo() {
+        printUtil.printStringLetraPorLetra(2, "" +
+        "     ▄█  ▄██████▄     ▄████████ ███▄▄▄▄      ▄████████ ████████▄     ▄████████    ▄████████      ████████▄     ▄████████         ▄█    █▄     ▄██████▄     ▄████████    ▄████████  ▄██████▄     ▄████████ \n" +
+        "    ███ ███    ███   ███    ███ ███▀▀▀██▄   ███    ███ ███   ▀███   ███    ███   ███    ███      ███   ▀███   ███    ███        ███    ███   ███    ███   ███    ███   ███    ███ ███    ███   ███    ███ \n" +
+        "    ███ ███    ███   ███    ███ ███   ███   ███    ███ ███    ███   ███    ███   ███    █▀       ███    ███   ███    █▀         ███    ███   ███    ███   ███    ███   ███    ███ ███    ███   ███    ███ \n" +
+        "    ███ ███    ███  ▄███▄▄▄▄██▀ ███   ███   ███    ███ ███    ███   ███    ███   ███             ███    ███  ▄███▄▄▄           ▄███▄▄▄▄███▄▄ ███    ███  ▄███▄▄▄▄██▀  ▄███▄▄▄▄██▀ ███    ███  ▄███▄▄▄▄██▀ \n" +
+        "    ███ ███    ███ ▀▀███▀▀▀▀▀   ███   ███ ▀███████████ ███    ███ ▀███████████ ▀███████████      ███    ███ ▀▀███▀▀▀          ▀▀███▀▀▀▀███▀  ███    ███ ▀▀███▀▀▀▀▀   ▀▀███▀▀▀▀▀   ███    ███ ▀▀███▀▀▀▀▀   \n" +
+        "    ███ ███    ███ ▀███████████ ███   ███   ███    ███ ███    ███   ███    ███          ███      ███    ███   ███    █▄         ███    ███   ███    ███ ▀███████████ ▀███████████ ███    ███ ▀███████████ \n" +
+        "    ███ ███    ███   ███    ███ ███   ███   ███    ███ ███   ▄███   ███    ███    ▄█    ███      ███   ▄███   ███    ███        ███    ███   ███    ███   ███    ███   ███    ███ ███    ███   ███    ███ \n" +
+        "█▄ ▄███  ▀██████▀    ███    ███  ▀█   █▀    ███    █▀  ████████▀    ███    █▀   ▄████████▀       ████████▀    ██████████        ███    █▀     ▀██████▀    ███    ███   ███    ███  ▀██████▀    ███    ███ \n" +
+        "▀▀▀▀▀▀               ███    ███                                                                                                                           ███    ███   ███    ███              ███    ███ \n\n\n"
+        );
     }
 
-    public static synchronized void stopSound() {
-        try {
-            clip.stop();
-            audioIn.close();
-            clip.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static void printFimDaJornada() {
+        printUtil.printStringLetraPorLetra(5, "" +
+        " ██████▒ ██▓ ███▄ ▄███▓   ▓█████▄  ▄▄▄          ▄▄▄██▀▀▀ ▒█████   ██▀███   ███▄    █  ▄▄▄      ▓█████▄  ▄▄▄      \n" +
+        "▓██   ▒ ▓██▒▓██▒▀█▀ ██▒   ▒██▀ ██▌▒████▄          ▒██   ▒██▒  ██▒▓██ ▒ ██▒ ██ ▀█   █ ▒████▄    ▒██▀ ██▌▒████▄    \n" +
+        "▒████ ░ ▒██▒▓██    ▓██░   ░██   █▌▒██  ▀█▄        ░██   ▒██░  ██▒▓██ ░▄█ ▒▓██  ▀█ ██▒▒██  ▀█▄  ░██   █▌▒██  ▀█▄  \n" +
+        "░▓█▒  ░ ░██░▒██    ▒██    ░▓█▄   ▌░██▄▄▄▄██    ▓██▄██▓  ▒██   ██░▒██▀▀█▄  ▓██▒  ▐▌██▒░██▄▄▄▄██ ░▓█▄   ▌░██▄▄▄▄██ \n" +
+        "░▒█░    ░██░▒██▒   ░██▒   ░▒████▓  ▓█   ▓██▒    ▓███▒   ░ ████▓▒░░██▓ ▒██▒▒██░   ▓██░ ▓█   ▓██▒░▒████▓  ▓█   ▓██▒\n" +
+        " ▒ ░    ░▓  ░ ▒░   ░  ░    ▒▒▓  ▒  ▒▒   ▓▒█░    ▒▓▒▒░   ░ ▒░▒░▒░ ░ ▒▓ ░▒▓░░ ▒░   ▒ ▒  ▒▒   ▓▒█░ ▒▒▓  ▒  ▒▒   ▓▒█░\n" +
+        " ░       ▒ ░░  ░      ░    ░ ▒  ▒   ▒   ▒▒ ░    ▒ ░▒░     ░ ▒ ▒░   ░▒ ░ ▒░░ ░░   ░ ▒░  ▒   ▒▒ ░ ░ ▒  ▒   ▒   ▒▒ ░\n" +
+        " ░ ░     ▒ ░░      ░       ░ ░  ░   ░   ▒       ░ ░ ░   ░ ░ ░ ▒    ░░   ░    ░   ░ ░   ░   ▒    ░ ░  ░   ░   ▒   \n" +
+        " ░         ░         ░          ░  ░    ░   ░       ░ ░     ░              ░       ░  ░   ░          ░  ░\n" +
+        "                     ░                                                                    ░                \n");
     }
 }

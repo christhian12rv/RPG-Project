@@ -4,7 +4,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import config.AtributosIniciais;
-import enums.TipoAtributo;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

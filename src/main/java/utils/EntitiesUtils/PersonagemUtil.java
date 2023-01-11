@@ -2,20 +2,24 @@ package utils.EntitiesUtils;
 
 import config.AtributosIniciais;
 import entities.Habilidade;
+import entities.Jogador;
 import entities.Personagem;
 import services.HabilidadeService;
+import utils.ScannerUtil;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class PersonagemUtil {
     private HabilidadeService habilidadeService;
+    private ScannerUtil scannerUtil;
+    private Scanner scanner;
 
-    public Personagem criarPersonagem() {
-        Scanner scanner = new Scanner(System.in);
+    public Personagem criarPersonagemJogador(List<Jogador> jogadores) {
         String nome = "";
         String descricao = "";
         String classe = "";
+        boolean existeJogador = false;
         int i = 0;
         int escolha = 0;
         int vida = 0;
@@ -31,10 +35,23 @@ public class PersonagemUtil {
         
         System.out.print("Nome: ");
         nome = scanner.nextLine();
-        while (nome.trim().isEmpty()) {
-            System.out.print("Nome incorreto. Digite novamente: ");
-            nome = scanner.nextLine();
+
+        for (Jogador jogador: jogadores) {
+            if (nome.toLowerCase().equals(jogador.getNome().toLowerCase()))
+                existeJogador = true;
         }
+
+        while (nome.trim().isEmpty() || existeJogador) {
+            System.out.print("Nome incorreto ou já existe um jogador com esse nome. Digite novamente: ");
+            nome = scanner.nextLine();
+
+            existeJogador = false;
+            for (Jogador jogador: jogadores) {
+                if (nome.toLowerCase().equals(jogador.getNome().toLowerCase()))
+                    existeJogador = true;
+            }
+        }
+        nome = nome.substring(0,1).toUpperCase() + nome.substring(1).toLowerCase();
 
         System.out.print("Descrição: ");
         descricao = scanner.nextLine();
@@ -42,6 +59,7 @@ public class PersonagemUtil {
             System.out.print("Descrição incorreta. Digite novamente: ");
             descricao = scanner.nextLine();
         }
+        descricao = descricao.substring(0,1).toUpperCase() + descricao.substring(1).toLowerCase();
 
         System.out.print("Classe: ");
         classe = scanner.nextLine();
@@ -49,6 +67,7 @@ public class PersonagemUtil {
             System.out.print("Classe incorreta. Digite novamente: ");
             classe = scanner.nextLine();
         }
+        classe = classe.substring(0,1).toUpperCase() + classe.substring(1).toLowerCase();
 
         while (pontosDistribuicao > 0) {
             pontosDistribuicao = AtributosIniciais.DISTRIBUICAO_PONTOS_TOTAL_INICIAIS;
@@ -57,46 +76,46 @@ public class PersonagemUtil {
             System.out.println("Você poderá distribuir no máximo "+ AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS +" pontos para cada atributo.");
 
             System.out.print("Constituição: ");
-            constituicao = scanner.nextInt();
+            constituicao = scannerUtil.getInt(scanner);
             while (constituicao < 0 || constituicao > AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS) {
                 System.out.println("O atributo não pode conter + que "+ AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS +" pontos de atributo. Digite novamente:");
-                constituicao = scanner.nextInt();
+                constituicao = scannerUtil.getInt(scanner);
             }
             pontosDistribuicao -= constituicao;
 
             System.out.print("Força: ");
-            forca = scanner.nextInt();
+            forca = scannerUtil.getInt(scanner);
             while (forca < 0 || forca > AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS || forca > pontosDistribuicao) {
                 System.out.println("O atributo não pode conter + que "+ AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS +" pontos de atributo e não deve superar os pontos de " +
                     "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
-                forca = scanner.nextInt();
+                forca = scannerUtil.getInt(scanner);
             }
             pontosDistribuicao -= forca;
 
             System.out.print("Destreza: ");
-            destreza = scanner.nextInt();
+            destreza = scannerUtil.getInt(scanner);
             while (destreza < 0 || destreza > AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS || destreza > pontosDistribuicao) {
                 System.out.println("O atributo não pode conter + que "+ AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS +" pontos de atributo e não deve superar os pontos de " +
                     "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
-                destreza = scanner.nextInt();
+                destreza = scannerUtil.getInt(scanner);
             }
             pontosDistribuicao -= destreza;
 
             System.out.print("Sabedoria: ");
-            sabedoria = scanner.nextInt();
+            sabedoria = scannerUtil.getInt(scanner);
             while (sabedoria < 0 || sabedoria > AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS || sabedoria > pontosDistribuicao) {
                 System.out.println("O atributo não pode conter + que "+ AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS +" pontos de atributo e não deve superar os pontos de " +
                     "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
-                sabedoria = scanner.nextInt();
+                sabedoria = scannerUtil.getInt(scanner);
             }
             pontosDistribuicao -= sabedoria;
 
             System.out.print("Defesa: ");
-            defesa = scanner.nextInt();
+            defesa = scannerUtil.getInt(scanner);
             while (defesa < 0 || defesa > AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS || defesa > pontosDistribuicao) {
                 System.out.println("O atributo não pode conter + que "+ AtributosIniciais.DISTRIBUICAO_PONTOS_MAXIMA_ATRIBUTO_INICIAIS +" pontos de atributo e não deve superar os pontos de " +
                     "distribuição restantes (" + pontosDistribuicao + " pontos de distribuição restantes). Digite novamente:");
-                defesa = scanner.nextInt();
+                defesa = scannerUtil.getInt(scanner);
             }
             pontosDistribuicao -= defesa;
 
@@ -121,12 +140,13 @@ public class PersonagemUtil {
         }
 
         System.out.print("Digite uma habilidade: ");
-        escolha = scanner.nextInt();
+        escolha = scannerUtil.getInt(scanner);
 
         while (escolha <= 0 || escolha > habilidades.size()) {
             System.out.print("Habilidade incorreta. Digite novamente: ");
-            escolha = scanner.nextInt();
+            escolha = scannerUtil.getInt(scanner);
         }
+        scanner.nextLine();
 
         habilidades = habilidades.subList(escolha - 1, escolha);
 
@@ -144,5 +164,21 @@ public class PersonagemUtil {
 
     public void setHabilidadeService(HabilidadeService habilidadeService) {
         this.habilidadeService = habilidadeService;
+    }
+
+    public ScannerUtil getScannerUtil() {
+        return scannerUtil;
+    }
+
+    public void setScannerUtil(ScannerUtil scannerUtil) {
+        this.scannerUtil = scannerUtil;
+    }
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
     }
 }

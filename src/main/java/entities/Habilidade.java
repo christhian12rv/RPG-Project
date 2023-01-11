@@ -27,7 +27,7 @@ public class Habilidade {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "descricao")
+    @Column(name = "descricao", length = 1000)
     private String descricao;
 
     @Enumerated(EnumType.STRING)
@@ -194,6 +194,8 @@ public class Habilidade {
                 break;
             case DEFESA:
                 valorAtributo = personagem.getDefesa();
+                break;
+            default:
                 break;
         }
         

@@ -9,7 +9,6 @@ import javax.persistence.Query;
 import entities.Arma;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ArmaRepository extends BaseRepository<Arma> {
     

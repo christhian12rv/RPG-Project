@@ -8,8 +8,6 @@ import javax.persistence.Query;
 
 import entities.Monstro;
 
-import java.util.List;
-
 public class MonstroRepository extends BaseRepository<Monstro>{
 
     public MonstroRepository(EntityManager entityManager) {

@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.google.gson.Gson;
-
 import entities.*;
+import enums.DificuldadeMonstro;
 import repositories.BatalhaRepository;
 import repositories.MonstroRepository;
 
@@ -15,7 +14,7 @@ public class BatalhaUtil {
     private BatalhaRepository batalhaRepository;
 
     public Batalha criarBatalha(Historia historia, MiniHistoria miniHistoria, List<Jogador> jogadores) {
-        int qtdJogadores = jogadores.size();
+        int qtdMonstros = miniHistoria.getDificuldade() != DificuldadeMonstro.CHEFE ? jogadores.size() : 1;
         int i = 0, ini = 0;
         boolean inseriu = false;
         List<Monstro> monstros = new ArrayList<>();
@@ -23,7 +22,7 @@ public class BatalhaUtil {
         List<Personagem> iniciativa = new ArrayList<>();
         List<Integer> valoresIniciativa = new ArrayList<>();
 
-        for (i = 0; i < qtdJogadores; i++) {
+        for (i = 0; i < qtdMonstros; i++) {
             Monstro monstro = new Monstro(monstroRepository.findOneRandomByDificuldadeAndTipo(miniHistoria.getDificuldade(), historia.getTipoMonstros()));
             monstros.add(monstro);   
         }

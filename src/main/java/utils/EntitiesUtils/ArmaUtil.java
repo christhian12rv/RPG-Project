@@ -4,15 +4,12 @@ import enums.RaridadeArma;
 import enums.TipoAtributo;
 import repositories.ArmaRepository;
 
-import javax.persistence.EntityManager;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import entities.Arma;
-import utils.JPAUtil;
 import utils.JsonUtil;
 
 import java.io.FileReader;

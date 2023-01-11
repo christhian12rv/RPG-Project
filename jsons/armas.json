@@ -4,7 +4,7 @@
         "descricao": "Um simples machado feito de pedra, parece ser antigo.",
         "raridade": "COMUM",
         "qtdDados": 1,
-        "tipoDado": 8,
+        "tipoDado": 10,
         "adicional": 0,
         "tipoAtributo": "FORCA"
     },
@@ -14,26 +14,17 @@
         "raridade": "COMUM",
         "qtdDados": 1,
         "tipoDado": 8,
-        "adicional": 0,
+        "adicional": 1,
         "tipoAtributo": "FORCA"
     },
     {
-        "nome": "Grimório Comum",
-        "descricao": "Um livro que guarda o conhecimento superficial do reino.",
+        "nome": "Martelo de Guerra",
+        "descricao": "Uma grande espada que reflete a luz do sol em sua lamina, afiada e bem atraente.",
         "raridade": "COMUM",
         "qtdDados": 1,
-        "tipoDado": 6,
-        "adicional": 1,
-        "tipoAtributo": "SABEDORIA"
-    },
-    {
-        "nome": "Adaga necrótica",
-        "descricao": "Um punhal que emana energia maligna, talvez o chamado não é tão ruim assim.",
-        "raridade": "RARO",
-        "qtdDados": 3,
-        "tipoDado": 4,
-        "adicional": 3,
-        "tipoAtributo": "DESTREZA"
+        "tipoDado": 12,
+        "adicional": -1,
+        "tipoAtributo": "FORCA"
     },
     {
         "nome": "Chicote de Adamantino",
@@ -43,5 +34,131 @@
         "tipoDado": 6,
         "adicional": 3,
         "tipoAtributo": "FORCA"
+    },
+    {
+        "nome": "Alabarda da Ordem Áurea",
+        "descricao": "Alabarda feita de luz, modelada a partir da fé das pessoas mais crentes do mundo. Forjada pelo Rei Consorte do Continente Norte para simbolizar orgulhosamente os princípios da Ordem Áurea.",
+        "raridade": "RARO",
+        "qtdDados": 2,
+        "tipoDado": 8,
+        "adicional": 1,
+        "tipoAtributo": "FORCA"
+    },
+    {
+        "nome": "Espada Colossal",
+        "descricao": "Espada enorme, com comprimentos muitas vezes excedendo a altura dos próprios donos. Embora sejam extremamente pesadas e balancem muito mais lentamente do que outras espadas, elas compensam isso com um longo alcance e uma enorme produção de dano.",
+        "raridade": "MITICO",
+        "qtdDados": 3,
+        "tipoDado": 8,
+        "adicional": 3,
+        "tipoAtributo": "FORCA"
+    },
+    {
+        "nome": "Grimório Comum",
+        "descricao": "Um livro que guarda o conhecimento superficial do reino.",
+        "raridade": "COMUM",
+        "qtdDados": 1,
+        "tipoDado": 6,
+        "adicional": 2,
+        "tipoAtributo": "SABEDORIA"
+    },
+    {
+        "nome": "Cajado de Bambu",
+        "descricao": "Um bastão simples com o potencial de canalizar energia arcana.",
+        "raridade": "COMUM",
+        "qtdDados": 2,
+        "tipoDado": 4,
+        "adicional": 1,
+        "tipoAtributo": "SABEDORIA"
+    },
+    {
+        "nome": "Varinha de Galho",
+        "descricao": "Um pequeno galho com a capacidade de focalizar elementos.",
+        "raridade": "COMUM",
+        "qtdDados": 3,
+        "tipoDado": 1,
+        "adicional": 3,
+        "tipoAtributo": "SABEDORIA"
+    },
+    {
+        "nome": "Cajado de Obsidiana",
+        "descricao": "Um cajado feito de rochas magmáticas com alta condutividade mágica",
+        "raridade": "RARO",
+        "qtdDados": 1,
+        "tipoDado": 10,
+        "adicional": 7,
+        "tipoAtributo": "SABEDORIA"
+    },
+    {
+        "nome": "Adaga necrótica",
+        "descricao": "Um punhal que emana energia maligna, talvez o chamado não é tão ruim assim.",
+        "raridade": "RARO",
+        "qtdDados": 3,
+        "tipoDado": 4,
+        "adicional": 4,
+        "tipoAtributo": "DESTREZA"
+    },
+    {
+        "nome": "Katana de Aço",
+        "descricao": "Uma lâmina fina e afiada com capacidade de cortar até pedaços de bambu.",
+        "raridade": "COMUM",
+        "qtdDados": 1,
+        "tipoDado": 8,
+        "adicional": 1,
+        "tipoAtributo": "DESTREZA"
+    },
+    {
+        "nome": "Katana Sangrenta",
+        "descricao": "Uma lâmina que faz cortes muito mais profundos que o normal provocando hemorragia interna e sangramento pesado.",
+        "raridade": "RARO",
+        "qtdDados": 3,
+        "tipoDado": 6,
+        "adicional": 2,
+        "tipoAtributo": "DESTREZA"
+    },
+    {
+        "nome": "Cimitarra de Pirata",
+        "descricao": "Uma lâmina curta muita usada no ocidente por piratas do caribe.",
+        "raridade": "COMUM",
+        "qtdDados": 1,
+        "tipoDado": 6,
+        "adicional": 2,
+        "tipoAtributo": "DESTREZA"
+    },
+    {
+        "nome": "Mangual",
+        "descricao": "Uma arma poderosa mas difícil de ser usada.",
+        "raridade": "COMUM",
+        "qtdDados": 1,
+        "tipoDado": 12,
+        "adicional": -1,
+        "tipoAtributo": "DESTREZA"
+    },
+    {
+        "nome": "Escudo de Espinhos",
+        "descricao": "Uma escudo usado não só para se proteger mas também para furar seus inimigos.",
+        "raridade": "COMUM",
+        "qtdDados": 1,
+        "tipoDado": 7,
+        "adicional": 1,
+        "tipoAtributo": "DEFESA"
+    },
+    {
+        "nome": "Broquel de Combate",
+        "descricao": "Um pequeno escudo feito de couro com espinhos de aço é uma versão de escudo mais versátil que o normal.",
+        "raridade": "COMUM",
+        "qtdDados": 1,
+        "tipoDado": 4,
+        "adicional": 3,
+        "tipoAtributo": "DEFESA"
+    },
+    {
+        "nome": "Escudos Duplos Gigantes",
+        "descricao": "Dois escudos enormes que apenas a pessoa mais resistente consegue levantá-los. Quando unidos e batidos contra o chão, cria uma onda que dá um enorme dano aos inimigos.",
+        "raridade": "RARO",
+        "qtdDados": 4,
+        "tipoDado": 4,
+        "adicional": 2,
+        "tipoAtributo": "DEFESA"
     }
 ]

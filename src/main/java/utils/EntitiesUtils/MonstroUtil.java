@@ -5,8 +5,6 @@ import enums.TipoMonstro;
 import repositories.HabilidadeRepository;
 import repositories.MonstroRepository;
 
-import javax.persistence.EntityManager;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -15,7 +13,6 @@ import com.google.gson.JsonObject;
 import entities.Habilidade;
 import entities.Monstro;
 import entities.Personagem;
-import utils.JPAUtil;
 import utils.JsonUtil;
 
 import java.io.FileReader;

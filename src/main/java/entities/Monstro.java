@@ -33,7 +33,7 @@ public class Monstro extends Personagem implements Comparable<Monstro> {
     @Column(name = "tipo")
     private TipoMonstro tipo;
 
-    @Column(name = "ascii")
+    @Column(name = "ascii", length = 2000)
     private String ascii;
 
     public Monstro() {

@@ -6,29 +6,39 @@
   <component name="ChangeListManager">
     <list default="true" id="942ae02e-3e40-4074-bd19-b81d0815339a" name="Changes" comment="Created Partida and organized project structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsons/armas.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsons/armas.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jsons/habilidades.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsons/habilidades.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jsons/historias.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsons/historias.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jsons/monstros.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsons/monstros.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/musicas/Encounter_with_a_Wizard.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/musicas/End_Game_Win.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/musicas/Entering_the_Castle.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/musicas/The_Final_Battle.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/RPG_Project_jar/jar/RPG-Project.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/regras_de_negocio.txt" beforeDir="false" afterPath="$PROJECT_DIR$/regras_de_negocio.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/config/AtributosIniciais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/AtributosIniciais.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Batalha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Batalha.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entities/Habilidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Habilidade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entities/Jogador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Jogador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entities/Monstro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Monstro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Personagem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Personagem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/enums/RaridadeArma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/RaridadeArma.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repositories/ArmaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/ArmaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/HabilidadeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/HabilidadeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/BatalhaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/BatalhaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/InventarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/InventarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/ItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/JogadorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/JogadorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/MiniHistoriaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/MiniHistoriaRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repositories/MonstroRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/MonstroRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositorys/HabilidadeRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositorys/HistoriaRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/ArmaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ArmaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/PartidaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/PartidaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/PersonagemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/PersonagemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/ArmaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/ArmaUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/BatalhaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/BatalhaUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/HabilidadeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/HabilidadeUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/HistoriaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/HistoriaUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/JogadorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/JogadorUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/PrintUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/PrintUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/MiniHistoriaUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/MonstroUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/MonstroUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/PersonagemUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EntitiesUtils/PersonagemUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,12 +81,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/christhian/Documentos/RPG-Project"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/natan/Desktop/RPG-Project (5)/RPG-Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/utils" />
@@ -96,12 +109,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HabilidadeUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="utils.EntitysUtils.HabilidadeUtil" />
+    <configuration name="CarregarJsonsUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="utils.CarregarJsonsUtil" />
       <module name="RPG-Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="utils.EntitysUtils.*" />
+          <option name="PATTERN" value="utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -144,11 +157,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CarregarJsonsUtil" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.HistoriaUtil" />
         <item itemvalue="Application.ArmaUtil" />
         <item itemvalue="Application.MonstroUtil" />
-        <item itemvalue="Application.HabilidadeUtil" />
       </list>
     </recent_temporary>
   </component>

@@ -6,15 +6,12 @@ import entities.Inventario;
 import entities.Jogador;
 import entities.Personagem;
 import enums.RaridadeArma;
-import enums.TipoAtributo;
 import repositories.JogadorRepository;
 import services.ArmaService;
 import services.InventarioService;
-import utils.JPAUtil;
 import utils.PrintUtil;
 import utils.ScannerUtil;
 
-import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -40,24 +37,17 @@ public class JogadorUtil {
         for (i = 0; i < qtdJogadores; i++) {
             printUtil.clearTerminal();
             System.out.println("Jogador " + (i + 1));
-            jogadores.add(criarJogador());
+            jogadores.add(criarJogador(jogadores));
         }
         return jogadores;
     }
 
-    private Jogador criarJogador() {
-        Personagem personagem = personagemUtil.criarPersonagem();
+    private Jogador criarJogador(List<Jogador> jogadores) {
+        Personagem personagem = personagemUtil.criarPersonagemJogador(jogadores);
         int mana = AtributosIniciais.MANA + (personagem.getSabedoria() * AtributosIniciais.MULTIPLICADOR_MANA);
         int manaMaxima = mana;
         Arma arma = null;
         Inventario inventario = null;
-        TipoAtributo tipoAtributo = TipoAtributo.FORCA;
-
-        if (personagem.getDestreza() > personagem.getForca())
-            tipoAtributo = TipoAtributo.DESTREZA;
-        
-        if (personagem.getSabedoria() > personagem.getDestreza())
-            tipoAtributo = TipoAtributo.SABEDORIA;
 
         arma = armaService.findArmaByRaridadeAndTipoAtributo(RaridadeArma.COMUM, personagem.getForca(), personagem.getDestreza(), personagem.getSabedoria(), personagem.getDefesa());
         inventario = inventarioService.criarInventarioInicial();

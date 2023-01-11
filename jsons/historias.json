@@ -62,7 +62,7 @@
 					"descricao": "[2] Descer pelo riacho",
 					"dificuldade": "DIFICIL",
 					"miniHistoriaEscolhaOposta": null,
-					"resultadoEscolha": "Vocês opitam por descer pelo riacho, tendo em vista que será um caminho mais seguro do que atravessar pela ponte antiga. Ao descer pelo riacho, em baixo da ponte, na escura sombra que a ponte cria ao bloquear o sol se encontra mais criaturas bizarras, vocês estão cara a cara com novas aberrações, novos inimigos frente:",
+					"resultadoEscolha": "Vocês optam por descer pelo riacho, tendo em vista que será um caminho mais seguro do que atravessar pela ponte antiga. Ao descer pelo riacho, em baixo da ponte, na escura sombra que a ponte cria ao bloquear o sol se encontra mais criaturas bizarras, vocês estão cara a cara com novas aberrações, novos inimigos frente:",
 					"textoEntreEventos": "",
 					"tipoResultado": "NENHUM",
 					"danoCura": 0
@@ -71,6 +71,23 @@
 				"textoEntreEventos": "",
 				"tipoResultado": "DANO",
 				"danoCura": 10
+			},
+			{
+				"descricao": " após enfrentarem esse terrível confronto, seguem adiante em rumo a Casa de Ópera. Chegando perto, vocês observam um clima tenso e sombrio tomando conta do local, escutando apenas pequenos ruidos de algo que está acontecendo lá dentro. Vocês decidem que entrar pelas portas do fundo seria mais seguro. Ao adentrar a grande Casa de Ópera, começam a vasculhar e observar cuidadosamente tudo que ali está, percebem que a porta na qual se encontra a sala de operações está entreaberta, como se alguém estivesse passado ali a pouco tempo. Notam também que o caminho para o palco principal está com a iluminação acesa. Você tem duas opções:\n[1] Conferir a sala de operações",
+				"dificuldade": "CHEFE",
+				"miniHistoriaEscolhaOposta": {
+					"descricao": "[2] Seguir para o palco principal",
+					"dificuldade": "CHEFE",
+					"miniHistoriaEscolhaOposta": null,
+					"resultadoEscolha": "Vocês decidem seguir direto para o palco de ópera onde os holofotes brilham com uma luz cegante.",
+					"textoEntreEventos": "Ao entrarem na câmara principal do edifício, uma visão macabra se apresenta diante de seus olhos. Um ritual de magia negra está sendo realizado no centro do palco, com seu focalizador em um grande cajado sendo segurado pela última pessoa que vocês teriam imaginado... A líder do esquadrão militar enviada para West End. Ela gargalha e com uma voz rouca e poderosa diz: \"Já é tarde demais. Por toda minha vida, essa foi minha ambição, foi pelo o quê eu sempre lutei. Agora, o feitiço já está em andamento e a parte final do meu sonho se inicia!\", com o ressoar dessas palavras pela grande sala de ópera, parte da magia canalizada pelo cajado começa a ser transferida para seu corpo e, pouco a pouco, ela deixa de ser si mesma em prol de seus sonhos, uma batalha mortal e iminente está chegando...",
+					"tipoResultado": "NENHUM",
+					"danoCura": 0
+				},
+				"resultadoEscolha": "Ao entrarem na sala de operações, vocês encontram uma área revirada com a maioria dos equipamentos destruídos. Contudo, essa área está sendo usada como um tipo de laboratório alquímico improvisado, com vários frascos e ingredientes espalhados pela sala, um frasco em específico lhes chamam a atenção. É uma poção de cheiro extravagante, tão doce quanto orquídeas em um campo de flores recém molhadas, ao tomá-la, você recupera 50 pontos de vida!",
+				"textoEntreEventos": "Após saírem da sala de operações, vocês seguem cuidadosamente pelo corredor que leva a câmara principal do edifício onde uma visão macabra se apresenta diante de seus olhos. Um ritual de magia negra está sendo realizado no centro do palco, com seu focalizador em um grande cajado sendo segurado pela última criatura que vocês teriam imaginado... A líder do esquadrão militar enviada para West End. Ela gargalha e com uma voz rouca e poderosa diz: \"Já é tarde demais. Por toda minha vida, essa foi minha ambição, foi pelo o quê eu sempre lutei. Agora, o feitiço já está em andamento e a parte final do meu sonho se inicia!\", com o ressoar dessas palavras pela grande sala de ópera, parte da magia canalizada pelo cajado começa a ser transferida para seu corpo e, pouco a pouco, ela deixa de ser si mesma em prol de seus sonhos, uma batalha mortal e iminente está chegando...",
+				"tipoResultado": "CURA",
+				"danoCura": 50
 			}
 		]
 	}
