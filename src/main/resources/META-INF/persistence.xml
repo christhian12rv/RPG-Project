@@ -5,16 +5,13 @@
              version="2.2">
     <persistence-unit name="RPG-PROJECT">
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/rpgproject?createDatabaseIfNotExist=true" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/rpgproject" />
             <property name="javax.persistence.jdbc.user" value="postgres" />
-            <property name="javax.persistence.jdbc.password" value="1234" />
+            <property name="javax.persistence.jdbc.password" value="postgres" />
 
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-
-            <!--<property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.format_sql" value="true" />-->
             
             <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>

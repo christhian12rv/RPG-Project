@@ -60,13 +60,12 @@ public class Main {
     private static PartidaRepository partidaRepository;
 
     public static void main(String[] args) {
-
-        soundUtil = new SoundUtil();
-        soundUtil.playSound("Encounter_with_a_Wizard");
+        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
 
         scanner = new Scanner(System.in);
 
-        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        soundUtil = new SoundUtil();
+        soundUtil.playSound("Encounter_with_a_Wizard");
        
         scannerUtil = new ScannerUtil();
         personagemUtil = new PersonagemUtil();
@@ -408,10 +407,10 @@ public class Main {
 
             while ((!batalha.getMonstros().stream().allMatch(m -> !m.estaVivo()) || !jogadores.stream().allMatch(j -> !j.estaVivo())) && !inimigosDerrotados) {
 
-                jogadores = jogadores.stream().filter(j -> !jogadoresDerrotados.contains(j)).toList();
-
                 List<Personagem> iniciativa = batalha.getIniciativa();
                 for (int x = 0; x < iniciativa.size(); x++) {
+
+                    jogadores = jogadores.stream().filter(j -> !jogadoresDerrotados.contains(j)).toList();
 
                     Personagem personagem = iniciativa.get(x);
 
@@ -495,7 +494,7 @@ public class Main {
                                 i = 1;
 
                                 for (Monstro monstro: batalha.getMonstros()) {
-                                    printUtil.printStringLetraPorLetra(5, "[" + i + "] - " + monstro.getNome() + "\n\n");
+                                    printUtil.printStringLetraPorLetra(5, "[" + i + "] - " + monstro.getNome() + "\n");
                                     i++;
                                 }
 
@@ -517,7 +516,7 @@ public class Main {
                                 i = 1;
                                 
                                 for (Habilidade habilidade: habilidades) {
-                                    printUtil.printStringLetraPorLetra(5, "[" + i + "] " + habilidade.toString() + "\n");
+                                    printUtil.printStringLetraPorLetra(5, "[" + i + "] " + habilidade.getNome() + "\n");
                                     i++;
                                 }
 
@@ -528,6 +527,8 @@ public class Main {
                                 Habilidade habilidadeEscolhida = habilidades.get(escolhaHabilidade - 1);
 
                                 int areaHabilidade = habilidadeEscolhida.getArea();
+
+                                boolean gastaMana = true;
 
                                 switch (habilidadeEscolhida.getTipo()) {
                                     case CURA:
@@ -548,8 +549,11 @@ public class Main {
                                             jogadoresAux.remove(escolhaJogador - 1);
                                         }
                                         
+                                        gastaMana = true;
                                         for (Jogador jogadorEscolhido: jogadoresEscolhidos) {
-                                            printUtil.printStringLetraPorLetra(5, jogador.aplicarCuraHabilidade(jogadorEscolhido, habilidadeEscolhida) + "\n");
+                                            printUtil.printStringLetraPorLetra(5, jogador.aplicarCuraHabilidade(jogadorEscolhido, habilidadeEscolhida, gastaMana) + "\n");
+
+                                            gastaMana = false;
                                         }
                                         break;
                                     default:
@@ -571,14 +575,17 @@ public class Main {
                                             k = 1;
                                         }
                                 
+                                        gastaMana = true;
                                         for (Monstro m: monstrosEscolhidos) {
-                                            printUtil.printStringLetraPorLetra(5, jogador.aplicarDanoHabilidade(m, habilidadeEscolhida) + "\n");
+                                            printUtil.printStringLetraPorLetra(5, jogador.aplicarDanoHabilidade(m, habilidadeEscolhida, gastaMana) + "\n");
 
                                             if (!m.estaVivo()) {
                                                 monstrosDerrotados.add(m);
                                                 batalha.getMonstros().remove(m);
                                                 batalha.getIniciativa().remove(m);
                                             }
+
+                                            gastaMana = false;
                                         }
                                     break;
                                 }
@@ -708,6 +715,8 @@ public class Main {
     }
 
     private static void printarMonstros(List<Monstro> monstros, Boolean letraPorLetra) {
+        int i = 0;
+
         Collections.sort(monstros, new Comparator<Monstro>() {
             public int compare(Monstro m1, Monstro m2) {
                 Integer m1LinesCount = m1.getAscii().split("\n").length;
@@ -720,17 +729,24 @@ public class Main {
 
         int maiorAsciiMonstro = monstros.get(monstros.size() - 1).getAscii().split("\n").length;
 
-        Collections.shuffle(monstros);
+        int qtdCaracteresMaiorLinha = 0;
 
-        int i = 0;
+        for (Monstro monstro: monstros) {
+            String[] asciiArray = monstro.getAscii().split("\n");
+            for (i = 0; i < asciiArray.length; i++) {
+                if (asciiArray[i].length() > qtdCaracteresMaiorLinha) {
+                    qtdCaracteresMaiorLinha = asciiArray[i].length();
+                }
+            }
+        }
 
         for (i = 0; i < maiorAsciiMonstro; i++) {
             for (Monstro monstro: monstros) {
                 List<String> qtdAscii = Arrays.asList(monstro.getAscii().split("\n"));
                 if (letraPorLetra)
-                    printUtil.printStringLetraPorLetra(3, (qtdAscii.size() > i ? String.format("%-50s", qtdAscii.get(i)) : String.format("%-50s", "")));
+                    printUtil.printStringLetraPorLetra(3, (qtdAscii.size() > i ? String.format("%-" + (qtdCaracteresMaiorLinha + 5) +"s", qtdAscii.get(i)) : String.format("%-" + (qtdCaracteresMaiorLinha + 5) +"s", "")));
                 else
-                    System.out.print((qtdAscii.size() > i ? String.format("%-50s", qtdAscii.get(i)) : String.format("%-50s", "")));
+                    System.out.print((qtdAscii.size() > i ? String.format("%-" + (qtdCaracteresMaiorLinha + 5) +"s", qtdAscii.get(i)) : String.format("%-" + (qtdCaracteresMaiorLinha + 5) +"s", "")));
             }
             System.out.println("");
         }

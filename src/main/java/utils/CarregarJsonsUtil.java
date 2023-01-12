@@ -41,6 +41,6 @@ public class CarregarJsonsUtil {
 		monstroUtil.lerJsonESalvar();
 
 		entityManager.close();
-    JPAUtil.shutdown();
+    	JPAUtil.shutdown();
 	}
 }

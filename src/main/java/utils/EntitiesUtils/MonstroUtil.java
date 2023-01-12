@@ -15,7 +15,7 @@ import entities.Monstro;
 import entities.Personagem;
 import utils.JsonUtil;
 
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 

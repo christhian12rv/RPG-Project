@@ -57,7 +57,7 @@ public class Jogador extends Personagem {
         this.inventario = inventario;
     }
 
-    public String aplicarCuraHabilidade(Jogador jogadorEscolhido, Habilidade habilidade) {
+    public String aplicarCuraHabilidade(Jogador jogadorEscolhido, Habilidade habilidade, boolean gastaMana) {
         int cura = 0;
         
         switch (habilidade.getTipoDanoHabilidade()) {
@@ -75,17 +75,19 @@ public class Jogador extends Personagem {
                 break;
         }
 
-        if (getMana() - habilidade.getCusto() > 0)
-            setMana(getMana() - habilidade.getCusto());
-        else
-            setMana(0);
+        if (gastaMana) {
+            if (getMana() - habilidade.getCusto() > 0)
+                setMana(getMana() - habilidade.getCusto());
+            else
+                setMana(0);
+        }
             
         jogadorEscolhido.curar(cura);
     
         return jogadorEscolhido.getNome() + " foi curado em " + cura + " de vida!";
     }
 
-    public String aplicarDanoHabilidade(Monstro monstroEscolhido, Habilidade habilidade) {
+    public String aplicarDanoHabilidade(Monstro monstroEscolhido, Habilidade habilidade, boolean gastaMana) {
 
         int atributoTipoAtributoHabilidade = 0;
         String mensagem = "Você errou a habilidade " + habilidade.getNome() + " em " + monstroEscolhido.getNome() + "!";
@@ -100,14 +102,19 @@ public class Jogador extends Personagem {
             case SABEDORIA:
                 atributoTipoAtributoHabilidade = getSabedoria();
                 break;
+            case DEFESA:
+                atributoTipoAtributoHabilidade = getDefesa();
+                break;
             default:
                 break;
         }
 
-        if (getMana() - habilidade.getCusto() > 0)
-            setMana(getMana() - habilidade.getCusto());
-        else
-            setMana(0);
+        if (gastaMana) {
+            if (getMana() - habilidade.getCusto() > 0)
+                setMana(getMana() - habilidade.getCusto());
+            else
+                setMana(0);
+        }
 
         boolean acertouAtaque = acertaAtaque(monstroEscolhido, atributoTipoAtributoHabilidade + arma.getAdicional());
 

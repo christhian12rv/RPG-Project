@@ -24,6 +24,8 @@ public class HabilidadeRepository extends BaseRepository<Habilidade> {
             whereTipoAtributos += "OR h.tipo = '" + tipoAtributo + "' ";
         }
 
+        whereTipoAtributos += "OR h.tipo = '" + TipoAtributo.CURA + "'";
+
         Query query = getEntityManager().createQuery("SELECT h FROM Habilidade h " +
             "WHERE h.dropavel = true " +
             whereTipoAtributos + ") " +

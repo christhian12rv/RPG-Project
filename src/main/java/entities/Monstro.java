@@ -134,7 +134,7 @@ public class Monstro extends Personagem implements Comparable<Monstro> {
             if (dano < 0)
                 dano = 0;
 
-            mensagem = getNome() + " deu " + dano + " de dano em " + jogadorEscolhido.getNome() + "!";
+            mensagem = getNome() + " usou " + habilidade.getNome() + " e deu " + dano + " de dano em " + jogadorEscolhido.getNome() + "!";
 
             jogadorEscolhido.receberDano(dano);
             if (!jogadorEscolhido.estaVivo())

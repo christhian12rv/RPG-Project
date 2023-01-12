@@ -15,7 +15,7 @@ import repositories.MiniHistoriaRepository;
 import utils.JsonUtil;
 import utils.ScannerUtil;
 
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -53,7 +53,6 @@ public class HistoriaUtil implements JsonUtil {
         Gson gson = new Gson();
         try {
             JsonArray jsonArray = gson.fromJson(new FileReader("jsons/historias.json"), JsonArray.class);
-            
 
             for (JsonElement jsonElement: jsonArray) {
                 JsonObject jsonObject = jsonElement.getAsJsonObject();
@@ -79,7 +78,7 @@ public class HistoriaUtil implements JsonUtil {
                         miniHistoriaEscolhaOposta.setDificuldade(DificuldadeMonstro.valueOf(jsonObjectMiniHistoriaEscolhaOposta.get("dificuldade").getAsString()));
                         miniHistoriaEscolhaOposta.setMiniHistoriaEscolhaOposta(null);
                         miniHistoriaEscolhaOposta.setResultadoEscolha(jsonObjectMiniHistoriaEscolhaOposta.get("resultadoEscolha").getAsString());
-                        miniHistoriaEscolhaOposta.setTextoEntreEventos(jsonObjectMiniHistoria.get("textoEntreEventos").getAsString());
+                        miniHistoriaEscolhaOposta.setTextoEntreEventos(jsonObjectMiniHistoriaEscolhaOposta.get("textoEntreEventos").getAsString());
                         miniHistoriaEscolhaOposta.setTipoResultado(TipoResultadoMiniHistoria.valueOf(jsonObjectMiniHistoriaEscolhaOposta.get("tipoResultado").getAsString()));
                         miniHistoriaEscolhaOposta.setDanoCura(jsonObjectMiniHistoriaEscolhaOposta.get("danoCura").getAsInt());
                     }

@@ -21,6 +21,7 @@ public class ScannerUtil {
 					
 			} catch (Exception e) {
 					System.out.println("Opção inválida. Digite novamente: ");
+					scanner.nextLine();
 					opcaoInvalida = true;
 			}
 		} while (opcaoInvalida);
@@ -39,6 +40,7 @@ public class ScannerUtil {
 					x = scanner.nextInt();
 			} catch (Exception e) {
 					System.out.println("Opção inválida. Digite novamente: ");
+					scanner.nextLine();
 					opcaoInvalida = true;
 			}
 		} while (opcaoInvalida);

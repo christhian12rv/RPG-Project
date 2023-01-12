@@ -12,7 +12,7 @@ import com.google.gson.JsonObject;
 import entities.Arma;
 import utils.JsonUtil;
 
-import java.io.FileReader;
+import java.io.*;
 
 public class ArmaUtil implements JsonUtil {
     private ArmaRepository armaRepository;
@@ -21,7 +21,7 @@ public class ArmaUtil implements JsonUtil {
         Gson gson = new Gson();
         try {
             JsonArray jsonArray = gson.fromJson(new FileReader("jsons/armas.json"), JsonArray.class);
-            
+
             for(JsonElement jsonElement: jsonArray){
                 JsonObject jsonObject = jsonElement.getAsJsonObject();
 
